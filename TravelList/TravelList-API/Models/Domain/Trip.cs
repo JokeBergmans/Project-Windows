@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TravelList_API.DTOs;
 
 namespace TravelList_API.Models.Domain
 {
@@ -26,6 +27,16 @@ namespace TravelList_API.Models.Domain
         public Trip()
         {
 
+        }
+
+        public Trip(TripDTO tripDTO, IdentityUser user)
+        {
+            Start = tripDTO.Start;
+            End = tripDTO.End;
+            Name = tripDTO.Name;
+            Owner = user;
+            Tasks = new List<Task>();
+            Items = new List<Item>();
         }
         #endregion
     }

@@ -68,13 +68,10 @@ namespace TravelList_API.Controllers
         public async Task<ActionResult<string>> Register(RegisterDTO model)
         {
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
-            //Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                //_customerRepository.Add(customer);
-                //_customerRepository.SaveChanges();
                 string token = GetToken(user);
                 return Created("", token);
             }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -85,8 +86,8 @@ namespace TravelList_API
                 };
             });
 
-            // Register the Swagger services
-            services.AddOpenApiDocument(c =>
+
+            services.AddSwaggerDocument(c =>
             {
                 c.DocumentName = "apidocs";
                 c.Title = "Travel List API";
@@ -102,7 +103,28 @@ namespace TravelList_API
 
                 c.OperationProcessors.Add(
                     new AspNetCoreOperationSecurityScopeProcessor("JWT")); //adds the token when a request is send
+
+
             });
+
+            // Register the Swagger services
+/*            services.AddOpenApiDocument(c =>
+            {
+                c.DocumentName = "apidocs";
+                c.Title = "Travel List API";
+                c.Version = "v1";
+                c.Description = "The Travel List API documentation.";
+                c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type into the textbox: Bearer {your JWT token}."
+                });
+
+                c.OperationProcessors.Add(
+                    new AspNetCoreOperationSecurityScopeProcessor("JWT")); //adds the token when a request is send
+            });*/
 
 
             services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));

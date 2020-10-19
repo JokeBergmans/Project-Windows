@@ -23,14 +23,14 @@ namespace TravelList_API.Data.Repositories
         #endregion
 
         #region Methods
-        public IEnumerable<Trip> GetAll()
+        public IEnumerable<Trip> GetAll(string email)
         {
-            return _trips.Include(t => t.Items).Include(t => t.Tasks).OrderBy(t => t.Start).ToList();
+            return _trips.Include(t => t.Items).Include(t => t.Tasks).Where(t => t.Owner.Email == email).OrderBy(t => t.Start).ToList();
         }
 
-        public Trip GetBy(int id)
+        public Trip GetBy(int id, string email)
         {
-            return _trips.Include(t => t.Items).Include(t => t.Tasks).FirstOrDefault(t => t.Id == id);
+            return GetAll(email).FirstOrDefault(t => t.Id == id);
         }
 
         public void Add(Trip trip)

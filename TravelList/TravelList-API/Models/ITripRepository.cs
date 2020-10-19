@@ -5,8 +5,8 @@ namespace TravelList_API.Models
 {
     public interface ITripRepository
     {
-        IEnumerable<Trip> GetAll();
-        Trip GetBy(int id);
+        IEnumerable<Trip> GetAll(string userId);
+        Trip GetBy(int id, string userId);
         void Add(Trip trip);
         void Update(Trip trip);
         void Delete(Trip trip);
