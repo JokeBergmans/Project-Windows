@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TravelList_API.Models.Domain;
 
 namespace TravelList_API.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
+        public DbSet<Trip> Trips { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Item> Items { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 

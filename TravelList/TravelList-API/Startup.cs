@@ -7,13 +7,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using NSwag.Generation.Processors.Security;
 using NSwag;
+using NSwag.Generation.Processors.Security;
 using System;
 using System.Linq;
 using System.Text;
 using TravelList_API.Data;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using TravelList_API.Data.Repositories;
+using TravelList_API.Models;
 
 namespace TravelList_API
 {
@@ -33,9 +34,12 @@ namespace TravelList_API
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<TravelDataInitializer>();
-            //services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<ITripRepository, TripRepository>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
 
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -64,7 +68,7 @@ namespace TravelList_API
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                
+
             })
             .AddJwtBearer(x =>
             {
