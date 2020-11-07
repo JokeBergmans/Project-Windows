@@ -18,10 +18,6 @@ namespace TravelList_API.Models.Domain
         public IdentityUser Owner { get; set; }
         #endregion
 
-        #region Methods
-        public double GetTaskProgress() => Tasks.Where(t => t.Completed).Count() / Tasks.Count();
-        public double GetItemProgress() => Items.Where(i => i.Packed).Count() / Items.Count();
-        #endregion
 
         #region Constructors
         public Trip()

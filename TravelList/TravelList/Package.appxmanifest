@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="56176411-6813-436b-9105-0bba78b70e45"
+    Name="dc6a50c7-342a-49b7-a21b-869ff6005675"
     Publisher="CN=Joke"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="56176411-6813-436b-9105-0bba78b70e45" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="dc6a50c7-342a-49b7-a21b-869ff6005675" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>TravelList</DisplayName>
