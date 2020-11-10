@@ -17,14 +17,53 @@
     </Page.Resources>
     
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Name"/>
-            <TextBox Text="{x:Bind vm.Request.Name, Mode=TwoWay}"/>
-            <TextBlock Text="Start"/>
-            <DatePicker Date="{x:Bind vm.Request.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"/>
-            <TextBlock Text="End"/>
-            <DatePicker Date="{x:Bind vm.Request.End, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"/>
-            <Button Content="Save" Command="{x:Bind vm.AddTripCommand}"/>
+        <StackPanel Orientation="Vertical" 
+                    VerticalAlignment="Center" 
+                    Width="auto">
+            <TextBlock Text="Name" 
+                       TextAlignment="Center" 
+                       HorizontalAlignment="Center"/>
+            <TextBox Text="{x:Bind vm.Request.Name, Mode=TwoWay}" 
+                     TextAlignment="Left" 
+                     HorizontalAlignment="Center" 
+                     Margin="4"
+                     Width="250"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="5">
+                <StackPanel>
+                    <TextBlock Text="From" 
+                       TextAlignment="Center"
+                       Margin="0,20,0,0"
+                       HorizontalAlignment="Center"/>
+                    <CalendarDatePicker x:Name="startDp" 
+                                        Date="{x:Bind vm.Request.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
+                                        HorizontalAlignment="Center"
+                                        Width="120"
+                                        Margin="4" 
+                                        DateFormat="{}{day.integer}/{month.integer}/{year.full}"
+                                        MinDate="{x:Bind vm.Today}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="To"
+                       TextAlignment="Center"
+                       Margin="0,20,0,0"
+                       HorizontalAlignment="Center"/>
+                    <CalendarDatePicker Date="{x:Bind vm.Request.End, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
+                                        HorizontalAlignment="Center"
+                                        Width="120"
+                                        Margin="4" 
+                                        DateFormat="{}{day.integer}/{month.integer}/{year.full}"
+                                        MinDate="{Binding Date, ElementName=startDp}"/>
+                </StackPanel>
+            </StackPanel>
+
+
+            
+            <Button Content="Save" 
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0"
+                    Command="{x:Bind vm.AddTripCommand}"/>
         </StackPanel>
 
     </Grid>

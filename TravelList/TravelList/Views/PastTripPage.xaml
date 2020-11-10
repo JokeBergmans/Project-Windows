@@ -6,15 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:viewModel="using:TravelList.ViewModels" 
-    xmlns:model="using:TravelList.Models"
+    xmlns:model="using:TravelList.Models" xmlns:converter="using:TravelList.Utils"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <model:Trip x:Name="model"/>
+        <converter:DateStringConverter x:Name="DateStringConverter"/>
     </Page.Resources>
     <Page.DataContext>
-        <viewModel:PastTripViewModel x:Name="vm"/>
+        <viewModel:TripViewModel x:Name="vm"/>
     </Page.DataContext>
     <SplitView x:Name="sv"
                IsPaneOpen="True"
@@ -31,7 +32,7 @@
                               VerticalContentAlignment="Top"
                               Grid.Row="0">
 
-                    <ListView ItemsSource="{x:Bind vm.trips}"
+                    <ListView ItemsSource="{x:Bind vm.pastTrips}"
                               x:Name="lv" 
                               ItemClick="lv_ItemClick"
                               IsItemClickEnabled="True">
@@ -42,9 +43,9 @@
 
                                     <StackPanel Orientation="Horizontal" 
                                                 Spacing="5">
-                                        <TextBlock Text="{x:Bind Start}"/>
+                                        <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}"/>
                                         <TextBlock Text=" - "/>
-                                        <TextBlock Text="{x:Bind End}"/>
+                                        <TextBlock Text="{x:Bind End, Converter={StaticResource DateStringConverter}}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>

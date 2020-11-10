@@ -8,6 +8,7 @@ using System.Text;
 using TravelList.Models;
 using TravelList.Models.Domain;
 using TravelList.Services;
+using TravelList.Utils;
 using TravelList.Views;
 using Windows.Networking.Connectivity;
 
@@ -17,6 +18,8 @@ namespace TravelList.ViewModels
     {
         private NavigationService _navigationService;
         public ObservableCollection<Trip> trips = new ObservableCollection<Trip>();
+        public ObservableCollection<Trip> pastTrips = new ObservableCollection<Trip>();
+        public DateTimeOffset Today = new DateTimeOffset((DateTime.Now).ToUniversalTime());
         public TripRequest Request { get; set; } = new TripRequest();
 
         public TripViewModel()
@@ -47,7 +50,12 @@ namespace TravelList.ViewModels
         private async void GetTrips()
         {
             IList<Trip> tripsResult = await ApiService.GetTrips();
-            tripsResult.ToList().ForEach(trips.Add);
+            tripsResult.ToList().ForEach(t => {
+                if (t.Start.CompareTo(DateTime.Now) > 0)
+                    trips.Add(t);
+                else if (t.End.CompareTo(DateTime.Now) < 0)
+                    pastTrips.Add(t);
+                });
 
             /*            trips.Add(new Trip()
             {

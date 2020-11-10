@@ -15,5 +15,12 @@ namespace TravelList.Models
         public DateTime End { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        public TripRequest()
+        {
+            Name = "My new trip";
+            Start = DateTime.Now;
+            End = DateTime.Now.AddDays(7);
+        }
     }
 }
