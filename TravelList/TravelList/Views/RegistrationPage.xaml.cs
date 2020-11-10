@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using TravelList.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -21,22 +20,17 @@ namespace TravelList.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TripPage : Page
+    public sealed partial class RegistrationPage : Page
     {
-        public TripPage()
+        public RegistrationPage()
         {
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            svFrame.Navigate(typeof(NewTripPage));
             
-        }
-
-        private void lv_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            svFrame.Navigate(typeof(TripDetailPage), (Trip)e.ClickedItem);
+            Frame.Navigate(typeof(LoginPage));
         }
     }
 }

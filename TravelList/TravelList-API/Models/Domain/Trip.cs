@@ -13,8 +13,8 @@ namespace TravelList_API.Models.Domain
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Task> Tasks { get; set; }
-        public IEnumerable<Item> Items { get; set; }
+        public IList<Task> Tasks { get; set; }
+        public IList<Item> Items { get; set; }
         public IdentityUser Owner { get; set; }
         #endregion
 
@@ -33,6 +33,18 @@ namespace TravelList_API.Models.Domain
             Owner = user;
             Tasks = new List<Task>();
             Items = new List<Item>();
+        }
+        #endregion
+
+        #region Methods
+        public void AddTask(Task task)
+        {
+            Tasks.Add(task);
+        }
+
+        public void AddItem(Item item)
+        {
+            Items.Add(item);
         }
         #endregion
     }

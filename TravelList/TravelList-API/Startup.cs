@@ -154,7 +154,7 @@ namespace TravelList_API
                 endpoints.MapControllers();
             });
 
-            dataInitializer.InitializeData();
+            dataInitializer.InitializeDataAsync();
         }
     }
 }

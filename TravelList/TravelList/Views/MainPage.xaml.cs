@@ -24,11 +24,9 @@ namespace TravelList
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private MainViewModel viewModel;
         public MainPage()
         {
             InitializeComponent();
-            viewModel = new MainViewModel();
             nvMain.SelectedItem = nvMain.MenuItems.ElementAt(0);
         }
 
@@ -44,15 +42,18 @@ namespace TravelList
 
             switch (item.Tag)
             {
-                case "nviTrip":
+                case "nviTrips":
                     mainContainer.Navigate(typeof(TripPage));
+                    break;
+                case "nviPastTrips":
+                    mainContainer.Navigate(typeof(PastTripPage));
                     break;
             }
         }
 
         public void NviLogout_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            viewModel.LogoutCommand.Execute(null);
+            vm.LogoutCommand.Execute(null);
         }
     }
 }

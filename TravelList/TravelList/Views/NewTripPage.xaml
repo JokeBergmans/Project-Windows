@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="TravelList.Views.NewTripPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TravelList.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewModel="using:TravelList.ViewModels" xmlns:converter="using:TravelList.Utils"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:TripViewModel x:Name="vm"/>
+    </Page.DataContext>
+    <Page.Resources>
+        <converter:DateTimeConverter x:Name="DateTimeConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Name"/>
+            <TextBox Text="{x:Bind vm.Request.Name, Mode=TwoWay}"/>
+            <TextBlock Text="Start"/>
+            <DatePicker Date="{x:Bind vm.Request.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"/>
+            <TextBlock Text="End"/>
+            <DatePicker Date="{x:Bind vm.Request.End, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"/>
+            <Button Content="Save" Command="{x:Bind vm.AddTripCommand}"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

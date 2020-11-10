@@ -29,12 +29,10 @@ namespace TravelList.ViewModels
         }
 
 
-        private void Login()
+        private async void Login()
         {
-            HttpClient client = new HttpClient();
-            //var json = await client.PostAsync(new Uri("htpp://localhost:5000/api/Account"))
-            System.Diagnostics.Debug.WriteLine("Email=" + Request.Email);
-            _navigationService.Navigate(typeof(MainPage));
+            if (await ApiService.Login(Request)) 
+                _navigationService.Navigate(typeof(MainPage));
         }
 
     }

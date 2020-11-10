@@ -10,8 +10,6 @@ namespace TravelList.Views
 {
     public sealed partial class LoginPage : Page
     {
-        private LoginViewModel viewModel;
-
         public LoginPage()
         {
             InitializeComponent();
@@ -19,7 +17,7 @@ namespace TravelList.Views
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            ErrorMessage.Text = "";
+            Frame.Navigate(typeof(RegistrationPage));
         }
     }
 }

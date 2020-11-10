@@ -21,19 +21,12 @@ namespace TravelList.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TripPage : Page
+    public sealed partial class PastTripPage : Page
     {
-        public TripPage()
+        public PastTripPage()
         {
             InitializeComponent();
         }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            svFrame.Navigate(typeof(NewTripPage));
-            
-        }
-
         private void lv_ItemClick(object sender, ItemClickEventArgs e)
         {
             svFrame.Navigate(typeof(TripDetailPage), (Trip)e.ClickedItem);

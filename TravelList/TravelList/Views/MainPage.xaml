@@ -7,6 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="using:TravelList.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModel:MainViewModel x:Name="vm"/>
+    </Page.DataContext>
     <Grid>
         <NavigationView x:Name="nvMain" 
                         PaneDisplayMode="LeftCompact" 
@@ -16,9 +19,23 @@
                         IsBackButtonVisible="Collapsed">
             
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Calendar" 
-                                    Content="Trips" 
-                                    Tag="nviTrip"/>
+                <NavigationViewItem Content="Upcoming trips" 
+                                    Tag="nviTrips">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE709;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Past trips" 
+                                    Tag="nviPastTrips">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE81C;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Calendar"
+                                    Icon="Calendar"
+                                    Tag="nviCalendar"/> 
             </NavigationView.MenuItems>
             
             <NavigationView.PaneFooter>

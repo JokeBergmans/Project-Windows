@@ -1,10 +1,12 @@
 ﻿<Page
-    x:Class="TravelList.Views.TripPage"
+    x:Class="TravelList.Views.PastTripPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TravelList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:viewModel="using:TravelList.ViewModels" xmlns:model="using:TravelList.Models"
+    xmlns:viewModel="using:TravelList.ViewModels" 
+    xmlns:model="using:TravelList.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,7 +14,7 @@
         <model:Trip x:Name="model"/>
     </Page.Resources>
     <Page.DataContext>
-        <viewModel:TripViewModel x:Name="vm"/>
+        <viewModel:PastTripViewModel x:Name="vm"/>
     </Page.DataContext>
     <SplitView x:Name="sv"
                IsPaneOpen="True"
@@ -28,7 +30,7 @@
                               VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Top"
                               Grid.Row="0">
-                   
+
                     <ListView ItemsSource="{x:Bind vm.trips}"
                               x:Name="lv" 
                               ItemClick="lv_ItemClick"
@@ -37,37 +39,19 @@
                             <DataTemplate x:DataType="model:Trip">
                                 <StackPanel Spacing="10" Padding="10, 20">
                                     <TextBlock Text="{x:Bind Name}" FontSize="20"/>
-                                    
+
                                     <StackPanel Orientation="Horizontal" 
                                                 Spacing="5">
-                                        <TextBlock Text="&#xE823;" 
-                                                   FontFamily="Segoe MDL2 Assets"
-                                                   VerticalAlignment="Center"/>
-                                        <TextBlock Text="{x:Bind DaysUntil}"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel>
-                                        <TextBlock Text="Packing"/>
-                                        <ProgressBar Value="{x:Bind ItemProgress}" Width="250"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel>
-                                        <TextBlock Text="Tasks"/>
-                                        <ProgressBar Value="{x:Bind TaskProgress}" Width="250"/>
+                                        <TextBlock Text="{x:Bind Start}"/>
+                                        <TextBlock Text=" - "/>
+                                        <TextBlock Text="{x:Bind End}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollViewer>
-                
-                <Button x:Name="AddButton"
-                        Content="Add"
-                        Grid.Row="1"
-                        HorizontalAlignment="Right" 
-                        VerticalAlignment="Bottom"
-                        Margin="0 20 0 0" 
-                        Click="AddButton_Click"/>
+
             </Grid>
         </SplitView.Pane>
         <SplitView.Content>
@@ -79,7 +63,7 @@
                    HorizontalAlignment="Center"/>
                 </Grid>
             </Frame>
-            
+
         </SplitView.Content>
 
     </SplitView>
