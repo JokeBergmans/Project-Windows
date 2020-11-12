@@ -29,6 +29,7 @@ namespace TravelList
         /// </summary>
         public App()
         {
+            RequestedTheme = ApplicationTheme.Light;
             InitializeComponent();
             Suspending += OnSuspending;
         }

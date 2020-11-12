@@ -26,7 +26,8 @@
                        Foreground="Red" 
                        TextAlignment="Center"/>
             
-            <TextBlock Margin="0,20,0,0"
+            <TextBlock Text="E-mail"
+                       Margin="0,20,0,0"
                        TextWrapping="Wrap" 
                        Width="250"
                        TextAlignment="Left" 

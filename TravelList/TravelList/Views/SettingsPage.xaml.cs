@@ -24,7 +24,23 @@ namespace TravelList.Views
     {
         public SettingsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            tsDarkMode.IsOn = (Application.Current.RequestedTheme == ApplicationTheme.Dark || ((FrameworkElement) Window.Current.Content).RequestedTheme == ElementTheme.Dark);
+        }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            if (toggleSwitch != null)
+            {
+                if (Window.Current.Content is FrameworkElement frameworkElement)
+                {
+                    if (toggleSwitch.IsOn == true)
+                        frameworkElement.RequestedTheme = ElementTheme.Dark;
+                    else
+                        frameworkElement.RequestedTheme = ElementTheme.Light;
+                }
+            }
         }
     }
 }
