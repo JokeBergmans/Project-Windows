@@ -28,11 +28,24 @@ namespace TravelList.Views
         public TripDetailPage()
         {
             InitializeComponent();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Trip = (Trip)e.Parameter;
+            SetupCVS();
+        }
+
+        private void SetupCVS()
+        {
+            var result =
+                from i in Trip.Items
+                group i by i.Category into g
+                orderby g.Key
+                select g;
+            groupCVS.Source = result;
+            lvItems.SelectedItem = null;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace TravelList_API.Data
         
         public void InitializeDataAsync()
         {
-            //_dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
 

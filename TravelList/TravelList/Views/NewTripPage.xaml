@@ -58,8 +58,6 @@
                 </StackPanel>
             </StackPanel>
 
-
-            
             <Button Content="Save" 
                     HorizontalAlignment="Center"
                     Margin="0,20,0,0"

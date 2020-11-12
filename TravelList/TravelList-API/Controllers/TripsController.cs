@@ -36,9 +36,9 @@ namespace TravelList_API.Controllers
         /// </summary>
         /// <returns>array of trips</returns>
         [HttpGet]
-        public IEnumerable<Trip> GetTrips()
+        public IEnumerable<TripDTO> GetTrips()
         {
-            return _tripRepository.GetAll(GetCurrentUserEmail());
+            return _tripRepository.GetAll(GetCurrentUserEmail()).Select(t => new TripDTO(t));
         }
 
         // GET: api/Trips/5
@@ -48,11 +48,11 @@ namespace TravelList_API.Controllers
         /// <param name="id">the id of the trip</param>
         /// <returns>The trip</returns>
         [HttpGet("{id}")]
-        public ActionResult<Trip> GetTrip(int id)
+        public ActionResult<TripDTO> GetTrip(int id)
         {
             Trip trip = _tripRepository.GetBy(id, GetCurrentUserEmail());
             if (trip == null) return NotFound("No trips were found");
-            return trip;
+            return new TripDTO(trip);
         }
 
         // POST: api/Trips
@@ -61,13 +61,13 @@ namespace TravelList_API.Controllers
         /// </summary>
         /// <param name="trip">the new trip</param>
         [HttpPost]
-        public ActionResult<Trip> PostTrip(TripDTO tripDTO)
+        public ActionResult<Trip> PostTrip(TripAddDTO tripDTO)
         {
             Trip trip = new Trip(tripDTO, _userManager.FindByNameAsync(GetCurrentUserEmail()).Result);
             _tripRepository.Add(trip);
             _tripRepository.SaveChanges();
 
-            return CreatedAtAction(nameof(GetTrip), new { id = trip.Id }, trip);
+            return CreatedAtAction(nameof(GetTrip), new { id = trip.Id }, new TripDTO(trip));
         }
 
         // PUT: api/Trips/5
@@ -77,12 +77,14 @@ namespace TravelList_API.Controllers
         /// <param name="id">id of the trip to be modified</param>
         /// <param name="trip">the modified trip</param>
         [HttpPut("{id}")]
-        public IActionResult PutTrip(int id, Trip trip)
+        public IActionResult PutTrip(int id, TripDTO tripDTO)
         {
-            if (id != trip.Id || trip.Owner.Id != GetCurrentUserEmail())
-            {
+            if (id != tripDTO.Id)
                 return BadRequest();
-            }
+            Trip trip = _tripRepository.GetBy(id, GetCurrentUserEmail());
+            if (trip == null || trip.Owner.Email != GetCurrentUserEmail())
+                return BadRequest();
+            trip.UpdateFromDTO(tripDTO);
             _tripRepository.Update(trip);
             _tripRepository.SaveChanges();
             return NoContent();

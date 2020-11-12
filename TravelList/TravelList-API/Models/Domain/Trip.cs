@@ -25,7 +25,7 @@ namespace TravelList_API.Models.Domain
 
         }
 
-        public Trip(TripDTO tripDTO, IdentityUser user)
+        public Trip(TripAddDTO tripDTO, IdentityUser user)
         {
             Start = tripDTO.Start;
             End = tripDTO.End;
@@ -45,6 +45,15 @@ namespace TravelList_API.Models.Domain
         public void AddItem(Item item)
         {
             Items.Add(item);
+        }
+
+        internal void UpdateFromDTO(TripDTO tripDTO)
+        {
+            Start = tripDTO.Start;
+            End = tripDTO.End;
+            Name = tripDTO.Name;
+            Items = tripDTO.Items;
+            Tasks = tripDTO.Tasks;
         }
         #endregion
     }

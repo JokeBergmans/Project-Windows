@@ -4,14 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TravelList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:model="using:TravelList.Models.Domain" 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.Resources>
+        <CollectionViewSource x:Name="groupCVS" IsSourceGrouped="true"/>
+    </Page.Resources>
+
+    <Grid Padding="20">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,19 +28,79 @@
             <TextBlock Text="{x:Bind Trip.Name}"
                        HorizontalAlignment="Center"
                        Width="auto"
-                       FontSize="18"/>
-            
+                       FontSize="24"/>
+
         </StackPanel>
-        <TreeView Grid.Column="0" 
-                  Grid.Row="1"
-                  ItemsSource="{x:Bind Trip.Items}">
-            
-        </TreeView>
+        <ScrollViewer Grid.Row="1" 
+                      Grid.Column="0">
+            <StackPanel Spacing="20">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Items" VerticalAlignment="Center" Width="200" FontSize="20"/>
+                    <Button>Add</Button>
+                </StackPanel>
+                <ListView x:Name="lvItems" 
+                          ItemsSource="{Binding Source={StaticResource groupCVS}}"
+                          Width="auto" 
+                          MinWidth="250"
+                          HorizontalAlignment="Center">
 
-        <TreeView Grid.Column="1" 
-                  Grid.Row="1"
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Key}" FontSize="16"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Item">
+                            <CheckBox IsChecked="{x:Bind Packed, Mode=TwoWay}" 
+                                  VerticalAlignment="Center">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Name}" 
+                                               VerticalAlignment="Center"
+                                                Width="200"/>
+                                        <TextBlock Text="{x:Bind Amount}" 
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Right"
+                                               TextAlignment="Right"/>
+
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+           
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" 
+                  Grid.Row="1">
+            <StackPanel Spacing="20">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Tasks" VerticalAlignment="Center" Width="200" FontSize="20"/>
+                    <Button>Add</Button>
+                </StackPanel>
+                <Line></Line>
+                <ListView Width="auto"
+                  MinWidth="250"
+                  HorizontalAlignment="Center"
                   ItemsSource="{x:Bind Trip.Tasks}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Task">
+                            <CheckBox Content="{x:Bind Name}"
+                                IsChecked="{x:Bind Completed, Mode=TwoWay}" 
+                                  VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
 
-        </TreeView>
+        </ScrollViewer>
+
     </Grid>
 </Page>

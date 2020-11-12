@@ -21,7 +21,7 @@
                        Margin="4" 
                        TextAlignment="Center"/>
 
-            <TextBlock x:Name="ErrorMessage" 
+            <TextBlock x:Name="tbErrorMessage" 
                        Text="" 
                        FontSize="16"
                        Margin="4" 
@@ -35,8 +35,7 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
 
-            <TextBox x:Name="FirstNameTextBox" 
-                     Margin="4" 
+            <TextBox Margin="4" 
                      Width="250" 
                      Text="{x:Bind vm.Request.FirstName, Mode=TwoWay}"/>
 
@@ -48,8 +47,7 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
 
-            <TextBox x:Name="LastNameTextBox" 
-                     Margin="4" 
+            <TextBox Margin="4" 
                      Width="250" 
                      Text="{x:Bind vm.Request.LastName, Mode=TwoWay}"/>
 
@@ -62,8 +60,7 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
 
-            <TextBox x:Name="EmailTextBox" 
-                     Margin="4" 
+            <TextBox Margin="4" 
                      Width="250" 
                      Text="{x:Bind vm.Request.Email, Mode=TwoWay}"/>
 
@@ -75,8 +72,7 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
 
-            <PasswordBox x:Name="PasswordTextBox" 
-                         Margin="4" 
+            <PasswordBox Margin="4" 
                          Width="250" 
                          Password="{x:Bind vm.Request.Password, Mode=TwoWay}"/>
 
@@ -88,8 +84,7 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
 
-            <PasswordBox x:Name="PasswordConfirmationTextBox" 
-                         Margin="4" 
+            <PasswordBox Margin="4" 
                          Width="250" 
                          Password="{x:Bind vm.Request.PasswordConfirmation, Mode=TwoWay}"/>
 
@@ -103,8 +98,7 @@
                            VerticalAlignment="Center" 
                            FontSize="16"/>
 
-                <TextBlock x:Name="LoginButtonTextBlock" 
-                           Text="Login instead"
+                <TextBlock Text="Login instead"
                            PointerPressed="LoginButtonTextBlock_OnPointerPressed"
                            Foreground="DodgerBlue"
                            TextAlignment="Center" 
@@ -114,8 +108,7 @@
 
             </StackPanel>
 
-            <Button x:Name="RegisterButton" 
-                    Content="Register" 
+            <Button Content="Register" 
                     Background="DodgerBlue" 
                     Foreground="White" 
                     Command="{x:Bind vm.RegisterCommand}"

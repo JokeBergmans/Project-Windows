@@ -19,23 +19,21 @@
                        Margin="4" 
                        TextAlignment="Center"/>
             
-            <TextBlock x:Name="ErrorMessage" 
+            <TextBlock x:Name="tbErrorMessage" 
                        Text="" 
                        FontSize="16"
                        Margin="4" 
                        Foreground="Red" 
                        TextAlignment="Center"/>
             
-            <TextBlock Text="Email address" 
-                       Margin="0,20,0,0"
+            <TextBlock Margin="0,20,0,0"
                        TextWrapping="Wrap" 
                        Width="250"
                        TextAlignment="Left" 
                        VerticalAlignment="Center" 
                        FontSize="16"/>
             
-            <TextBox x:Name="EmailTextBox" 
-                     Margin="4" 
+            <TextBox Margin="4" 
                      Width="250" 
                      Text="{x:Bind vm.Request.Email, Mode=TwoWay}"/>
             
@@ -47,13 +45,11 @@
                        VerticalAlignment="Center" 
                        FontSize="16"/>
             
-            <PasswordBox x:Name="PasswordTextBox" 
-                         Margin="4" 
+            <PasswordBox Margin="4" 
                          Width="250" 
-                         Password="{x:Bind vm.Request.Password, Mode=TwoWay}"/>
+                         Password="{x:Bind vm.Request.Password, Mode=TwoWay}" KeyDown="OnKeyDownHandler"/>
             
-            <Button x:Name="LoginButton" 
-                    Content="Login" 
+            <Button Content="Login" 
                     Background="DodgerBlue" 
                     Foreground="White" 
                     Command="{x:Bind vm.LoginCommand}"
@@ -71,8 +67,7 @@
                            VerticalAlignment="Center" 
                            FontSize="16"/>
                
-                <TextBlock x:Name="RegisterButtonTextBlock" 
-                           Text="Register now"
+                <TextBlock Text="Register now"
                            PointerPressed="RegisterButtonTextBlock_OnPointerPressed"
                            Foreground="DodgerBlue"
                            TextAlignment="Center" 

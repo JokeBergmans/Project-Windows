@@ -119,7 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Domain\Category.cs" />
     <Compile Include="Models\Domain\Item.cs" />
     <Compile Include="Models\Domain\Task.cs" />
     <Compile Include="Models\LoginRequest.cs" />

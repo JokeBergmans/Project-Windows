@@ -58,7 +58,7 @@
         <SplitView.Content>
             <Frame x:Name="svFrame">
                 <Grid>
-                    <TextBlock Text="Content"
+                    <TextBlock Text="Select a trip from the list"
                    FontSize="24"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>
