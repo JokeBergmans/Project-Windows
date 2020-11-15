@@ -13,6 +13,7 @@ namespace TravelList_API.DTOs
         public string Name { get; set; }
         public IList<Task> Tasks { get; set; }
         public IList<Item> Items { get; set; }
+        public IList<Activity> Activities { get; set; }
 
         public TripDTO()
         {
@@ -27,6 +28,7 @@ namespace TravelList_API.DTOs
             Name = trip.Name;
             Tasks = trip.Tasks;
             Items = trip.Items;
+            Activities = trip.Activities;
         }
     }
 }

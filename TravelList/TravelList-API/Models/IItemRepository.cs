@@ -5,8 +5,8 @@ namespace TravelList_API.Models
 {
     public interface IItemRepository
     {
-        IEnumerable<Item> GetAll();
-        Item GetBy(int id);
+        IEnumerable<Item> GetAll(string email);
+        Item GetBy(int id, string email);
         void Add(Item item);
         void Update(Item item);
         void Delete(Item item);
