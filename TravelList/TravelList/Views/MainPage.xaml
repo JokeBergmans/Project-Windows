@@ -33,9 +33,12 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Calendar"
+                <NavigationViewItem Content="Itineraries"
                                     Icon="Calendar"
-                                    Tag="nviCalendar"/> 
+                                    Tag="nviItineraries"/>
+                <NavigationViewItem Content="Items"
+                                    Icon="Shop"
+                                    Tag="nviItems"/>
             </NavigationView.MenuItems>
             
             <NavigationView.PaneFooter>

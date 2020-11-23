@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using TravelList.Models;
+using TravelList.Models.Domain;
 
 namespace TravelList.Services
 {
@@ -21,12 +22,7 @@ namespace TravelList.Services
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             HttpResponseMessage response = await _client.GetAsync(URL + "Trips");
             if (response.IsSuccessStatusCode)
-            {
-                System.Diagnostics.Debug.WriteLine(response.Content.ReadAsStringAsync().Result);
-                System.Diagnostics.Debug.WriteLine(JsonConvert.DeserializeObject<IList<Trip>>(response.Content.ReadAsStringAsync().Result).Count());
                 return JsonConvert.DeserializeObject<IList<Trip>>(response.Content.ReadAsStringAsync().Result);
-
-            }
             else
                 return null;
 
@@ -45,7 +41,6 @@ namespace TravelList.Services
         {
             string requestJson = JsonConvert.SerializeObject(request);
             HttpResponseMessage response = await _client.PostAsync(URL + "Account", new StringContent(requestJson, Encoding.UTF8, "application/json"));
-            System.Diagnostics.Debug.WriteLine("Login status: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
                 _token = await response.Content.ReadAsStringAsync();
             return response.IsSuccessStatusCode;
@@ -58,6 +53,27 @@ namespace TravelList.Services
             HttpResponseMessage response = await _client.PostAsync(URL + "Trips", new StringContent(requestJson, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
                 return JsonConvert.DeserializeObject<Trip>(response.Content.ReadAsStringAsync().Result);
+            else
+                return null;
+        }
+
+        public async static Task<IList<Item>> GetItems()
+        {
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+            HttpResponseMessage response = await _client.GetAsync(URL + "Items");
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<IList<Item>>(response.Content.ReadAsStringAsync().Result);
+            else
+                return null;
+        }
+
+        public async static Task<Item> AddItem(Item request)
+        {
+            string requestJson = JsonConvert.SerializeObject(request);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+            HttpResponseMessage response = await _client.PostAsync(URL + "Items", new StringContent(requestJson, Encoding.UTF8, "application/json"));
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<Item>(response.Content.ReadAsStringAsync().Result);
             else
                 return null;
         }

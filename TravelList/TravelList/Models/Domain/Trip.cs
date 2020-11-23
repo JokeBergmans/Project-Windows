@@ -22,6 +22,8 @@ namespace TravelList.Models
         public IEnumerable<Task> Tasks { get; set; }
         [JsonProperty("items")]
         public IEnumerable<Item> Items { get; set; }
+        [JsonProperty("activities")]
+        public IEnumerable<Activity> Activities { get; set; }
         public double TaskProgress { get
             {
                 if (Tasks.Count() == 0)
