@@ -1,12 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Net.Http;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using TravelList.Models;
 using TravelList.Services;
 
-namespace TravelList.ViewModels
+namespace TravelList.ViewModels.Login
 {
     public class LoginViewModel : ViewModelBase
     {
@@ -31,7 +28,7 @@ namespace TravelList.ViewModels
 
         private async void Login()
         {
-            if (await ApiService.Login(Request)) 
+            if (await ApiService.Login(Request))
                 _navigationService.Navigate(typeof(MainPage));
         }
 

@@ -1,12 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TravelList.Services;
-using TravelList.Views;
+using TravelList.Views.Login;
 
 namespace TravelList.ViewModels
 {

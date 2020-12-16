@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using TravelList_API.Models.Domain;
 
 namespace TravelList_API.Data

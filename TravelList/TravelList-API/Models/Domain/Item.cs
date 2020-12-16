@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 using TravelList_API.DTOs;
 
 namespace TravelList_API.Models.Domain

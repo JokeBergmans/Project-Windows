@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -55,6 +53,14 @@ namespace TravelList.Services
                 return JsonConvert.DeserializeObject<Trip>(response.Content.ReadAsStringAsync().Result);
             else
                 return null;
+        }
+
+        public async static Task<bool> UpdateTrip(Trip trip)
+        {
+            string requestJson = JsonConvert.SerializeObject(trip);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+            HttpResponseMessage response = await _client.PutAsync(URL + "Trips/" + trip.Id, new StringContent(requestJson, Encoding.UTF8, "application/json"));
+            return response.IsSuccessStatusCode;
         }
 
         public async static Task<IList<Item>> GetItems()

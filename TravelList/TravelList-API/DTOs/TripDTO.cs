@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using TravelList_API.Models.Domain;
 
 namespace TravelList_API.DTOs

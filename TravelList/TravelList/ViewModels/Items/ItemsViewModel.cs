@@ -1,17 +1,13 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TravelList.Models.Domain;
 using TravelList.Services;
-using TravelList.Views;
 
-namespace TravelList.ViewModels
+namespace TravelList.ViewModels.Items
 {
-    public class ItemViewModel
+    public class ItemsViewModel
     {
 
         private INavigationService _navigationService;
@@ -19,7 +15,7 @@ namespace TravelList.ViewModels
         public ObservableCollection<string> categories = new ObservableCollection<string>();
         public Item NewItem { get; set; }
 
-        public ItemViewModel()
+        public ItemsViewModel()
         {
             _navigationService = new NavigationService();
             GetItems();
@@ -29,7 +25,8 @@ namespace TravelList.ViewModels
         private async void GetItems()
         {
             IList<Item> itemsResult = await ApiService.GetItems();
-            itemsResult.ToList().ForEach(i => {
+            itemsResult.ToList().ForEach(i =>
+            {
                 items.Add(i);
                 if (!categories.Contains(i.Category))
                     categories.Add(i.Category);

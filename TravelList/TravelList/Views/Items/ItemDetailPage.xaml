@@ -1,10 +1,12 @@
 ﻿<Page
-    x:Class="TravelList.Views.ItemDetailPage"
+    x:Class="TravelList.Views.Items.ItemDetailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TravelList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:TravelList.Models.Domain" xmlns:viewModel="using:TravelList.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:model="using:TravelList.Models.Domain" 
+    xmlns:viewModel="using:TravelList.ViewModels.Items"
+    xmlns:local="using:TravelList.Views.Items"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,7 +14,7 @@
         <model:Item x:Name="model"/>
     </Page.Resources>
     <Page.DataContext>
-        <viewModel:ItemViewModel x:Name="vm"/>
+        <viewModel:ItemsViewModel x:Name="vm"/>
     </Page.DataContext>
     <StackPanel Margin="0 20 0 0"
                 Spacing="20">
