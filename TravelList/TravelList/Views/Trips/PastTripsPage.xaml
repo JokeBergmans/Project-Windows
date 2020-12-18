@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="TravelList.Views.Trips.PastTripPage"
+    x:Class="TravelList.Views.Trips.PastTripsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TravelList.Views.Trips"
@@ -16,7 +16,7 @@
         <converter:DateStringConverter x:Name="DateStringConverter"/>
     </Page.Resources>
     <Page.DataContext>
-        <viewModel:TripsViewModel x:Name="vm"/>
+        <viewModel:PastTripsViewModel x:Name="vm"/>
     </Page.DataContext>
     <SplitView x:Name="sv"
                IsPaneOpen="True"
@@ -33,7 +33,7 @@
                               VerticalContentAlignment="Top"
                               Grid.Row="0">
 
-                    <ListView ItemsSource="{x:Bind vm.pastTrips}"
+                    <ListView ItemsSource="{x:Bind vm.trips}"
                               x:Name="lv" 
                               ItemClick="lv_ItemClick"
                               IsItemClickEnabled="True">

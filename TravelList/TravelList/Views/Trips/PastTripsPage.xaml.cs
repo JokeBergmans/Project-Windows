@@ -9,9 +9,9 @@ namespace TravelList.Views.Trips
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PastTripPage : Page
+    public sealed partial class PastTripsPage : Page
     {
-        public PastTripPage()
+        public PastTripsPage()
         {
             InitializeComponent();
         }

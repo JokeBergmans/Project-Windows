@@ -12,7 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:TripsViewModel x:Name="vm"/>
+        <viewModel:TripDetailViewModel x:Name="vm"/>
     </Page.DataContext>
     <Page.Resources>
         <CollectionViewSource x:Name="groupCVS" IsSourceGrouped="true"/>
@@ -32,7 +32,7 @@
         <StackPanel Grid.ColumnSpan="2" 
                     Grid.Row="0"
                     Margin="0 20 0 0">
-            <TextBlock Text="{x:Bind vm.SelectedTrip.Name}"
+            <TextBlock Text="{x:Bind vm.Trip.Name}"
                        HorizontalAlignment="Center"
                        Width="auto"
                        FontSize="24"/>
@@ -45,7 +45,7 @@
                        Margin="0,20,0,0"
                        HorizontalAlignment="Center"/>
                 <CalendarDatePicker x:Name="startDp" 
-                                        Date="{x:Bind vm.SelectedTrip.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
+                                        Date="{x:Bind vm.Trip.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
                                         HorizontalAlignment="Center"
                                         Width="120"
                                         Margin="4" 
@@ -57,7 +57,7 @@
                        TextAlignment="Center"
                        Margin="0,20,0,0"
                        HorizontalAlignment="Center"/>
-                <CalendarDatePicker Date="{x:Bind vm.SelectedTrip.End, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
+                    <CalendarDatePicker Date="{x:Bind vm.Trip.End, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" 
                                         HorizontalAlignment="Center"
                                         Width="120"
                                         Margin="4" 
@@ -138,7 +138,7 @@
                 <ListView Width="auto"
                   MinWidth="250"
                   HorizontalAlignment="Center"
-                  ItemsSource="{x:Bind vm.SelectedTrip.Tasks}">
+                  ItemsSource="{x:Bind vm.Trip.Tasks}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:Task">
                             <CheckBox Content="{x:Bind Name}"

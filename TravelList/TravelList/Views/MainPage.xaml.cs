@@ -37,7 +37,7 @@ namespace TravelList
                     mainContainer.Navigate(typeof(TripsPage));
                     break;
                 case "nviPastTrips":
-                    mainContainer.Navigate(typeof(PastTripPage));
+                    mainContainer.Navigate(typeof(PastTripsPage));
                     break;
                 case "nviItineraries":
                     mainContainer.Navigate(typeof(ItineraryPage));

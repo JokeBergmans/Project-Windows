@@ -11,7 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:TripsViewModel x:Name="vm"/>
+        <viewModel:NewTripViewModel x:Name="vm"/>
     </Page.DataContext>
     <Page.Resources>
         <converter:DateTimeConverter x:Name="DateTimeConverter"/>

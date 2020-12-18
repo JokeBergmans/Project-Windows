@@ -126,16 +126,19 @@
     <Compile Include="Models\Domain\Trip.cs" />
     <Compile Include="Models\RegistrationRequest.cs" />
     <Compile Include="Models\TripRequest.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\TripRepository.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Utils\DateStringConverter.cs" />
     <Compile Include="Utils\DateTimeConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />
     <Compile Include="ViewModels\Itinerary\ItineraryViewModel.cs" />
     <Compile Include="ViewModels\Trips\NewTripViewModel.cs" />
-    <Compile Include="ViewModels\Trips\PastTripViewModel.cs" />
+    <Compile Include="ViewModels\Trips\PastTripsViewModel.cs" />
     <Compile Include="ViewModels\Trips\TripDetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Login\RegistrationViewModel.cs" />
@@ -160,8 +163,8 @@
     <Compile Include="Views\Trips\NewTripPage.xaml.cs">
       <DependentUpon>NewTripPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Trips\PastTripPage.xaml.cs">
-      <DependentUpon>PastTripPage.xaml</DependentUpon>
+    <Compile Include="Views\Trips\PastTripsPage.xaml.cs">
+      <DependentUpon>PastTripsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
@@ -182,6 +185,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
+    <Content Include="Assets\ross-parmly-rf6ywHVkrlY-unsplash.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -220,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Trips\PastTripPage.xaml">
+    <Page Include="Views\Trips\PastTripsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

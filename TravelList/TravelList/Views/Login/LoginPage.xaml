@@ -11,14 +11,22 @@
     <Page.DataContext>
         <viewModel:LoginViewModel x:Name="vm"/>
     </Page.DataContext>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush  ImageSource="/Assets/glauber-sampaio-lCTfOwSi27E-unsplash.jpg"/>
+        </Grid.Background>
         <StackPanel Orientation="Vertical" 
-                    VerticalAlignment="Center">
-            
+                    VerticalAlignment="Center"
+                    Padding="20"
+                    Width="400">
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
+            </StackPanel.Background>
             <TextBlock Text="Login" 
                        FontSize="36" 
                        Margin="4" 
-                       TextAlignment="Center"/>
+                       TextAlignment="Center"
+                       Width="250"/>
             
             <TextBlock x:Name="tbErrorMessage" 
                        Text="" 

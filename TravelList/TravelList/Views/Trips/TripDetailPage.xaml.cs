@@ -21,14 +21,14 @@ namespace TravelList.Views.Trips
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            vm.SelectedTrip = (Trip)e.Parameter;
+            vm.Trip = (Trip)e.Parameter;
             SetupCVS();
         }
 
         private void SetupCVS()
         {
             var result =
-                from i in vm.SelectedTrip.Items
+                from i in vm.Trip.Items
                 group i by i.Category into g
                 orderby g.Key
                 select g;

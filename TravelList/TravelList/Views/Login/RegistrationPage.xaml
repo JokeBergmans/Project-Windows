@@ -13,10 +13,19 @@
     <Page.DataContext>
         <viewModel:RegistrationViewModel x:Name="vm"/>
     </Page.DataContext>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush  ImageSource="/Assets/ross-parmly-rf6ywHVkrlY-unsplash.jpg"/>
+        </Grid.Background>
+            
         <StackPanel Orientation="Vertical" 
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Width="400"
+                    Padding="20">
 
+                <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
+            </StackPanel.Background>
             <TextBlock Text="Register" 
                        FontSize="36" 
                        Margin="4" 
@@ -118,5 +127,6 @@
                     Margin="0,20"/>
 
         </StackPanel>
+
     </Grid>
 </Page>
