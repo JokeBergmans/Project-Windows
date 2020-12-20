@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using TravelList.Models.Domain;
 using Windows.UI.Xaml;
@@ -26,13 +27,13 @@ namespace TravelList.Views.Items
         {
             Category = (string)e.Parameter;
             GetItems();
+            vm.items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs args) => GetItems();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             vm.NewItem.Category = Category;
             vm.AddItem();
-            GetItems();
         }
 
         private void GetItems()

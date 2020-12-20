@@ -7,7 +7,7 @@ namespace TravelList.ViewModels.Trips
 {
     public class PastTripsViewModel
     {
-        private TripRepository _tripRepository;
+        private readonly TripRepository _tripRepository;
         public ObservableCollection<Trip> trips;
 
         public PastTripsViewModel()

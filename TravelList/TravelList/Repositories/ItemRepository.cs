@@ -11,7 +11,7 @@ namespace TravelList.Repositories
 {
     public class ItemRepository
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
 
         public ItemRepository()
         {
@@ -20,7 +20,7 @@ namespace TravelList.Repositories
 
         public async void GetItems()
         {
-            Items = new ObservableCollection<Item>();
+            Items.Clear();
             List<Item> items = (List<Item>)await ApiService.GetItems();
             items.ForEach(t => Items.Add(t));
 

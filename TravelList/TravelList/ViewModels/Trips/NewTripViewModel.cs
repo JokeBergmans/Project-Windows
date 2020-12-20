@@ -8,8 +8,8 @@ namespace TravelList.ViewModels.Trips
 {
     public class NewTripViewModel
     {
-        private NavigationService _navigationService;
-        private TripRepository _tripRepository;
+        private readonly NavigationService _navigationService;
+        private readonly TripRepository _tripRepository;
         public DateTimeOffset Today = new DateTimeOffset(DateTime.Now.ToUniversalTime());
         public TripRequest Request { get; set; } = new TripRequest();
 

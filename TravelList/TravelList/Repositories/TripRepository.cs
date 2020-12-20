@@ -13,8 +13,8 @@ namespace TravelList.Repositories
     public class TripRepository
     {
 
-        public ObservableCollection<Trip> Trips { get; set; }
-        public ObservableCollection<Trip> PastTrips { get; set; }
+        public ObservableCollection<Trip> Trips { get; set; } = new ObservableCollection<Trip>();
+        public ObservableCollection<Trip> PastTrips { get; set; } = new ObservableCollection<Trip>();
 
         public TripRepository()
         {
@@ -23,8 +23,8 @@ namespace TravelList.Repositories
 
         public async void GetTrips()
         {
-            Trips = new ObservableCollection<Trip>();
-            PastTrips = new ObservableCollection<Trip>();
+            Trips.Clear();
+            PastTrips.Clear();
             List<Trip> trips = (List<Trip>) await ApiService.GetTrips();
             trips.ForEach(t => {
                 if (t.Start.CompareTo(DateTime.Now) > 0)

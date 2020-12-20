@@ -12,7 +12,7 @@ namespace TravelList.ViewModels.Items
     {
 
         public ObservableCollection<string> categories = new ObservableCollection<string>();
-        private ItemRepository _itemRepository;
+        private readonly ItemRepository _itemRepository;
 
         public ItemsViewModel()
         {
@@ -22,11 +22,9 @@ namespace TravelList.ViewModels.Items
 
         private void GetCategories()
         {
-            _itemRepository.Items.ToList().ForEach(i =>
-            {
-                if (!categories.Contains(i.Category))
-                    categories.Add(i.Category);
-            });
+            categories.Clear();
+            _itemRepository.Items.ToList().Select(i => i.Category).Distinct().ToList().ForEach(c => categories.Add(c));
+
         }
 
 

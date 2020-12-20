@@ -9,6 +9,7 @@ namespace TravelList.ViewModels.Login
     {
 
         private INavigationService _navigationService;
+        public string ErrorMessage { get; set; } = "";
         public LoginRequest Request { get; set; }
 
         public RelayCommand LoginCommand
@@ -30,6 +31,9 @@ namespace TravelList.ViewModels.Login
         {
             if (await ApiService.Login(Request))
                 _navigationService.Navigate(typeof(MainPage));
+            else
+                ErrorMessage = "Invalid login";
+                
         }
 
     }

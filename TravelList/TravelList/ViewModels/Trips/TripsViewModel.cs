@@ -13,7 +13,7 @@ namespace TravelList.ViewModels.Trips
 {
     public class TripsViewModel : ViewModelBase
     {
-        private TripRepository _tripRepository;
+        private readonly TripRepository _tripRepository;
         public ObservableCollection<Trip> trips;
 
         public TripsViewModel()

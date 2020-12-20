@@ -12,7 +12,7 @@ namespace TravelList.ViewModels.Items
     {
         public ObservableCollection<Item> items;
         public Item NewItem { get; set; }
-        private ItemRepository _itemRepository;
+        private readonly ItemRepository _itemRepository;
 
         public ItemDetailViewModel()
         {

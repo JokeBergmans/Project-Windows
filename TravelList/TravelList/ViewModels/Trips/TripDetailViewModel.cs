@@ -8,8 +8,9 @@ namespace TravelList.ViewModels.Trips
 {
     public class TripDetailViewModel
     {
-        private NavigationService _navigationService;
-        private TripRepository _tripRepository;
+        private readonly NavigationService _navigationService;
+        private readonly TripRepository _tripRepository;
+        private readonly ItemRepository _itemRepository;
         public DateTimeOffset Today = new DateTimeOffset(DateTime.Now.ToUniversalTime());
 
         public Trip Trip { get; set; }
@@ -18,6 +19,7 @@ namespace TravelList.ViewModels.Trips
         {
             _navigationService = new NavigationService();
             _tripRepository = RepositoryService.TripRepository;
+            _itemRepository = RepositoryService.ItemRepository;
         }
 
         public RelayCommand UpdateTripCommand

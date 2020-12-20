@@ -29,7 +29,7 @@
                        Width="250"/>
             
             <TextBlock x:Name="tbErrorMessage" 
-                       Text="" 
+                       Text="{x:Bind vm.ErrorMessage}" 
                        FontSize="16"
                        Margin="4" 
                        Foreground="Red" 
