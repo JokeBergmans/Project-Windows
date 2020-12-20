@@ -30,7 +30,7 @@ namespace TravelList.Repositories
         {
             Item item = await ApiService.AddItem(request);
             if (item != null)
-                Items.Add(item);
+                GetItems();
         }
 
 /*        public async void UpdateItem(Item item)

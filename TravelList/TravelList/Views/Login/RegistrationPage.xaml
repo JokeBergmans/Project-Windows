@@ -15,7 +15,7 @@
     </Page.DataContext>
     <Grid>
         <Grid.Background>
-            <ImageBrush  ImageSource="/Assets/ross-parmly-rf6ywHVkrlY-unsplash.jpg"/>
+            <ImageBrush ImageSource="/Assets/glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
         </Grid.Background>
             
         <StackPanel Orientation="Vertical" 
@@ -24,7 +24,7 @@
                     Padding="20">
 
                 <StackPanel.Background>
-                <SolidColorBrush Color="White" Opacity="0.8"/>
+                <SolidColorBrush Color="White"/>
             </StackPanel.Background>
             <TextBlock Text="Register" 
                        FontSize="36" 

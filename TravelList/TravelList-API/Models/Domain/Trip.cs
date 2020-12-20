@@ -13,7 +13,7 @@ namespace TravelList_API.Models.Domain
         public DateTime End { get; set; }
         public string Name { get; set; }
         public IList<Task> Tasks { get; set; }
-        public IList<Item> Items { get; set; }
+        public IList<TripItem> Items { get; set; }
         public IList<Activity> Activities { get; set; }
         public IdentityUser Owner { get; set; }
         #endregion
@@ -32,7 +32,7 @@ namespace TravelList_API.Models.Domain
             Name = tripDTO.Name;
             Owner = user;
             Tasks = new List<Task>();
-            Items = new List<Item>();
+            Items = new List<TripItem>();
             Activities = new List<Activity>();
         }
         #endregion
@@ -43,9 +43,9 @@ namespace TravelList_API.Models.Domain
             Tasks.Add(task);
         }
 
-        public void AddItem(Item item)
+        public void AddItem(Item item, int amount, bool packed)
         {
-            Items.Add(item);
+            Items.Add(new TripItem(item, amount, packed));
         }
 
         public void AddActivity(Activity activity)

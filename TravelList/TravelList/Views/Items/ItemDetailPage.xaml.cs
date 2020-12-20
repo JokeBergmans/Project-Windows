@@ -15,7 +15,6 @@ namespace TravelList.Views.Items
     /// </summary>
     public sealed partial class ItemDetailPage : Page
     {
-        public ObservableCollection<Item> items = new ObservableCollection<Item>();
         public string Category { get; set; }
 
         public ItemDetailPage()
@@ -27,20 +26,24 @@ namespace TravelList.Views.Items
         {
             Category = (string)e.Parameter;
             GetItems();
-
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             vm.NewItem.Category = Category;
-            items.Add(vm.NewItem);
             vm.AddItem();
+            GetItems();
         }
 
-        private async void GetItems()
+        private void GetItems()
         {
-            IList<Item> itemsResult = await vm.FilterItems(Category);
-            itemsResult.ToList().ForEach(i => items.Add(i));
+            var result =
+                from i in vm.items
+                where i.Category == Category
+                orderby i.Name
+                select i;
+            cvs.Source = result;
+
         }
     }
 }

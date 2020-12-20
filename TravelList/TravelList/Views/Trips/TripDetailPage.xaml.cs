@@ -29,7 +29,7 @@ namespace TravelList.Views.Trips
         {
             var result =
                 from i in vm.Trip.Items
-                group i by i.Category into g
+                group i by i.Item.Category into g
                 orderby g.Key
                 select g;
             groupCVS.Source = result;

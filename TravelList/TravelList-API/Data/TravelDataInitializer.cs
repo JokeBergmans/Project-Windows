@@ -24,16 +24,16 @@ namespace TravelList_API.Data
                 IdentityUser user = new IdentityUser { UserName = "jokebergmans@mail.com", Email = "jokebergmans@mail.com" };
                 await CreateUser(user, "P@ssword1111!");
 
-                Trip trip1 = new Trip() { Name = "Barcelona", Start = DateTime.Now.AddDays(60), End = DateTime.Now.AddDays(70), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<Item>(), Activities = new List<Activity>() };
-                Trip trip2 = new Trip() { Name = "Berlin", Start = DateTime.Now.AddDays(100), End = DateTime.Now.AddDays(107), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<Item>(), Activities = new List<Activity>() };
-                Trip trip3 = new Trip() { Name = "Moscou", Start = DateTime.Now.AddDays(-50), End = DateTime.Now.AddDays(-40), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<Item>(), Activities = new List<Activity>() };
+                Trip trip1 = new Trip() { Name = "Barcelona", Start = DateTime.Now.AddDays(60), End = DateTime.Now.AddDays(70), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<TripItem>(), Activities = new List<Activity>() };
+                Trip trip2 = new Trip() { Name = "Berlin", Start = DateTime.Now.AddDays(100), End = DateTime.Now.AddDays(107), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<TripItem>(), Activities = new List<Activity>() };
+                Trip trip3 = new Trip() { Name = "Moscou", Start = DateTime.Now.AddDays(-50), End = DateTime.Now.AddDays(-40), Owner = user, Tasks = new List<Models.Domain.Task>(), Items = new List<TripItem>(), Activities = new List<Activity>() };
 
                 Models.Domain.Task task1 = new Models.Domain.Task() { Name = "Load batteries", Completed = false };
                 Models.Domain.Task task2 = new Models.Domain.Task() { Name = "Fill up car", Completed = false };
 
-                Item item1 = new Item() { Name = "Toothbrush", Packed = false, Category = "Hygiene", Owner = user };
-                Item item2 = new Item() { Name = "Underwear", Packed = false, Category = "Clothes", Owner = user };
-                Item item3 = new Item() { Name = "Painkillers", Packed = false, Category = "Health", Owner = user };
+                Item item1 = new Item() { Name = "Toothbrush", Category = "Hygiene", Owner = user };
+                Item item2 = new Item() { Name = "Underwear", Category = "Clothes", Owner = user };
+                Item item3 = new Item() { Name = "Painkillers", Category = "Health", Owner = user };
 
                 _dbContext.Items.Add(item1);
                 _dbContext.Items.Add(item2);
@@ -43,19 +43,19 @@ namespace TravelList_API.Data
 
                 trip1.AddTask(task1);
                 trip1.AddTask(task2);
-                trip1.AddItem(item1);
-                trip1.AddItem(item2);
-                trip1.AddItem(item3);
+                trip1.AddItem(item1, 6, false);
+                trip1.AddItem(item2, 2, false);
+                trip1.AddItem(item3, 1, true);
 
                 trip2.AddTask(task1);
-                trip2.AddItem(item1);
-                trip2.AddItem(item2);
-                trip2.AddItem(item3);
+                trip2.AddItem(item1, 4, true);
+                trip2.AddItem(item2, 8, false);
+                trip2.AddItem(item3, 6, true);
 
                 trip3.AddTask(task1);
                 trip3.AddTask(task2);
-                trip3.AddItem(item1);
-                trip3.AddItem(item2);
+                trip3.AddItem(item1, 10, false);
+                trip3.AddItem(item2, 20, false);
 
                 _dbContext.Trips.Add(trip1);
                 _dbContext.Trips.Add(trip2);

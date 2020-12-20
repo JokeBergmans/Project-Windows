@@ -96,12 +96,12 @@
                         </GroupStyle>
                     </ListView.GroupStyle>
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Item">
+                        <DataTemplate x:DataType="model:TripItem">
                             <CheckBox IsChecked="{x:Bind Packed, Mode=TwoWay}" 
                                   VerticalAlignment="Center">
                                 <CheckBox.Content>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{x:Bind Name}" 
+                                        <TextBlock Text="{x:Bind Item.Name}" 
                                                VerticalAlignment="Center"
                                                 Width="200"/>
                                         <TextBlock Text="{x:Bind Amount}" 

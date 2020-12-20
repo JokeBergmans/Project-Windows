@@ -24,7 +24,7 @@ namespace TravelList_API.Data.Repositories
         #region Methods
         public IEnumerable<Item> GetAll(string email)
         {
-            return _items.Include(i => i.Owner).Where(i => i.Owner.Email == email).OrderBy(i => i.Category).ThenBy(i => i.Packed).ThenBy(i => i.Name).ToList();
+            return _items.Include(i => i.Owner).Where(i => i.Owner.Email == email).OrderBy(i => i.Category).ThenBy(i => i.Name).ToList();
         }
 
         public Item GetBy(int id, string email)

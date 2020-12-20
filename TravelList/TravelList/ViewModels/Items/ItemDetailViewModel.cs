@@ -10,25 +10,20 @@ namespace TravelList.ViewModels.Items
 {
     public class ItemDetailViewModel
     {
-        public ObservableCollection<Item> items = new ObservableCollection<Item>();
+        public ObservableCollection<Item> items;
         public Item NewItem { get; set; }
         private ItemRepository _itemRepository;
 
         public ItemDetailViewModel()
         {
             _itemRepository = RepositoryService.ItemRepository;
+            items = _itemRepository.Items;
             NewItem = new Item();
         }
-        public async Task<IList<Item>> FilterItems(string category)
-        {
-            IList<Item> itemsResult = await ApiService.GetItems();
-            return itemsResult.Where(i => i.Category == category).ToList();
-        }
 
-        public async void AddItem()
+        public void AddItem()
         {
-            await ApiService.AddItem(NewItem);
-            items.Add(NewItem);
+            _itemRepository.AddItem(NewItem);
             NewItem = new Item();
         }
     }

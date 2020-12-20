@@ -26,7 +26,7 @@ namespace TravelList.Models.Domain
         [JsonProperty("tasks")]
         public IEnumerable<Task> Tasks { get; set; }
         [JsonProperty("items")]
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<TripItem> Items { get; set; }
         [JsonProperty("activities")]
         public IEnumerable<Activity> Activities { get; set; }
         public double TaskProgress

@@ -13,14 +13,14 @@
     </Page.DataContext>
     <Grid>
         <Grid.Background>
-            <ImageBrush  ImageSource="/Assets/glauber-sampaio-lCTfOwSi27E-unsplash.jpg"/>
+            <ImageBrush ImageSource="/Assets/ross-parmly-rf6ywHVkrlY-unsplash.jpg"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical" 
                     VerticalAlignment="Center"
                     Padding="20"
                     Width="400">
             <StackPanel.Background>
-                <SolidColorBrush Color="White" Opacity="0.8"/>
+                <SolidColorBrush Color="White"/>
             </StackPanel.Background>
             <TextBlock Text="Login" 
                        FontSize="36" 

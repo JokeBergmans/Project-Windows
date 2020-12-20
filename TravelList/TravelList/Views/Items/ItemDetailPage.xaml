@@ -12,9 +12,10 @@
 
     <Page.Resources>
         <model:Item x:Name="model"/>
+        <CollectionViewSource x:Name="cvs"/>
     </Page.Resources>
     <Page.DataContext>
-        <viewModel:ItemsViewModel x:Name="vm"/>
+        <viewModel:ItemDetailViewModel x:Name="vm"/>
     </Page.DataContext>
     <StackPanel Margin="0 20 0 0"
                 Spacing="20">
@@ -32,7 +33,7 @@
             <Button Content="Add"
                     Click="AddButton_Click"/>
         </StackPanel>
-        <ListView ItemsSource="{x:Bind items}"
+        <ListView ItemsSource="{Binding Source={StaticResource cvs}}"
                   HorizontalAlignment="Center"
                   Width="500">
             <ListView.ItemTemplate>

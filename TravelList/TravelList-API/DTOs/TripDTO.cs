@@ -11,7 +11,7 @@ namespace TravelList_API.DTOs
         public DateTime End { get; set; }
         public string Name { get; set; }
         public IList<Task> Tasks { get; set; }
-        public IList<Item> Items { get; set; }
+        public IList<TripItem> Items { get; set; }
         public IList<Activity> Activities { get; set; }
 
         public TripDTO()

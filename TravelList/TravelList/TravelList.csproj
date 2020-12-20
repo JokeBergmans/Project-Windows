@@ -122,6 +122,7 @@
     <Compile Include="Models\Domain\Activity.cs" />
     <Compile Include="Models\Domain\Item.cs" />
     <Compile Include="Models\Domain\Task.cs" />
+    <Compile Include="Models\Domain\TripItem.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Domain\Trip.cs" />
     <Compile Include="Models\RegistrationRequest.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Utils\DateTimeConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />
+    <Compile Include="ViewModels\Items\NewCategoryViewModel.cs" />
     <Compile Include="ViewModels\Itinerary\ItineraryViewModel.cs" />
     <Compile Include="ViewModels\Trips\NewTripViewModel.cs" />
     <Compile Include="ViewModels\Trips\PastTripsViewModel.cs" />
@@ -147,6 +149,9 @@
     </Compile>
     <Compile Include="Views\Items\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Items\NewCategoryPage.xaml.cs">
+      <DependentUpon>NewCategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Itinerary\ItineraryPage.xaml.cs">
       <DependentUpon>ItineraryPage.xaml</DependentUpon>
@@ -206,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Items\ItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Items\NewCategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
