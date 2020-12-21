@@ -12,7 +12,7 @@
     </Page.DataContext>
     <Grid>
         <NavigationView x:Name="nvMain" 
-                        PaneDisplayMode="LeftCompact" 
+                        PaneDisplayMode="Top" 
                         SelectionChanged="NvMain_SelectionChanged"
                         ItemInvoked="NvMain_ItemInvoked"
                         IsBackEnabled="False"
@@ -44,7 +44,8 @@
             <NavigationView.PaneFooter>
                 <NavigationViewItem Content="Logout"
                                     Tag="nviLogout"
-                                    Tapped="NviLogout_Tapped">
+                                    Tapped="NviLogout_Tapped"
+                                    Padding="0 0 15 0">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF3B1;"/>
                     </NavigationViewItem.Icon>

@@ -3,6 +3,8 @@ using System;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;
+using System.Linq;
+using System.ComponentModel;
 
 namespace TravelList.ViewModels.Trips
 {
@@ -30,9 +32,29 @@ namespace TravelList.ViewModels.Trips
             }
         }
 
+        public RelayCommand BackCommand
+        {
+            get
+            {
+                return new RelayCommand(BackToOverview);
+            }
+        }
+
         public void UpdateTrip()
         {
             _tripRepository.UpdateTrip(Trip);
+        }
+
+        public void BackToOverview()
+        {
+            _navigationService.Navigate(typeof(MainPage));
+        }
+
+        public void SetupObserver()
+        {
+            Trip.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip();
+            Trip.Tasks.ToList().ForEach(t => t.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
+            Trip.Items.ToList().ForEach(i => i.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
         }
     }
 }

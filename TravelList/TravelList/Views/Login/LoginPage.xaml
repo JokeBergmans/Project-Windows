@@ -13,7 +13,7 @@
     </Page.DataContext>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/ross-parmly-rf6ywHVkrlY-unsplash.jpg"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/ross-parmly-rf6ywHVkrlY-unsplash.jpg"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical" 
                     VerticalAlignment="Center"

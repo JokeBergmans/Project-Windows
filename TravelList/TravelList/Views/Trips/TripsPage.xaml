@@ -6,17 +6,57 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:model="using:TravelList.Models.Domain" 
     xmlns:viewModel="using:TravelList.ViewModels.Trips"
-    xmlns:local="using:TravelList.Views.Trips"
+    xmlns:local="using:TravelList.Views.Trips" xmlns:converter="using:TravelList.Utils"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Page.Resources>
         <model:Trip x:Name="model"/>
+        <converter:DateStringConverter x:Name="DateStringConverter"/>
     </Page.Resources>
     <Page.DataContext>
         <viewModel:TripsViewModel x:Name="vm"/>
     </Page.DataContext>
-    <SplitView x:Name="sv"
+    <Frame x:Name="frame">
+        <GridView x:Name="gv" 
+                  ItemsSource="{x:Bind vm.trips}" 
+                  ItemClick="gv_ItemClick" 
+                  HorizontalAlignment="Center"
+                  IsItemClickEnabled="True">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="model:Trip">
+                    <StackPanel Spacing="10" Padding="20" Margin="20">
+                        <TextBlock Text="{x:Bind Name}" FontSize="20"/>
+
+                        <StackPanel Orientation="Horizontal" 
+                                    Spacing="5">
+                            <TextBlock Text="&#xE823;" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind DaysUntil}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}"/>
+                            <TextBlock Text=" - "/>
+                            <TextBlock Text="{x:Bind End, Converter={StaticResource DateStringConverter}}"/>
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Packing"/>
+                            <ProgressBar Value="{x:Bind ItemProgress}" Width="250"/>
+                        </StackPanel>
+
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Tasks"/>
+                            <ProgressBar Value="{x:Bind TaskProgress}" Width="250"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Frame>
+   
+    
+
+    <!--<SplitView x:Name="sv"
                IsPaneOpen="True"
                DisplayMode="Inline"
                OpenPaneLength="296">
@@ -84,5 +124,5 @@
             
         </SplitView.Content>
 
-    </SplitView>
+    </SplitView>-->
 </Page>

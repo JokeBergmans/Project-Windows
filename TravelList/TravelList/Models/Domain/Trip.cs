@@ -24,11 +24,11 @@ namespace TravelList.Models.Domain
         [JsonProperty("name")]
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
         [JsonProperty("tasks")]
-        public IEnumerable<Task> Tasks { get; set; }
+        public IList<Task> Tasks { get; set; }
         [JsonProperty("items")]
-        public IEnumerable<TripItem> Items { get; set; }
+        public IList<TripItem> Items { get; set; }
         [JsonProperty("activities")]
-        public IEnumerable<Activity> Activities { get; set; }
+        public IList<Activity> Activities { get; set; }
         public double TaskProgress
         {
             get

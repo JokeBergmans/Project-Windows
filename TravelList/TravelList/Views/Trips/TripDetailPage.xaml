@@ -29,10 +29,25 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button Content="Back" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Margin="10"
+                Command="{x:Bind vm.BackCommand}"/>
+        <!--<Button Grid.Row="0" 
+                Grid.Column="0"
+                Content="Save"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="10"
+                Command="{x:Bind vm.UpdateTripCommand}"/>-->
         <StackPanel Grid.ColumnSpan="2" 
                     Grid.Row="0"
                     Margin="0 20 0 0">
-            <TextBlock Text="{x:Bind vm.Trip.Name}"
+
+            <TextBox Text="{x:Bind vm.Trip.Name, Mode=TwoWay}"
                        HorizontalAlignment="Center"
                        Width="auto"
                        FontSize="24"/>
@@ -150,11 +165,6 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button Grid.Row="2" 
-                Grid.Column="1"
-                Content="Save"
-                HorizontalAlignment="Right"
-                Margin="10"
-                Command="{x:Bind vm.UpdateTripCommand}"/>
+
     </Grid>
 </Page>

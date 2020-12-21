@@ -15,7 +15,7 @@
     </Page.DataContext>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
+            <ImageBrush Stretch="UniformToFill"  ImageSource="/Assets/glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
         </Grid.Background>
             
         <StackPanel Orientation="Vertical" 

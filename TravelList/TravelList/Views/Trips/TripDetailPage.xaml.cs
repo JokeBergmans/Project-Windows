@@ -23,6 +23,7 @@ namespace TravelList.Views.Trips
         {
             vm.Trip = (Trip)e.Parameter;
             SetupCVS();
+            vm.SetupObserver();
         }
 
         private void SetupCVS()

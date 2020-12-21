@@ -53,7 +53,7 @@ namespace TravelList_API.Models.Domain
             Activities.Add(activity);
         }
 
-        internal void UpdateFromDTO(TripDTO tripDTO)
+        public void UpdateFromDTO(TripDTO tripDTO)
         {
             Start = tripDTO.Start;
             End = tripDTO.End;

@@ -19,13 +19,13 @@ namespace TravelList.Views.Trips
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            svFrame.Navigate(typeof(NewTripPage));
+            frame.Navigate(typeof(NewTripPage));
 
         }
 
-        private void lv_ItemClick(object sender, ItemClickEventArgs e)
+        private void gv_ItemClick(object sender, ItemClickEventArgs e)
         {
-            svFrame.Navigate(typeof(TripDetailPage), (Trip)e.ClickedItem);
+            frame.Navigate(typeof(TripDetailPage), (Trip)e.ClickedItem);
         }
     }
 }

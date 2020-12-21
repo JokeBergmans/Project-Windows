@@ -27,7 +27,6 @@ namespace TravelList_API.Models.Domain
             Item = item;
             Amount = amount;
             Packed = packed;
-
         }
         #endregion
     }
