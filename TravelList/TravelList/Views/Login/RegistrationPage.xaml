@@ -24,7 +24,7 @@
                     Padding="20">
 
                 <StackPanel.Background>
-                <SolidColorBrush Color="White"/>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
             </StackPanel.Background>
             <TextBlock Text="Register" 
                        FontSize="36" 

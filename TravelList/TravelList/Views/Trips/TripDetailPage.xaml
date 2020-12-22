@@ -20,10 +20,35 @@
     </Page.Resources>
 
     <Grid Padding="20">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Medium">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="itemsSv.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="itemsSv.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="tasksSv.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="tasksSv.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="tasksSv.(Grid.Row)" Value="2"/>
+                        <Setter Target="tasksSv.(Grid.Column)" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -36,13 +61,6 @@
                 Grid.Column="0"
                 Margin="10"
                 Command="{x:Bind vm.BackCommand}"/>
-        <!--<Button Grid.Row="0" 
-                Grid.Column="0"
-                Content="Save"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Margin="10"
-                Command="{x:Bind vm.UpdateTripCommand}"/>-->
         <StackPanel Grid.ColumnSpan="2" 
                     Grid.Row="0"
                     Margin="0 20 0 0">
@@ -83,7 +101,9 @@
             
 
         </StackPanel>
-        <ScrollViewer Grid.Row="1" 
+        <ScrollViewer x:Name="itemsSv" 
+                      Grid.Row="1" 
+                      Grid.RowSpan="2"
                       Grid.Column="0">
             <StackPanel Spacing="20">
                 <TextBlock Text="Items" 
@@ -134,8 +154,10 @@
            
         </ScrollViewer>
 
-        <ScrollViewer Grid.Column="1" 
-                  Grid.Row="1">
+        <ScrollViewer x:Name="tasksSv" 
+                      Grid.Column="1" 
+                      Grid.RowSpan="2"
+                      Grid.Row="1">
             <StackPanel Spacing="20">
                 <TextBlock Text="Tasks"
                            TextAlignment="Center" 

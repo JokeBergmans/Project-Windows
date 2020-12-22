@@ -20,7 +20,7 @@
                     Padding="20"
                     Width="400">
             <StackPanel.Background>
-                <SolidColorBrush Color="White"/>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
             </StackPanel.Background>
             <TextBlock Text="Login" 
                        FontSize="36" 
