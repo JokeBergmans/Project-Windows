@@ -41,14 +41,17 @@
                         <Setter Target="tasksSv.(Grid.ColumnSpan)" Value="2"/>
                         <Setter Target="tasksSv.(Grid.Row)" Value="2"/>
                         <Setter Target="tasksSv.(Grid.Column)" Value="0"/>
+                        <Setter Target="row1.Height" Value="230"/>
+                        <Setter Target="row2.Height" Value="auto"/>
+                        <Setter Target="row3.Height" Value="auto"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition x:Name="row1" Height="*"/>
+            <RowDefinition x:Name="row2" Height="*"/>
+            <RowDefinition x:Name="row3" Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -104,7 +107,8 @@
         <ScrollViewer x:Name="itemsSv" 
                       Grid.Row="1" 
                       Grid.RowSpan="2"
-                      Grid.Column="0">
+                      Grid.Column="0"
+                      Padding="0 0 0 20">
             <StackPanel Spacing="20">
                 <TextBlock Text="Items" 
                            TextAlignment="Center" 
@@ -119,7 +123,8 @@
                           ItemsSource="{Binding Source={StaticResource groupCVS}}"
                           Width="auto" 
                           MinWidth="250"
-                          HorizontalAlignment="Center">
+                          HorizontalAlignment="Center"
+                          Margin="0 0 0 50">
 
                     <ListView.GroupStyle>
                         <GroupStyle>

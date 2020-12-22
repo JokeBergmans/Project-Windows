@@ -10,6 +10,10 @@ namespace TravelList.Views.Login
         public LoginPage()
         {
             InitializeComponent();
+            // TODO: remove
+            vm.Request.Email = "jokebergmans@mail.com";
+            vm.Request.Password = "P@ssword1111!";
+            vm.LoginCommand.Execute(null);
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
