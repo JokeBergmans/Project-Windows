@@ -34,6 +34,7 @@ namespace TravelList_API.Data.Repositories
 
         public void Add(Item item)
         {
+            _context.Entry(item.Owner).State = EntityState.Unchanged;
             _items.Add(item);
         }
 

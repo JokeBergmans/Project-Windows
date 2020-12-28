@@ -25,8 +25,9 @@ namespace TravelList.Repositories
         {
             Trips.Clear();
             PastTrips.Clear();
-            List<Trip> trips = (List<Trip>) await ApiService.GetTrips();
-            trips.ForEach(t => {
+            List<Trip> trips = (List<Trip>)await ApiService.GetTrips();
+            trips.ForEach(t =>
+            {
                 if (t.Start.CompareTo(DateTime.Now) > 0)
                     Trips.Add(t);
                 else if (t.End.CompareTo(DateTime.Now) <= 0)

@@ -12,7 +12,7 @@ namespace TravelList.Services
     public class ApiService
     {
         private static readonly string URL = "https://localhost:44317/api/";
-        private static string _token;
+        private static string _token = "";
         private static readonly HttpClient _client = new HttpClient();
 
         public async static Task<IList<Trip>> GetTrips()

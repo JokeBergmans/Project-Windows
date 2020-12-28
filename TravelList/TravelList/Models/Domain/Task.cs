@@ -14,5 +14,13 @@ namespace TravelList.Models.Domain
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
         public bool Completed { get { return _completed; } set { Set("Completed", ref _completed, value); } }
         #endregion
+
+        #region Constructors
+        public Task()
+        {
+            _name = "";
+            _completed = false;
+        }
+        #endregion
     }
 }

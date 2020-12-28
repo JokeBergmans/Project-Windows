@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace TravelList.Models.Domain
@@ -24,11 +25,11 @@ namespace TravelList.Models.Domain
         [JsonProperty("name")]
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
         [JsonProperty("tasks")]
-        public IList<Task> Tasks { get; set; }
+        public ObservableCollection<Task> Tasks { get; set; }
         [JsonProperty("items")]
-        public IList<TripItem> Items { get; set; }
+        public ObservableCollection<TripItem> Items { get; set; }
         [JsonProperty("activities")]
-        public IList<Activity> Activities { get; set; }
+        public ObservableCollection<Activity> Activities { get; set; }
         public double TaskProgress
         {
             get

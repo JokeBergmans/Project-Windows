@@ -5,30 +5,51 @@ using TravelList.Repositories;
 using TravelList.Services;
 using System.Linq;
 using System.ComponentModel;
+using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 
 namespace TravelList.ViewModels.Trips
 {
     public class TripDetailViewModel
     {
+        #region Fields
         private readonly NavigationService _navigationService;
         private readonly TripRepository _tripRepository;
         private readonly ItemRepository _itemRepository;
-        public DateTimeOffset Today = new DateTimeOffset(DateTime.Now.ToUniversalTime());
+        public ObservableCollection<Item> items = new ObservableCollection<Item>();
+        #endregion
 
+        #region Properties
+        public DateTimeOffset Today { get; set; } = new DateTimeOffset(DateTime.Now.ToUniversalTime());
         public Trip Trip { get; set; }
+        public TripItem NewItem { get; set; } = new TripItem();
+        public Task NewTask { get; set; } = new Task();
+        #endregion
 
+        #region Constructors
         public TripDetailViewModel()
         {
             _navigationService = new NavigationService();
             _tripRepository = RepositoryService.TripRepository;
             _itemRepository = RepositoryService.ItemRepository;
+            items = _itemRepository.Items;
         }
+        #endregion
 
-        public RelayCommand UpdateTripCommand
+        #region Commands
+        public RelayCommand AddItemCommand
         {
             get
             {
-                return new RelayCommand(UpdateTrip);
+                return new RelayCommand(AddItem);
+            }
+        }
+
+        public RelayCommand AddTaskCommand
+        {
+            get
+            {
+                return new RelayCommand(AddTask);
             }
         }
 
@@ -39,7 +60,9 @@ namespace TravelList.ViewModels.Trips
                 return new RelayCommand(BackToOverview);
             }
         }
+        #endregion
 
+        #region Methods
         public void UpdateTrip()
         {
             _tripRepository.UpdateTrip(Trip);
@@ -50,11 +73,27 @@ namespace TravelList.ViewModels.Trips
             _navigationService.Navigate(typeof(MainPage));
         }
 
+        public void AddItem()
+        {
+            Trip.Items.Add(NewItem);
+            NewItem = new TripItem();
+        }
+
+        public void AddTask()
+        {
+            Trip.Tasks.Add(NewTask);
+            NewTask = new Task();
+        }
+
         public void SetupObserver()
         {
             Trip.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip();
             Trip.Tasks.ToList().ForEach(t => t.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
             Trip.Items.ToList().ForEach(i => i.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
+            Trip.Tasks.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
+            Trip.Items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
         }
+        #endregion
+
     }
 }

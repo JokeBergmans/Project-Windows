@@ -33,11 +33,5 @@ namespace TravelList.Repositories
                 GetItems();
         }
 
-/*        public async void UpdateItem(Item item)
-        {
-            bool result = await ApiService.UpdateItem(item);
-            if (result)
-                GetItems();
-        }*/
     }
 }

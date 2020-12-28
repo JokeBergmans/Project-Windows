@@ -116,8 +116,10 @@
                            FontSize="20"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ComboBox Width="150"></ComboBox>
-                    <Button Content="Add"/> 
+                    <ComboBox ItemsSource="{x:Bind vm.items}" 
+                              Width="150"
+                              SelectedItem="{x:Bind vm.NewItem.Item, Mode=TwoWay}"></ComboBox>
+                    <Button Content="Add" Command="{x:Bind vm.AddItemCommand}"/> 
                 </StackPanel>
                 <ListView x:Name="lvItems" 
                           ItemsSource="{Binding Source={StaticResource groupCVS}}"
@@ -173,8 +175,9 @@
                             HorizontalAlignment="Center"
                             Spacing="10">
                     <TextBox Width="200"
-                             PlaceholderText="New task"/>
-                    <Button Content="Add"/> 
+                             PlaceholderText="New task"
+                             Text="{x:Bind vm.NewTask.Name, Mode=TwoWay}"/>
+                    <Button Content="Add" Command="{x:Bind vm.AddTaskCommand}"/> 
                 </StackPanel>
                 <Line></Line>
                 <ListView Width="auto"

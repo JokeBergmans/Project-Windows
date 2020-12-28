@@ -25,5 +25,14 @@ namespace TravelList.Models.Domain
         [JsonProperty("packed")]
         public bool Packed { get { return _packed; } set { Set("Packed", ref _packed, value); } }
         #endregion
+
+        #region Constructors
+        public TripItem()
+        {
+            _amount = 0;
+            _packed = false;
+            Item = null;
+        }
+        #endregion
     }
 }

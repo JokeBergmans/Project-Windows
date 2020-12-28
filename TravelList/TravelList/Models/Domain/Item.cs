@@ -14,5 +14,10 @@ namespace TravelList.Models.Domain
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
         public string Category { get { return _category; } set { Set("Category", ref _category, value); } }
         #endregion
+
+        override public string ToString()
+        {
+            return Name;
+        }
     }
 }

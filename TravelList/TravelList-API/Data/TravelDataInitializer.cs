@@ -39,9 +39,6 @@ namespace TravelList_API.Data
                 _dbContext.Items.Add(item1);
                 _dbContext.Items.Add(item2);
                 _dbContext.Items.Add(item3);
-                _dbContext.Entry(item1).State = EntityState.Detached;
-                _dbContext.Entry(item2).State = EntityState.Detached;
-                _dbContext.Entry(item3).State = EntityState.Detached;
                 _dbContext.SaveChanges();
 
                 trip1.AddTask(task1);

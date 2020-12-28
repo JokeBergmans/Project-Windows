@@ -62,6 +62,7 @@ namespace TravelList_API.Controllers
             if (owner == null)
                 return BadRequest();
             Item item = new Item(itemDTO, owner);
+            
             _itemRepository.Add(item);
             _itemRepository.SaveChanges();
 
