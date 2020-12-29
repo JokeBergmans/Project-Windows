@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.ComponentModel;
+using System.Net.Http;
 using TravelList.Models;
 using TravelList.Services;
 
@@ -40,20 +42,29 @@ namespace TravelList.ViewModels.Login
 
         private async void Login()
         {
-            Loading = true;
-            string token = await ApiService.Login(Request);
-            if (token == "")
+            try
             {
-                Error.Message = "Invalid login";
-                System.Diagnostics.Debug.WriteLine("Error: " + Error.Message);
+                Loading = true;
+                string token = await ApiService.Login(Request);
+                if (token == "")
+                {
+                    Error.Message = "Invalid login";
+                    System.Diagnostics.Debug.WriteLine("Error: " + Error.Message);
+                    Loading = false;
+                }
+                else
+                {
+                    SessionManager.token = token;
+                    Loading = false;
+                    _navigationService.Navigate(typeof(MainPage));
+                }
+            } 
+            catch (HttpRequestException)
+            {
+                Error.Message = "Unable to connect to API, please try again later";
                 Loading = false;
             }
-            else
-            {
-                SessionManager.token = token;
-                Loading = false;
-                _navigationService.Navigate(typeof(MainPage));
-            }
+
         }
 
         override public void RaisePropertyChanged(string name)

@@ -35,16 +35,19 @@ namespace TravelList_API.Data.Repositories
         public void Add(Item item)
         {
             _context.Entry(item.Owner).State = EntityState.Unchanged;
+            _context.Entry(item).State = EntityState.Added;
             _items.Add(item);
         }
 
         public void Update(Item item)
         {
+            _context.Entry(item).State = EntityState.Modified;
             _items.Update(item);
         }
 
         public void Delete(Item item)
         {
+            _context.Entry(item).State = EntityState.Deleted;
             _items.Remove(item);
         }
 

@@ -17,9 +17,14 @@
         <converter:DateTimeConverter x:Name="DateTimeConverter"/>
     </Page.Resources>
     
-    <Grid>
+    <Grid Padding="20">
+        <Button Content="Back" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="10"
+                Command="{x:Bind vm.BackCommand}"/>
         <StackPanel Orientation="Vertical" 
-                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
                     Width="auto">
             <TextBlock Text="Name" 
                        TextAlignment="Center" 

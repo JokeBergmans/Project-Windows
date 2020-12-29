@@ -117,7 +117,7 @@
                            Margin="5,0,0,0"/>
 
             </StackPanel>
-            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed"/>
+            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed" Margin="20"/>
             <Button x:Name="registerBtn" 
                     Content="Register" 
                     Background="DodgerBlue" 

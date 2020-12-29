@@ -24,7 +24,7 @@ namespace TravelList.ViewModels
 
         private void Logout()
         {
-            //var json = await client.PostAsync(new Uri("htpp://localhost:5000/api/Account"))
+            SessionManager.token = "";
             _navigationService.Navigate(typeof(LoginPage));
         }
     }

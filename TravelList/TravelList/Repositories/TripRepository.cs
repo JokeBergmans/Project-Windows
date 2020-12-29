@@ -28,9 +28,9 @@ namespace TravelList.Repositories
             List<Trip> trips = (List<Trip>)await ApiService.GetTrips();
             trips.ForEach(t =>
             {
-                if (t.Start.CompareTo(DateTime.Now) > 0)
+                if (t.End.CompareTo(DateTime.Now) > 0 && !Trips.Contains(t))
                     Trips.Add(t);
-                else if (t.End.CompareTo(DateTime.Now) <= 0)
+                else if (t.End.CompareTo(DateTime.Now) <= 0 && !PastTrips.Contains(t))
                     PastTrips.Add(t);
             });
         }

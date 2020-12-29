@@ -22,6 +22,9 @@ namespace TravelList_API.Data.Repositories
         {
             _context = context;
             _trips = context.Trips;
+            _tripItems = context.TripItems;
+            _tasks = context.Tasks;
+            _items = context.Items;
         }
         #endregion
 
@@ -39,16 +42,19 @@ namespace TravelList_API.Data.Repositories
         public void Add(Trip trip)
         {
             _context.Entry(trip.Owner).State = EntityState.Unchanged;
+            _context.Entry(trip).State = EntityState.Added;
             _trips.Add(trip);
         }
 
         public void Update(Trip trip)
         {
+            _context.Entry(trip.Owner).State = EntityState.Unchanged;
             _trips.Update(trip);
         }
 
         public void Delete(Trip trip)
         {
+            _context.Entry(trip).State = EntityState.Deleted;
             _trips.Remove(trip);
         }
 

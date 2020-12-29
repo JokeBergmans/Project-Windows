@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.ComponentModel;
+using System.Net.Http;
 using TravelList.Models;
 using TravelList.Services;
 
@@ -39,18 +40,25 @@ namespace TravelList.ViewModels.Login
 
         private async void Register()
         {
-            Loading = true;
-            string token = await ApiService.Register(Request);
-            if (token == "")
-            {
-                //Error.Message = "Invalid login";
-                System.Diagnostics.Debug.WriteLine("failed");
-                Loading = false;
+            try { 
+                Loading = true;
+                string token = await ApiService.Register(Request);
+                if (token == "")
+                {
+                    //Error.Message = "Invalid login";
+                    System.Diagnostics.Debug.WriteLine("failed");
+                    Loading = false;
+                }
+                else
+                {
+                    SessionManager.token = token;
+                    _navigationService.Navigate(typeof(MainPage));
+                    Loading = false;
+                }
             }
-            else
+            catch (HttpRequestException)
             {
-                SessionManager.token = token;
-                _navigationService.Navigate(typeof(MainPage));
+                //Error.Message = "Unable to connect to API, please try again later";
                 Loading = false;
             }
         }

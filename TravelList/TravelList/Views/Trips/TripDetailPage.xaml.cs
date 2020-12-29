@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using TravelList.Models;
 using TravelList.Models.Domain;
 using Windows.UI.Xaml.Controls;
@@ -19,11 +20,13 @@ namespace TravelList.Views.Trips
 
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs args)
         {
-            vm.Trip = (Trip)e.Parameter;
+            vm.Trip = (Trip)args.Parameter;
             SetupCVS();
             vm.SetupObserver();
+            vm.Trip.Items.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => SetupCVS();
+            vm.Trip.Items.ToList().ForEach(i => i.PropertyChanged += (object sender, PropertyChangedEventArgs e) => SetupCVS());
         }
 
         private void SetupCVS()

@@ -75,7 +75,18 @@ namespace TravelList.ViewModels.Trips
 
         public void AddItem()
         {
-            Trip.Items.Add(NewItem);
+            TripItem existing = Trip.Items.FirstOrDefault(i => i.Item.Id == NewItem.Item.Id);
+            if (existing != null)
+            {
+                existing.Amount += NewItem.Amount;
+                existing.Packed = false;
+                existing.RaisePropertyChanged("Amount");
+            }
+            else
+            {
+                Trip.Items.Add(NewItem);
+                UpdateTrip();
+            }
             NewItem = new TripItem();
         }
 
@@ -91,7 +102,7 @@ namespace TravelList.ViewModels.Trips
             Trip.Tasks.ToList().ForEach(t => t.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
             Trip.Items.ToList().ForEach(i => i.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
             Trip.Tasks.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
-            Trip.Items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
+            //Trip.Items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
         }
         #endregion
 
