@@ -117,8 +117,9 @@
                            Margin="5,0,0,0"/>
 
             </StackPanel>
-
-            <Button Content="Register" 
+            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed"/>
+            <Button x:Name="registerBtn" 
+                    Content="Register" 
                     Background="DodgerBlue" 
                     Foreground="White" 
                     Command="{x:Bind vm.RegisterCommand}"

@@ -7,7 +7,7 @@ namespace TravelList.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private INavigationService _navigationService;
+        private NavigationService _navigationService;
 
         public RelayCommand LogoutCommand
         {

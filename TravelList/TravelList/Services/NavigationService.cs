@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace TravelList.Services
 {
-    public class NavigationService : INavigationService
+    public class NavigationService
     {
         public void Navigate(Type sourcePage)
         {

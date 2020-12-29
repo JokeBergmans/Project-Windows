@@ -123,6 +123,7 @@
     <Compile Include="Models\Domain\Item.cs" />
     <Compile Include="Models\Domain\Task.cs" />
     <Compile Include="Models\Domain\TripItem.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Domain\Trip.cs" />
     <Compile Include="Models\RegistrationRequest.cs" />
@@ -130,9 +131,9 @@
     <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\TripRepository.cs" />
     <Compile Include="Services\ApiService.cs" />
-    <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
+    <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Utils\DateStringConverter.cs" />
     <Compile Include="Utils\DateTimeConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />

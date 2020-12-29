@@ -29,7 +29,7 @@
                        Width="250"/>
             
             <TextBlock x:Name="tbErrorMessage" 
-                       Text="{x:Bind vm.ErrorMessage}" 
+                       Text="{x:Bind vm.Error.Message, Mode=OneWay}" 
                        FontSize="16"
                        Margin="4" 
                        Foreground="Red" 
@@ -58,8 +58,10 @@
             <PasswordBox Margin="4" 
                          Width="250" 
                          Password="{x:Bind vm.Request.Password, Mode=TwoWay}" KeyDown="OnKeyDownHandler"/>
-            
-            <Button Content="Login" 
+            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed"/>
+
+            <Button x:Name="loginBtn"
+                    Content="Login" 
                     Background="DodgerBlue" 
                     Foreground="White" 
                     Command="{x:Bind vm.LoginCommand}"

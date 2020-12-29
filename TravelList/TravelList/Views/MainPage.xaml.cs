@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TravelList.Services;
 using TravelList.Views.Items;
 using TravelList.Views.Itinerary;
 using TravelList.Views.Settings;
