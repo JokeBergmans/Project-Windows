@@ -7,16 +7,19 @@ using System.Linq;
 using System.ComponentModel;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using GalaSoft.MvvmLight;
 
 namespace TravelList.ViewModels.Trips
 {
-    public class TripDetailViewModel
+    public class TripDetailViewModel : ViewModelBase
     {
         #region Fields
         private readonly NavigationService _navigationService;
         private readonly TripRepository _tripRepository;
         private readonly ItemRepository _itemRepository;
         public ObservableCollection<Item> items = new ObservableCollection<Item>();
+        public readonly IEnumerable<int> numbers = Enumerable.Range(1, 10);
         #endregion
 
         #region Properties
@@ -70,7 +73,7 @@ namespace TravelList.ViewModels.Trips
 
         public void BackToOverview()
         {
-            _navigationService.Navigate(typeof(MainPage));
+            _navigationService.Navigate(typeof(MainPage), "Trips");
         }
 
         public void AddItem()
@@ -93,6 +96,7 @@ namespace TravelList.ViewModels.Trips
         public void AddTask()
         {
             Trip.Tasks.Add(NewTask);
+            UpdateTrip();
             NewTask = new Task();
         }
 
@@ -101,8 +105,6 @@ namespace TravelList.ViewModels.Trips
             Trip.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip();
             Trip.Tasks.ToList().ForEach(t => t.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
             Trip.Items.ToList().ForEach(i => i.PropertyChanged += (object sender, PropertyChangedEventArgs e) => UpdateTrip());
-            Trip.Tasks.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
-            //Trip.Items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => UpdateTrip();
         }
         #endregion
 

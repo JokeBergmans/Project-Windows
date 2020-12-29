@@ -6,62 +6,58 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:viewModel="using:TravelList.ViewModels.Itinerary" 
     xmlns:model="using:TravelList.Models.Domain"
-    xmlns:local="using:TravelList.Views.Itinerary"
+    xmlns:local="using:TravelList.Views.Itinerary" xmlns:converter="using:TravelList.Utils"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <model:Trip x:Name="model"/>
+        <converter:DateStringConverter x:Name="DateStringConverter"/>
     </Page.Resources>
     <Page.DataContext>
         <viewModel:ItineraryViewModel x:Name="vm"/>
     </Page.DataContext>
-    <SplitView x:Name="sv"
-               IsPaneOpen="True"
-               DisplayMode="Inline"
-               OpenPaneLength="296">
-        <SplitView.Pane>
-            <Grid Padding="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ScrollViewer Height="auto" 
-                              VerticalAlignment="Stretch" 
-                              VerticalContentAlignment="Top"
-                              Grid.Row="0">
+    <Frame x:Name="frame">
+        <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-                    <ListView ItemsSource="{x:Bind vm.trips}"
-                              x:Name="lv" 
-                              ItemClick="lv_ItemClick"
-                              IsItemClickEnabled="True">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="model:Trip">
-                                <StackPanel Spacing="10" Padding="10, 20">
-                                    <TextBlock Text="{x:Bind Name}" FontSize="20"/>
+            <GridView x:Name="gv" 
+                  ItemsSource="{x:Bind vm.trips}" 
+                  ItemClick="gv_ItemClick" 
+                  HorizontalAlignment="Center"
+                  IsItemClickEnabled="True">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Trip">
+                        <StackPanel Spacing="10" Padding="20" Background="{StaticResource ElementBackground}">
+                            <TextBlock Text="{x:Bind Name}" FontSize="20" Width="250"/>
 
-                                    <StackPanel Orientation="Horizontal" 
-                                                Spacing="5">
+                            <StackPanel Orientation="Horizontal" 
+                                    Spacing="5">
+                                <TextBlock Text="&#xE823;" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"/>
+                                <TextBlock Text="{x:Bind DaysUntil}"/>
+                            </StackPanel>
+                           
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBlock Text="Activities:"/>
+                                <TextBlock Text="{x:Bind Activities.Count}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBlock Text="&#xE805;" 
+                                           FontSize="18"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"/>
+                                <TextBlock Text="{x:Bind NextActivity}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
 
-                                    </StackPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-
-            </Grid>
-        </SplitView.Pane>
-        <SplitView.Content>
-            <Frame x:Name="svFrame">
-                <Grid>
-                    <TextBlock Text="Select a trip from the list"
-                   FontSize="24"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-                </Grid>
-            </Frame>
-
-        </SplitView.Content>
-
-    </SplitView>
+            </GridView>
+        </Grid>
+    </Frame>
 </Page>

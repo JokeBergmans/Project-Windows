@@ -7,6 +7,7 @@ using TravelList.Views.Settings;
 using TravelList.Views.Trips;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -53,6 +54,25 @@ namespace TravelList
         public void NviLogout_Tapped(object sender, TappedRoutedEventArgs e)
         {
             vm.LogoutCommand.Execute(null);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs args)
+        {
+           switch ((string) args.Parameter)
+            {
+                case "Trips":
+                    nvMain.SelectedItem = nviTrips;
+                    break;
+                case "PastTrips":
+                    nvMain.SelectedItem = nviPastTrips;
+                    break;
+                case "Itineraries":
+                    nvMain.SelectedItem = nviItineraries;
+                    break;
+                case "Items":
+                    nvMain.SelectedItem = nviItems;
+                    break;
+            }
         }
     }
 }

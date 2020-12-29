@@ -18,55 +18,37 @@
     <Page.DataContext>
         <viewModel:PastTripsViewModel x:Name="vm"/>
     </Page.DataContext>
-    <SplitView x:Name="sv"
-               IsPaneOpen="True"
-               DisplayMode="Inline"
-               OpenPaneLength="296">
-        <SplitView.Pane>
-            <Grid Padding="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ScrollViewer Height="auto" 
-                              VerticalAlignment="Stretch" 
-                              VerticalContentAlignment="Top"
-                              Grid.Row="0">
 
-                    <ListView ItemsSource="{x:Bind vm.trips}"
-                              x:Name="lv" 
-                              ItemClick="lv_ItemClick"
-                              IsItemClickEnabled="True">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="model:Trip">
-                                <StackPanel Spacing="10" Padding="10, 20">
-                                    <TextBlock Text="{x:Bind Name}" FontSize="20"/>
+    <Frame x:Name="frame">
+        <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-                                    <StackPanel Orientation="Horizontal" 
+            <GridView x:Name="gv" 
+                  ItemsSource="{x:Bind vm.trips}" 
+                  ItemClick="gv_ItemClick" 
+                  HorizontalAlignment="Center"
+                  IsItemClickEnabled="True">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Trip">
+                        <StackPanel Spacing="10" Padding="10, 20" Background="{StaticResource ElementBackground}">
+                            <TextBlock Text="{x:Bind Name}" FontSize="20" Width="250"/>
+
+                            <StackPanel Orientation="Horizontal" 
                                                 Spacing="5">
-                                        <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}"/>
-                                        <TextBlock Text=" - "/>
-                                        <TextBlock Text="{x:Bind End, Converter={StaticResource DateStringConverter}}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
+                                <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{x:Bind End, Converter={StaticResource DateStringConverter}}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
 
-            </Grid>
-        </SplitView.Pane>
-        <SplitView.Content>
-            <Frame x:Name="svFrame">
-                <Grid>
-                    <TextBlock Text="Select a trip from the list"
-                   FontSize="24"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-                </Grid>
-            </Frame>
-
-        </SplitView.Content>
-
-    </SplitView>
+            </GridView>
+        </Grid>
+    </Frame>
+    
 </Page>

@@ -37,26 +37,29 @@
                         ItemInvoked="NvMain_ItemInvoked"
                         IsBackEnabled="False"
                         IsBackButtonVisible="Collapsed">
-            
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Upcoming trips" 
+                <NavigationViewItem x:Name="nviTrips"
+                                    Content="Upcoming trips" 
                                     Tag="nviTrips">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE709;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Past trips" 
+                <NavigationViewItem x:Name="nviPastTrips" 
+                                    Content="Past trips" 
                                     Tag="nviPastTrips">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE81C;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Itineraries"
+                <NavigationViewItem x:Name="nviItineraries"
+                                    Content="Itineraries"
                                     Icon="Calendar"
                                     Tag="nviItineraries"/>
-                <NavigationViewItem Content="Items"
+                <NavigationViewItem x:Name="nviItems"
+                                    Content="Items"
                                     Icon="Shop"
                                     Tag="nviItems"/>
             </NavigationView.MenuItems>

@@ -62,6 +62,25 @@ namespace TravelList.Models.Domain
                 return Start.Subtract(DateTime.Now).Days + " more days";
             }
         }
+
+        public string NextActivity
+        {
+            get
+            {
+                if (Activities.Count == 0)
+                    return "No upcoming activities";
+                DateTime today = DateTime.Now;
+                long ticks = Activities.Select(a => a.Start.Subtract(today).Ticks).Min();
+                if (ticks < 0)
+                    return "No upcoming activities";
+                else
+                {
+                    TimeSpan span = new TimeSpan(ticks);
+                    return string.Format("Next activity in {0} days, {1} hours, {2} minutes", span.Days, span.Hours, span.Minutes);
+
+                }
+            }
+        }
         #endregion
     }
 }

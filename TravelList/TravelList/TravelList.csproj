@@ -140,7 +140,9 @@
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />
     <Compile Include="ViewModels\Items\NewCategoryViewModel.cs" />
     <Compile Include="ViewModels\Itinerary\ItineraryViewModel.cs" />
+    <Compile Include="ViewModels\Itinerary\TripItineraryViewModel.cs" />
     <Compile Include="ViewModels\Trips\NewTripViewModel.cs" />
+    <Compile Include="ViewModels\Trips\PastTripDetailViewModel.cs" />
     <Compile Include="ViewModels\Trips\PastTripsViewModel.cs" />
     <Compile Include="ViewModels\Trips\TripDetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -157,6 +159,9 @@
     <Compile Include="Views\Itinerary\ItineraryPage.xaml.cs">
       <DependentUpon>ItineraryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Itinerary\TripItineraryPage.xaml.cs">
+      <DependentUpon>TripItineraryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -168,6 +173,9 @@
     </Compile>
     <Compile Include="Views\Trips\NewTripPage.xaml.cs">
       <DependentUpon>NewTripPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Trips\PastTripDetailPage.xaml.cs">
+      <DependentUpon>PastTripDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Trips\PastTripsPage.xaml.cs">
       <DependentUpon>PastTripsPage.xaml</DependentUpon>
@@ -191,22 +199,26 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
-    <Content Include="Assets\ross-parmly-rf6ywHVkrlY-unsplash.jpg" />
+    <Content Include="Assets\Images\glauber-sampaio-lCTfOwSi27E-unsplash.jpg" />
+    <Content Include="Assets\Images\ross-parmly-rf6ywHVkrlY-unsplash.jpg" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Images\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Images\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Images\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Images\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Images\StoreLogo.png" />
+    <Content Include="Assets\Images\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Assets\Styles\Backgrounds.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Items\ItemDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +235,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Itinerary\TripItineraryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -232,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Trips\NewTripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Trips\PastTripDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,32 +17,36 @@
     <Page.DataContext>
         <viewModel:ItemDetailViewModel x:Name="vm"/>
     </Page.DataContext>
-    <StackPanel Margin="0 20 0 0"
-                Spacing="20">
-        <TextBlock Text="Items"
-                   HorizontalAlignment="Center"
-                   Width="auto"
-                   FontSize="24"/>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Spacing="20"
-                    Width="500">
-            <TextBox PlaceholderText="New item"
-                     Width="430"
-                     Text="{x:Bind vm.NewItem.Name, Mode=TwoWay}"/>
-            <Button Content="Add"
-                    Click="AddButton_Click"/>
+    <Grid Padding="20" Background="{StaticResource GridBackground}">
+
+        <StackPanel Margin="0 20 0 0"
+                    Spacing="20">
+            <TextBlock Text="Items"
+                       HorizontalAlignment="Center"
+                       Width="auto"
+                       FontSize="24"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="20"
+                        Width="500">
+                <TextBox PlaceholderText="New item"
+                         Width="430"
+                         Text="{x:Bind vm.NewItem.Name, Mode=TwoWay}"/>
+                <Button Content="Add"
+                        Click="AddButton_Click"/>
+            </StackPanel>
+            <ListView ItemsSource="{Binding Source={StaticResource cvs}}"
+                      HorizontalAlignment="Center"
+                      Width="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Item">
+                        <StackPanel Spacing="10" Padding="10, 20">
+                            <TextBlock Text="{x:Bind Name}" FontSize="20"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
-        <ListView ItemsSource="{Binding Source={StaticResource cvs}}"
-                  HorizontalAlignment="Center"
-                  Width="500">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:Item">
-                    <StackPanel Spacing="10" Padding="10, 20">
-                        <TextBlock Text="{x:Bind Name}" FontSize="20"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+    </Grid>
+
 </Page>

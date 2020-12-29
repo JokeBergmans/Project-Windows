@@ -1,13 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
-using TravelList.Models;
+using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;
 
 namespace TravelList.ViewModels.Trips
 {
-    public class NewTripViewModel : ViewModelBase
+    public class PastTripDetailViewModel : ViewModelBase
     {
         #region Fields
         private readonly NavigationService _navigationService;
@@ -15,28 +14,19 @@ namespace TravelList.ViewModels.Trips
         #endregion
 
         #region Properties
-        public DateTimeOffset Today = new DateTimeOffset(DateTime.Now.ToUniversalTime());
-        public TripRequest Request { get; set; } = new TripRequest();
+        public Trip Trip { get; set; }
         #endregion
 
         #region Constructors
-        public NewTripViewModel()
+        public PastTripDetailViewModel()
         {
             _navigationService = new NavigationService();
             _tripRepository = RepositoryService.TripRepository;
+
         }
         #endregion
 
         #region Commands
-        public RelayCommand AddTripCommand
-        {
-            get
-            {
-                return new RelayCommand(AddTrip);
-            }
-        }
-
-
         public RelayCommand BackCommand
         {
             get
@@ -47,15 +37,9 @@ namespace TravelList.ViewModels.Trips
         #endregion
 
         #region Methods
-        private void AddTrip()
+        public void BackToOverview()
         {
-            _tripRepository.AddTrip(Request);
-            _navigationService.Navigate(typeof(MainPage));
-        }
-
-        private void BackToOverview()
-        {
-            _navigationService.Navigate(typeof(MainPage));
+            _navigationService.Navigate(typeof(MainPage), "PastTrips");
         }
         #endregion
     }

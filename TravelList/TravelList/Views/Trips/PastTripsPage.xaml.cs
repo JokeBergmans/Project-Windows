@@ -15,9 +15,10 @@ namespace TravelList.Views.Trips
         {
             InitializeComponent();
         }
-        private void lv_ItemClick(object sender, ItemClickEventArgs e)
+        private void gv_ItemClick(object sender, ItemClickEventArgs e)
         {
-            svFrame.Navigate(typeof(TripDetailPage), (Trip)e.ClickedItem);
+            frame.Navigate(typeof(PastTripDetailPage), (Trip)e.ClickedItem);
         }
+
     }
 }

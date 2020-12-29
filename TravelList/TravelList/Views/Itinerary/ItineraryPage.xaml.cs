@@ -13,16 +13,10 @@ namespace TravelList.Views.Itinerary
     {
         public ItineraryPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            svFrame.Navigate(typeof(NewTripPage));
-
-        }
-
-        private void lv_ItemClick(object sender, ItemClickEventArgs e)
+        private void gv_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
     }

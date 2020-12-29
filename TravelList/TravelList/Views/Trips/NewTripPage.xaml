@@ -17,15 +17,18 @@
         <converter:DateTimeConverter x:Name="DateTimeConverter"/>
     </Page.Resources>
     
-    <Grid Padding="20">
+    <Grid Padding="20" Background="{StaticResource GridBackground}">
+
         <Button Content="Back" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="10"
-                Command="{x:Bind vm.BackCommand}"/>
+                Command="{x:Bind vm.BackCommand}"
+                Background="{StaticResource ElementBackground}"/>
         <StackPanel Orientation="Vertical" 
                     HorizontalAlignment="Center" 
-                    Width="auto">
+                    Width="auto"
+                    Background="{StaticResource ElementBackground}">
             <TextBlock Text="Name" 
                        TextAlignment="Center" 
                        HorizontalAlignment="Center"/>
@@ -67,7 +70,8 @@
             <Button Content="Save" 
                     HorizontalAlignment="Center"
                     Margin="0,20,0,0"
-                    Command="{x:Bind vm.AddTripCommand}"/>
+                    Command="{x:Bind vm.AddTripCommand}"
+                    Background="{StaticResource ElementBackground}"/>
         </StackPanel>
 
     </Grid>

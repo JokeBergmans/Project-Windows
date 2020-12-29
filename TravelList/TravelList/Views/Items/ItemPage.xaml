@@ -21,7 +21,8 @@
                DisplayMode="Inline"
                OpenPaneLength="296">
         <SplitView.Pane>
-            <Grid Padding="20">
+            <Grid Padding="20" Background="{StaticResource GridBackground}">
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
@@ -37,7 +38,7 @@
                               IsItemClickEnabled="True">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
-                                <StackPanel Spacing="10" Padding="10, 20">
+                                <StackPanel Spacing="10" Padding="10, 20" Background="{StaticResource ElementBackground}">
                                     <TextBlock Text="{x:Bind ToString()}" FontSize="20"/>
 
                                 </StackPanel>

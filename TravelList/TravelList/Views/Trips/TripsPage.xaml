@@ -17,7 +17,8 @@
         <viewModel:TripsViewModel x:Name="vm"/>
     </Page.DataContext>
     <Frame x:Name="frame">
-        <Grid Padding="20">
+        <Grid Padding="20" Background="{StaticResource GridBackground}">
+
             <Button x:Name="AddButton"
                     Content="New"
                     HorizontalAlignment="Right" 
@@ -25,7 +26,8 @@
                     Grid.Row="0" 
                     Grid.Column="0"
                     Margin="10"
-                    Click="AddButton_Click"/>
+                    Click="AddButton_Click"
+                    Background="{StaticResource ElementBackground}"/>
             <GridView x:Name="gv" 
                   ItemsSource="{x:Bind vm.trips}" 
                   ItemClick="gv_ItemClick" 
@@ -38,7 +40,7 @@
                 </GridView.ItemsPanel>
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="model:Trip">
-                        <StackPanel Spacing="10" Padding="20">
+                        <StackPanel Spacing="10" Padding="20" Background="{StaticResource ElementBackground}" >
                             <TextBlock Text="{x:Bind Name}" FontSize="20"/>
 
                             <StackPanel Orientation="Horizontal" 
@@ -48,11 +50,7 @@
                                        VerticalAlignment="Center"/>
                                 <TextBlock Text="{x:Bind DaysUntil}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}"/>
-                                <TextBlock Text=" - "/>
-                                <TextBlock Text="{x:Bind End, Converter={StaticResource DateStringConverter}}"/>
-                            </StackPanel>
+
                             <StackPanel Spacing="5">
                                 <TextBlock Text="Packing"/>
                                 <ProgressBar Value="{x:Bind ItemProgress}" Width="250"/>
