@@ -53,7 +53,8 @@
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Bottom"
                         Margin="0 20 0 0" 
-                        Click="AddButton_Click"/>
+                        Click="AddButton_Click"
+                        Background="{StaticResource ButtonBackground}"/>
             </Grid>
         </SplitView.Pane>
         <SplitView.Content>

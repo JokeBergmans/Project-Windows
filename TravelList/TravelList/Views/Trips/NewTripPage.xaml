@@ -24,7 +24,7 @@
                 VerticalAlignment="Top"
                 Margin="10"
                 Command="{x:Bind vm.BackCommand}"
-                Background="{StaticResource ElementBackground}"/>
+                Background="{StaticResource ButtonBackground}"/>
         <StackPanel Orientation="Vertical" 
                     HorizontalAlignment="Center" 
                     Width="auto"
@@ -71,7 +71,7 @@
                     HorizontalAlignment="Center"
                     Margin="0,20,0,0"
                     Command="{x:Bind vm.AddTripCommand}"
-                    Background="{StaticResource ElementBackground}"/>
+                    Background="{StaticResource ButtonBackground}"/>
         </StackPanel>
 
     </Grid>

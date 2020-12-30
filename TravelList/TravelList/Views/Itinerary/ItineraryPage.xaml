@@ -32,7 +32,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="model:Trip">
                         <StackPanel Spacing="10" Padding="20" Background="{StaticResource ElementBackground}">
-                            <TextBlock Text="{x:Bind Name}" FontSize="20" Width="250"/>
+                            <TextBlock Text="{x:Bind Name}" FontSize="20" Width="300"/>
 
                             <StackPanel Orientation="Horizontal" 
                                     Spacing="5">

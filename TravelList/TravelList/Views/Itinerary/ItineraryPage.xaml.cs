@@ -1,4 +1,5 @@
-﻿using TravelList.Views.Trips;
+﻿using TravelList.Models.Domain;
+using TravelList.Views.Trips;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -18,6 +19,7 @@ namespace TravelList.Views.Itinerary
 
         private void gv_ItemClick(object sender, ItemClickEventArgs e)
         {
+            frame.Navigate(typeof(TripItineraryPage), (Trip)e.ClickedItem);
         }
     }
 }

@@ -15,10 +15,9 @@ namespace TravelList.Views.Settings
         public SettingsPage()
         {
             InitializeComponent();
-            tsDarkMode.IsOn = (Application.Current.RequestedTheme == ApplicationTheme.Dark || ((FrameworkElement)Window.Current.Content).RequestedTheme == ElementTheme.Dark);
         }
 
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+       /* private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             if (toggleSwitch != null)
@@ -57,6 +56,6 @@ namespace TravelList.Views.Settings
 
                 }
             }
-        }
+        }*/
     }
 }

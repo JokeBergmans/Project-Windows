@@ -136,11 +136,13 @@
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Utils\DateStringConverter.cs" />
     <Compile Include="Utils\DateTimeConverter.cs" />
+    <Compile Include="Utils\TimeSpanConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />
     <Compile Include="ViewModels\Items\NewCategoryViewModel.cs" />
     <Compile Include="ViewModels\Itinerary\ItineraryViewModel.cs" />
     <Compile Include="ViewModels\Itinerary\TripItineraryViewModel.cs" />
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Trips\NewTripViewModel.cs" />
     <Compile Include="ViewModels\Trips\PastTripDetailViewModel.cs" />
     <Compile Include="ViewModels\Trips\PastTripsViewModel.cs" />

@@ -7,8 +7,18 @@ namespace TravelList.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        #region Fields
         private NavigationService _navigationService;
+        #endregion
 
+        #region Constructors
+        public MainViewModel()
+        {
+            _navigationService = new NavigationService();
+        }
+        #endregion
+
+        #region Commands
         public RelayCommand LogoutCommand
         {
             get
@@ -16,16 +26,14 @@ namespace TravelList.ViewModels
                 return new RelayCommand(Logout);
             }
         }
+        #endregion
 
-        public MainViewModel()
-        {
-            _navigationService = new NavigationService();
-        }
-
+        #region Methods
         private void Logout()
         {
             SessionManager.token = "";
             _navigationService.Navigate(typeof(LoginPage));
         }
+        #endregion
     }
 }

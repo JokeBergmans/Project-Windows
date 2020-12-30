@@ -4,11 +4,155 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TravelList.Views.Itinerary"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="using:TravelList.ViewModels.Itinerary" xmlns:model="using:TravelList.Models.Domain" xmlns:converter="using:TravelList.Utils"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <model:Activity x:Name="model"/>
+        <converter:DateStringConverter x:Name="DateStringConverter"/>
+        <converter:DateTimeConverter x:Name="DateTimeConverter"/>
+        <converter:TimeSpanConverter x:Name="TimeSpanConverter"/>
+    </Page.Resources>
+    <Page.DataContext>
+        <viewModel:TripItineraryViewModel x:Name="vm"/>
+    </Page.DataContext>
+    <Grid Padding="20" Background="{StaticResource GridBackground}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Medium">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
 
-    <Grid>
 
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="sp1.Orientation" Value="Vertical"/>
+                        <Setter Target="sp2.Orientation" Value="Vertical"/>
+                        <Setter Target="tb1.Width" Value="300"/>
+                        <Setter Target="tb2.Width" Value="300"/>
+                        <Setter Target="tb3.Width" Value="300"/>
+                        <Setter Target="startDp.Width" Value="300"/>
+                        <Setter Target="startTp.Width" Value="300"/>
+                        <Setter Target="startTp.Margin" Value="3 0 0 0"/>
+                        <Setter Target="row1.Height" Value="auto"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="row1" Height="*"/>
+            <RowDefinition x:Name="row2" Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0"
+                    Margin="0 10 0 0"
+                    Padding="20"
+                    Spacing="20"
+                    Background="{StaticResource ElementBackground}"
+                    Height="auto">
+
+            <TextBlock Text="{x:Bind vm.Trip.Name, Mode=TwoWay}"
+                       HorizontalAlignment="Center"
+                       Width="auto"
+                       FontSize="24"/>
+            <TextBlock Text="New activity" HorizontalAlignment="Center" FontSize="18"/>
+            <StackPanel x:Name="sp1" Orientation="Horizontal" Width="auto" HorizontalAlignment="Center" Spacing="20">
+                <TextBox x:Name="tb1" PlaceholderText="Name" Text="{x:Bind vm.NewActivity.Name, Mode=TwoWay}" Width="200"/>
+                <TextBox x:Name="tb2" PlaceholderText="Location" Text="{x:Bind vm.NewActivity.Location, Mode=TwoWay}" Width="250"/>
+
+            </StackPanel>
+
+            <TextBox x:Name="tb3" PlaceholderText="Description" Text="{x:Bind vm.NewActivity.Description, Mode=TwoWay}" Width="470" HorizontalAlignment="Center"/>
+
+            <StackPanel x:Name="sp2" 
+                        Orientation="Horizontal" 
+                        Width="auto" HorizontalAlignment="Center" 
+                        Spacing="23">
+                <CalendarDatePicker x:Name="startDp" 
+                                    Date="{Binding vm.NewActivity.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"
+                                    HorizontalAlignment="Center"
+                                    Header="Date"
+                                    Width="200"
+                                    Margin="-1 0 0 0" 
+                                    DateFormat="{}{day.integer}/{month.integer}/{year.full}"
+                                    MinDate="{x:Bind vm.Trip.Start}"
+                                    MaxDate="{x:Bind vm.Trip.End}"/>
+                <TimePicker x:Name="startTp" 
+                            Header="Start time" 
+                            ClockIdentifier="24HourClock"
+                            Width="250"
+                            Margin="-3 0 0 0"/>
+
+            </StackPanel>
+            <Button Content="Add" 
+                    Background="{StaticResource ButtonBackground}" 
+                    Command="{x:Bind vm.AddCommand}" 
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Button FontFamily="Segoe MDL2 Assets" 
+                Content="&#xE72B;"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Margin="10 20 10 10"
+                Command="{x:Bind vm.BackCommand}"
+                Background="{StaticResource ButtonBackground}"/>
+        <ScrollViewer Grid.Row="1" Background="{StaticResource ElementBackground}">
+            <ListView ItemsSource="{x:Bind vm.Trip.Activities}" HorizontalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Activity">
+                        <UserControl>
+
+                            <StackPanel Spacing="10" Padding="10, 20" Orientation="Horizontal">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Medium">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="720"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters/>
+                                        </VisualState>
+                                        <VisualState x:Name="Small">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="spNameDesc.Width" Value="200"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}" 
+                                               VerticalAlignment="Center"
+                                               Padding="2"/>
+                                    <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}" 
+                                               VerticalAlignment="Center"
+                                               Padding="2"/>
+                                </StackPanel>
+                                <StackPanel x:Name="spNameDesc" Orientation="Vertical" Width="500">
+                                    <TextBlock Text="{x:Bind Name}" FontSize="18"/>
+                                    <TextBlock Text="{x:Bind Description}" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                                <TextBlock Text="{x:Bind Location}" 
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </UserControl>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -36,6 +36,9 @@ namespace TravelList_API.Data
                 Item item2 = new Item() { Name = "Underwear", Category = "Clothes", Owner = user };
                 Item item3 = new Item() { Name = "Painkillers", Category = "Health", Owner = user };
 
+                Activity activity1 = new Activity() { Name = "Check-in", Description = "Check-in at the airport", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(10, 0, 0) };
+                Activity activity2 = new Activity() { Name = "Departure", Description = "Departure of our flight! :D", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(12, 0, 0) };
+                
                 _dbContext.Items.Add(item1);
                 _dbContext.Items.Add(item2);
                 _dbContext.Items.Add(item3);
@@ -46,6 +49,8 @@ namespace TravelList_API.Data
                 trip1.AddItem(item1, 6, false);
                 trip1.AddItem(item2, 2, false);
                 trip1.AddItem(item3, 1, true);
+                trip1.AddActivity(activity1);
+                trip1.AddActivity(activity2);
 
                 trip2.AddTask(task1);
                 trip2.AddItem(item1, 4, true);
@@ -56,6 +61,7 @@ namespace TravelList_API.Data
                 trip3.AddTask(task2);
                 trip3.AddItem(item1, 10, false);
                 trip3.AddItem(item2, 20, false);
+
 
                 _dbContext.Trips.Add(trip1);
                 _dbContext.Trips.Add(trip2);

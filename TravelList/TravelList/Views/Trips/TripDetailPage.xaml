@@ -106,9 +106,9 @@
                 VerticalAlignment="Top"
                 Grid.Row="0" 
                 Grid.Column="0"
-                Margin="10"
+                Margin="10 20 10 10"
                 Command="{x:Bind vm.BackCommand}"
-                Background="{StaticResource ElementBackground}"/>
+                Background="{StaticResource ButtonBackground}"/>
         <ScrollViewer x:Name="itemsSv" 
                       Grid.Row="1" 
                       Grid.RowSpan="2"
@@ -127,7 +127,9 @@
                               SelectedItem="{x:Bind vm.NewItem.Item, Mode=TwoWay}"/>
                     <ComboBox ItemsSource="{x:Bind vm.numbers}"
                               SelectedItem="{x:Bind vm.NewItem.Amount, Mode=TwoWay}"/>
-                    <Button Content="Add" Command="{x:Bind vm.AddItemCommand}" Background="{StaticResource ElementBackground}"/> 
+                    <Button Content="Add" 
+                            Command="{x:Bind vm.AddItemCommand}" 
+                            Background="{StaticResource ButtonBackground}"/> 
                 </StackPanel>
                 <ListView x:Name="lvItems" 
                           ItemsSource="{Binding Source={StaticResource groupCVS}}"
@@ -185,7 +187,9 @@
                     <TextBox Width="250"
                              PlaceholderText="New task"
                              Text="{x:Bind vm.NewTask.Name, Mode=TwoWay}"/>
-                    <Button Content="Add" Command="{x:Bind vm.AddTaskCommand}" Background="{StaticResource ElementBackground}"/> 
+                    <Button Content="Add" 
+                            Command="{x:Bind vm.AddTaskCommand}" 
+                            Background="{StaticResource ButtonBackground}"/> 
                 </StackPanel>
                 <ListView Width="auto"
                           MinWidth="300"

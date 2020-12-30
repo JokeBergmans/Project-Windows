@@ -10,8 +10,12 @@ namespace TravelList.ViewModels.Login
 {
     public class LoginViewModel : ViewModelBase
     {
+        #region Fields
         private bool _loading = false;
         private NavigationService _navigationService;
+        #endregion
+
+        #region Properties
         public Error Error { get; set; }
         public bool Loading { 
             get { return _loading; } 
@@ -22,15 +26,20 @@ namespace TravelList.ViewModels.Login
             } 
         }
         public LoginRequest Request { get; set; }
+        #endregion
+
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #region Constructors
         public LoginViewModel()
         {
             _navigationService = new NavigationService();
             Request = new LoginRequest();
             Error = new Error();
         }
+        #endregion
 
+        #region Commands
         public RelayCommand LoginCommand
         {
             get
@@ -38,8 +47,9 @@ namespace TravelList.ViewModels.Login
                 return new RelayCommand(Login);
             }
         }
+        #endregion
 
-
+        #region Methods
         private async void Login()
         {
             try
@@ -71,6 +81,7 @@ namespace TravelList.ViewModels.Login
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+        #endregion
 
     }
 }

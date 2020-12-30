@@ -25,13 +25,16 @@ namespace TravelList_API.Data.Repositories
             _tripItems = context.TripItems;
             _tasks = context.Tasks;
             _items = context.Items;
+            _activities = context.Activities;
         }
         #endregion
 
         #region Methods
         public IEnumerable<Trip> GetAll(string email)
         {
-            return _trips.Include(t => t.Items).ThenInclude(i => i.Item).Include(t => t.Tasks).Include(t => t.Activities).Include(t => t.Owner).Where(t => t.Owner.Email == email).OrderBy(t => t.Start).ToList();
+            IList<Trip> trips = _trips.Include(t => t.Items).ThenInclude(i => i.Item).Include(t => t.Tasks).Include(t => t.Activities).Include(t => t.Owner).Where(t => t.Owner.Email == email).OrderBy(t => t.Start).ToList();
+            trips.ToList().ForEach(t => t.Activities.OrderBy(a => a.Start.Date).ThenBy(a => a.Start.TimeOfDay));
+            return trips;
         }
 
         public Trip GetBy(int id, string email)

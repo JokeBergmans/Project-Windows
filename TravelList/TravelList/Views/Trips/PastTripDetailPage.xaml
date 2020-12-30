@@ -97,9 +97,9 @@
                 VerticalAlignment="Top"
                 Grid.Row="0" 
                 Grid.Column="0"
-                Margin="10"
+                Margin="10 20 10 10"
                 Command="{x:Bind vm.BackCommand}"
-                Background="{StaticResource ElementBackground}"/>
+                Background="{StaticResource ButtonBackground}"/>
         <ScrollViewer x:Name="itemsSv" 
                       Grid.Row="1" 
                       Grid.RowSpan="2"

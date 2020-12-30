@@ -13,10 +13,20 @@ namespace TravelList.Models.Domain
         #endregion
 
         #region Properties
+        public int Id { get; set; }
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
         public string Description { get { return _description; } set { Set("Description", ref _description, value); } }
         public string Location { get { return _location; } set { Set("Location", ref _location, value); } }
         public DateTime Start { get { return _start; } set { Set("Start", ref _start, value); } }
+        #endregion
+
+        #region Constructors
+        public Activity()
+        {
+            Name = "";
+            Description = "";
+            Location = "";
+        }
         #endregion
     }
 }

@@ -29,8 +29,8 @@ namespace TravelList.Models.Domain
         #region Constructors
         public TripItem()
         {
-            _amount = 0;
-            _packed = false;
+            Amount = 0;
+            Packed = false;
             Item = null;
         }
         #endregion

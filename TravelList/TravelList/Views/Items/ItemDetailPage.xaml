@@ -33,7 +33,8 @@
                          Width="430"
                          Text="{x:Bind vm.NewItem.Name, Mode=TwoWay}"/>
                 <Button Content="Add"
-                        Click="AddButton_Click"/>
+                        Click="AddButton_Click"
+                        Background="{StaticResource ButtonBackground}"/>
             </StackPanel>
             <ListView ItemsSource="{Binding Source={StaticResource cvs}}"
                       HorizontalAlignment="Center"

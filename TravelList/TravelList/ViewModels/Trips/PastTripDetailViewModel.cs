@@ -10,7 +10,6 @@ namespace TravelList.ViewModels.Trips
     {
         #region Fields
         private readonly NavigationService _navigationService;
-        private readonly TripRepository _tripRepository;
         #endregion
 
         #region Properties
@@ -21,8 +20,6 @@ namespace TravelList.ViewModels.Trips
         public PastTripDetailViewModel()
         {
             _navigationService = new NavigationService();
-            _tripRepository = RepositoryService.TripRepository;
-
         }
         #endregion
 

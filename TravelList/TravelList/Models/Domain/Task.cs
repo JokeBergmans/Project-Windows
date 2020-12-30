@@ -18,8 +18,8 @@ namespace TravelList.Models.Domain
         #region Constructors
         public Task()
         {
-            _name = "";
-            _completed = false;
+            Name = "";
+            Completed = false;
         }
         #endregion
     }

@@ -76,7 +76,10 @@ namespace TravelList.Models.Domain
                 else
                 {
                     TimeSpan span = new TimeSpan(ticks);
-                    return string.Format("Next activity in {0} days, {1} hours, {2} minutes", span.Days, span.Hours, span.Minutes);
+                    if (span.Days > 0)
+                        return string.Format("Next activity in {0} days, {1} hours", span.Days, span.Hours);
+                    else
+                        return string.Format("Next activity in {0} hours, {1} minutes", span.Hours, span.Minutes);
 
                 }
             }

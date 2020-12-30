@@ -74,6 +74,7 @@ namespace TravelList.Services
             if (SessionManager.token == "")
                 return false;
             string requestJson = JsonConvert.SerializeObject(trip);
+            System.Diagnostics.Debug.WriteLine(requestJson);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
             HttpResponseMessage response = await _client.PutAsync(URL + "Trips/" + trip.Id, new StringContent(requestJson, Encoding.UTF8, "application/json"));
             return response.IsSuccessStatusCode;
