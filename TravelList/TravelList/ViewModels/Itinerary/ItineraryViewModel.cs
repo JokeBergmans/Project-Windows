@@ -21,10 +21,5 @@ namespace TravelList.ViewModels.Itinerary
         }
         #endregion
 
-        #region Commands
-        #endregion
-
-        #region Methods
-        #endregion
     }
 }

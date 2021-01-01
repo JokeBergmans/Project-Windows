@@ -53,7 +53,7 @@ namespace TravelList.ViewModels.Trips
             _navigationService.Navigate(typeof(MainPage));
         }
 
-        private void BackToOverview()
+        public void BackToOverview()
         {
             _navigationService.Navigate(typeof(MainPage));
         }

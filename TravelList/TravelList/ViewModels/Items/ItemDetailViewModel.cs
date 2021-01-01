@@ -31,8 +31,8 @@ namespace TravelList.ViewModels.Items
         #region Methods
         public void AddItem()
         {
-            _itemRepository.AddItem(NewItem);
-            NewItem = new Item();
+            _itemRepository.AddItem(new Item() { Name = NewItem.Name, Category = NewItem.Category });
+            NewItem.Clear();
         }
         #endregion
     }

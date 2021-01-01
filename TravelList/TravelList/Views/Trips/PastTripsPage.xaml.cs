@@ -1,5 +1,6 @@
 ﻿using TravelList.Models;
 using TravelList.Models.Domain;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -14,6 +15,7 @@ namespace TravelList.Views.Trips
         public PastTripsPage()
         {
             InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
         private void gv_ItemClick(object sender, ItemClickEventArgs e)
         {

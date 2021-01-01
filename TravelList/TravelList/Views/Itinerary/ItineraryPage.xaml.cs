@@ -1,5 +1,6 @@
 ﻿using TravelList.Models.Domain;
 using TravelList.Views.Trips;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -15,6 +16,7 @@ namespace TravelList.Views.Itinerary
         public ItineraryPage()
         {
             InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         private void gv_ItemClick(object sender, ItemClickEventArgs e)

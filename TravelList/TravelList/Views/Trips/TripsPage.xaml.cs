@@ -1,5 +1,6 @@
 ﻿using TravelList.Models;
 using TravelList.Models.Domain;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -15,6 +16,7 @@ namespace TravelList.Views.Trips
         public TripsPage()
         {
             InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Newtonsoft.Json;
 using System;
 
 namespace TravelList.Models.Domain
@@ -13,10 +14,15 @@ namespace TravelList.Models.Domain
         #endregion
 
         #region Properties
+        [JsonProperty("id")]
         public int Id { get; set; }
+        [JsonProperty("name")]
         public string Name { get { return _name; } set { Set("Name", ref _name, value); } }
+        [JsonProperty("description")]
         public string Description { get { return _description; } set { Set("Description", ref _description, value); } }
+        [JsonProperty("location")]
         public string Location { get { return _location; } set { Set("Location", ref _location, value); } }
+        [JsonProperty("start")]
         public DateTime Start { get { return _start; } set { Set("Start", ref _start, value); } }
         #endregion
 
@@ -26,7 +32,16 @@ namespace TravelList.Models.Domain
             Name = "";
             Description = "";
             Location = "";
+            Start = DateTime.Now;
         }
         #endregion
+
+        public void Clear()
+        {
+            Name = "";
+            Description = "";
+            Location = "";
+            Start = DateTime.Now;
+        }
     }
 }

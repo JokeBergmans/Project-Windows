@@ -83,7 +83,7 @@ namespace TravelList_API.Controllers
             trip.UpdateFromDTO(tripDTO);
             _tripRepository.Update(trip);
             _tripRepository.SaveChanges();
-            return NoContent();
+            return Ok();
         }
 
         // DELETE: api/Trips/5
@@ -102,7 +102,7 @@ namespace TravelList_API.Controllers
             }
             _tripRepository.Delete(trip);
             _tripRepository.SaveChanges();
-            return NoContent();
+            return Ok();
         }
 
         private string GetCurrentUserEmail()

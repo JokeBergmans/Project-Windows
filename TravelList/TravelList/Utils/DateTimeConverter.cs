@@ -7,12 +7,18 @@ namespace TravelList.Utils
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return new DateTimeOffset(((DateTime)value).ToUniversalTime());
+            if (value != null)
+                return new DateTimeOffset(((DateTime)value).ToUniversalTime());
+            else
+                return new DateTimeOffset(DateTime.Now).ToUniversalTime();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return ((DateTimeOffset)value).DateTime;
+            if (value != null)
+                return ((DateTimeOffset)value).DateTime;
+            else
+                return DateTime.Now;
         }
     }
 }

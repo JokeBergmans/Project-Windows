@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace TravelList.ViewModels.Itinerary
         #region Properties
         public Trip Trip { get; set; }
         public Activity NewActivity { get; set; } = new Activity();
+        public TimeSpan TimeSpan { get; set; } = new TimeSpan();
         #endregion
 
         #region Constructors
@@ -33,14 +35,6 @@ namespace TravelList.ViewModels.Itinerary
         #endregion
 
         #region Commands
-        public RelayCommand BackCommand
-        {
-            get
-            {
-                return new RelayCommand(BackToOverview);
-            }
-        }
-
         public RelayCommand AddCommand
         {
             get
@@ -53,7 +47,7 @@ namespace TravelList.ViewModels.Itinerary
         #region Methods
         public void UpdateTrip()
         {
-            _tripRepository.UpdateTrip(Trip);
+             _tripRepository.UpdateTrip(Trip);
         }
 
         public void BackToOverview()
@@ -63,13 +57,25 @@ namespace TravelList.ViewModels.Itinerary
 
         public void AddActivity()
         {
-            IList<Activity> activities = Trip.Activities;
-            Trip.Activities.Clear();
-            activities.Add(NewActivity);
-            activities.OrderBy(a => a.Start);
-            activities.ToList().ForEach(a => Trip.Activities.Add(a));
+            NewActivity.Start = NewActivity.Start.Date + TimeSpan;
+            Trip.Activities.Add(new Activity() { Name = NewActivity.Name, Description = NewActivity.Description, Location = NewActivity.Location, Start = NewActivity.Start});
             UpdateTrip();
-            NewActivity = new Activity();
+            NewActivity.Clear();
+            SetActivityMinDate(Trip.Start);
+            TimeSpan.Subtract(TimeSpan);
+            OrderActivities();
+        }
+
+        public void OrderActivities()
+        {
+            IList<Activity> activities = new List<Activity>(Trip.Activities);
+            Trip.Activities.Clear();
+            activities.OrderBy(a => a.Start).ToList().ForEach(a => Trip.Activities.Add(a));
+        }
+
+        public void SetActivityMinDate(DateTime min)
+        {
+            NewActivity.Start = min;
         }
         #endregion
     }

@@ -2,6 +2,7 @@
 using System.Linq;
 using TravelList.Models;
 using TravelList.Models.Domain;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -17,6 +18,8 @@ namespace TravelList.Views.Trips
         public TripDetailPage()
         {
             InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += (object sender, BackRequestedEventArgs e) => vm.BackToOverview(); 
 
         }
 

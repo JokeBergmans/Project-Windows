@@ -34,5 +34,14 @@ namespace TravelList.Models.Domain
             Item = null;
         }
         #endregion
+
+        #region Methods
+        public void Clear()
+        {
+            Amount = 0;
+            Item = null;
+            Packed = false;
+        }
+        #endregion
     }
 }

@@ -46,9 +46,8 @@ namespace TravelList.Repositories
         {
             bool result = await ApiService.UpdateTrip(trip);
             if (result)
-                GetTrips();
+               GetTrips();
         }
-
 
     }
 }

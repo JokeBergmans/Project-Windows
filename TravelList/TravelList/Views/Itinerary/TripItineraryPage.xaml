@@ -66,8 +66,14 @@
                        FontSize="24"/>
             <TextBlock Text="New activity" HorizontalAlignment="Center" FontSize="18"/>
             <StackPanel x:Name="sp1" Orientation="Horizontal" Width="auto" HorizontalAlignment="Center" Spacing="20">
-                <TextBox x:Name="tb1" PlaceholderText="Name" Text="{x:Bind vm.NewActivity.Name, Mode=TwoWay}" Width="200"/>
-                <TextBox x:Name="tb2" PlaceholderText="Location" Text="{x:Bind vm.NewActivity.Location, Mode=TwoWay}" Width="250"/>
+                <TextBox x:Name="tb1" 
+                         PlaceholderText="Name" 
+                         Text="{x:Bind vm.NewActivity.Name, Mode=TwoWay}" 
+                         Width="200"/>
+                <TextBox x:Name="tb2" 
+                         PlaceholderText="Location" 
+                         Text="{x:Bind vm.NewActivity.Location, Mode=TwoWay}"
+                         Width="250"/>
 
             </StackPanel>
 
@@ -78,7 +84,7 @@
                         Width="auto" HorizontalAlignment="Center" 
                         Spacing="23">
                 <CalendarDatePicker x:Name="startDp" 
-                                    Date="{Binding vm.NewActivity.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"
+                                    Date="{x:Bind vm.NewActivity.Start, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"
                                     HorizontalAlignment="Center"
                                     Header="Date"
                                     Width="200"
@@ -89,24 +95,18 @@
                 <TimePicker x:Name="startTp" 
                             Header="Start time" 
                             ClockIdentifier="24HourClock"
+                            Time="{x:Bind vm.TimeSpan, Mode=TwoWay}"
                             Width="250"
                             Margin="-3 0 0 0"/>
 
             </StackPanel>
-            <Button Content="Add" 
+            <Button x:Name="addBtn" Content="Add" 
                     Background="{StaticResource ButtonBackground}" 
                     Command="{x:Bind vm.AddCommand}" 
                     HorizontalAlignment="Center"/>
+            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed" Margin="20"/>
+
         </StackPanel>
-        <Button FontFamily="Segoe MDL2 Assets" 
-                Content="&#xE72B;"
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Grid.Row="0" 
-                Grid.Column="0"
-                Margin="10 20 10 10"
-                Command="{x:Bind vm.BackCommand}"
-                Background="{StaticResource ButtonBackground}"/>
         <ScrollViewer Grid.Row="1" Background="{StaticResource ElementBackground}">
             <ListView ItemsSource="{x:Bind vm.Trip.Activities}" HorizontalAlignment="Center">
                 <ListView.ItemTemplate>

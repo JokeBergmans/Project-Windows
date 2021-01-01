@@ -19,12 +19,6 @@
     
     <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-        <Button Content="Back" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Margin="10"
-                Command="{x:Bind vm.BackCommand}"
-                Background="{StaticResource ButtonBackground}"/>
         <StackPanel Orientation="Vertical" 
                     HorizontalAlignment="Center" 
                     Width="auto"

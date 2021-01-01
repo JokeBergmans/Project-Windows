@@ -12,7 +12,6 @@ namespace TravelList.Services
     public class ApiService
     {
         private static readonly string URL = "https://localhost:44317/api/";
-        //private static string _token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2tlYmVyZ21hbnNAbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6Impva2ViZXJnbWFuc0BtYWlsLmNvbSIsImV4cCI6MTYwOTI0NjYxNn0.7viU4vG4ub3LNI5I9mw1Ybu7857zakh103PFTiTJga4";
         private static readonly HttpClient _client = new HttpClient();
 
         public async static Task<IList<Trip>> GetTrips()
@@ -74,7 +73,6 @@ namespace TravelList.Services
             if (SessionManager.token == "")
                 return false;
             string requestJson = JsonConvert.SerializeObject(trip);
-            System.Diagnostics.Debug.WriteLine(requestJson);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
             HttpResponseMessage response = await _client.PutAsync(URL + "Trips/" + trip.Id, new StringContent(requestJson, Encoding.UTF8, "application/json"));
             return response.IsSuccessStatusCode;

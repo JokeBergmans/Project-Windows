@@ -56,13 +56,6 @@ namespace TravelList.ViewModels.Trips
             }
         }
 
-        public RelayCommand BackCommand
-        {
-            get
-            {
-                return new RelayCommand(BackToOverview);
-            }
-        }
         #endregion
 
         #region Methods
@@ -87,17 +80,17 @@ namespace TravelList.ViewModels.Trips
             }
             else
             {
-                Trip.Items.Add(NewItem);
+                Trip.Items.Add(new TripItem() { Amount = NewItem.Amount, Item = NewItem.Item, Packed = false });
                 UpdateTrip();
             }
-            NewItem = new TripItem();
+            NewItem.Clear();
         }
 
         public void AddTask()
         {
-            Trip.Tasks.Add(NewTask);
+            Trip.Tasks.Add(new Task() { Name = NewTask.Name, Completed = false });
             UpdateTrip();
-            NewTask = new Task();
+            NewTask.Clear();
         }
 
         public void SetupObserver()
