@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using TravelList.Models.Domain;
-using TravelList.Repositories;
 using TravelList.Services;
 
 namespace TravelList.ViewModels.Trips

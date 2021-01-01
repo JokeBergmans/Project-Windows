@@ -2,13 +2,35 @@
     x:Class="TravelList.Views.Items.NewCategoryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TravelList.Views.Items"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewModel="using:TravelList.ViewModels.Items"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.DataContext>
+        <viewModel:NewCategoryViewModel x:Name="vm"/>
+    </Page.DataContext>
+    <Grid Padding="20" Background="{StaticResource GridBackground}">
+        <StackPanel Padding="20" 
+                    Margin="0 20 0 0" 
+                    Height="200" 
+                    Width="auto" 
+                    Background="{StaticResource ElementBackground}" 
+                    VerticalAlignment="Top">
+            <TextBlock Text="New category" HorizontalAlignment="Center" FontSize="24" Margin="0 0 0 20"/>
 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20"> 
+                <TextBox Text="{x:Bind vm.Category, Mode=TwoWay}" 
+                     TextAlignment="Left" 
+                     HorizontalAlignment="Center" 
+                     Width="250"
+                     PlaceholderText="Name"/>
+                <Button Content="Add" 
+                    Command="{x:Bind vm.AddCategoryCommand}"
+                    Background="{StaticResource ButtonBackground}"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>

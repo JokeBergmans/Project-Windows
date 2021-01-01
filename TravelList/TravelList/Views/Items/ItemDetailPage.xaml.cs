@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Linq;
-using TravelList.Models.Domain;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -17,33 +13,26 @@ namespace TravelList.Views.Items
     /// </summary>
     public sealed partial class ItemDetailPage : Page
     {
-        public string Category { get; set; }
 
         public ItemDetailPage()
         {
             InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            //SystemNavigationManager.GetForCurrentView().BackRequested += (object sender, BackRequestedEventArgs e) => vm.BackToOverview();
+            SystemNavigationManager.GetForCurrentView().BackRequested += (object sender, BackRequestedEventArgs e) => vm.BackToOverview();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Category = (string)e.Parameter;
+            vm.Category = (string)e.Parameter;
             GetItems();
             vm.items.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs args) => GetItems();
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            vm.NewItem.Category = Category;
-            vm.AddItem();
         }
 
         private void GetItems()
         {
             var result =
                 from i in vm.items
-                where i.Category == Category
+                where i.Category == vm.Category
                 orderby i.Name
                 select i;
             cvs.Source = result;

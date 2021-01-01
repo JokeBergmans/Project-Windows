@@ -32,7 +32,7 @@ namespace TravelList.Models.Domain
         {
             Name = "";
             Completed = false;
-        } 
+        }
         #endregion
     }
 }

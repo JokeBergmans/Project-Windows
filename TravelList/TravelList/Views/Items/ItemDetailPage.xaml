@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:model="using:TravelList.Models.Domain" 
     xmlns:viewModel="using:TravelList.ViewModels.Items"
-    xmlns:local="using:TravelList.Views.Items"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -19,24 +18,48 @@
     </Page.DataContext>
     <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-        <StackPanel Margin="0 20 0 0"
-                    Spacing="20">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Medium">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="tb1.Width" Value="300"/>
+                        <Setter Target="lv.Width" Value="400"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Grid.Row="0"
+                    Margin="0 10 0 0"
+                    Padding="20"
+                    Spacing="20"
+                    Background="{StaticResource ElementBackground}"
+                    Height="auto">
             <TextBlock Text="Items"
                        HorizontalAlignment="Center"
                        Width="auto"
                        FontSize="24"/>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
-                        Spacing="20"
-                        Width="500">
-                <TextBox PlaceholderText="New item"
+                        Spacing="20">
+                <TextBox x:Name="tb1" PlaceholderText="New item"
                          Width="430"
                          Text="{x:Bind vm.NewItem.Name, Mode=TwoWay}"/>
                 <Button Content="Add"
-                        Click="AddButton_Click"
+                        Command="{x:Bind vm.AddItemCommand}"
                         Background="{StaticResource ButtonBackground}"/>
             </StackPanel>
-            <ListView ItemsSource="{Binding Source={StaticResource cvs}}"
+            <ListView x:Name="lv" 
+                      ItemsSource="{Binding Source={StaticResource cvs}}"
                       HorizontalAlignment="Center"
                       Width="500">
                 <ListView.ItemTemplate>

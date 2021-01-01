@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="TravelList.Views.Trips.TripsPage_Wide"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TravelList.Views.Trips"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converter="using:TravelList.Utils" xmlns:model="using:TravelList.Models.Domain" xmlns:viewModel="using:TravelList.ViewModels.Trips"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <model:Trip x:Name="model"/>
+        <converter:DateStringConverter x:Name="DateStringConverter"/>
+    </Page.Resources>
+    <Page.DataContext>
+        <viewModel:TripsViewModel x:Name="vm"/>
+    </Page.DataContext>
+    <SplitView x:Name="sv"
+               IsPaneOpen="True"
+               DisplayMode="Inline"
+               OpenPaneLength="320">
+        <SplitView.Pane>
+            <Grid Padding="20" Background="{StaticResource GridBackground}">
+
+
+                <ListView x:Name="lv" 
+                          ItemsSource="{x:Bind vm.trips}" 
+                          ItemClick="lv_ItemClick" 
+                          HorizontalAlignment="Center"
+                          IsItemClickEnabled="True"
+                          Background="{StaticResource ElementBackground}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Trip">
+                            <StackPanel Spacing="10" Padding="20"  >
+                                <TextBlock Text="{x:Bind Name}" FontSize="20"/>
+
+                                <StackPanel Orientation="Horizontal" 
+                                    Spacing="5">
+                                    <TextBlock Text="&#xE823;" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"/>
+                                    <TextBlock Text="{x:Bind DaysUntil}"/>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Packing"/>
+                                    <ProgressBar Value="{x:Bind ItemProgress}" Width="250"/>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Tasks"/>
+                                    <ProgressBar Value="{x:Bind TaskProgress}" Width="250"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                <Button x:Name="AddButton"
+                    Content="New"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Bottom"
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Margin="10"
+                    Click="AddButton_Click"
+                    Background="{StaticResource ButtonBackground}"/>
+            </Grid>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Frame x:Name="svFrame">
+                <Grid Background="{StaticResource GridBackground}">
+                    <TextBlock Text='Select a trip from the list, or click "New" to create a new one'
+                               FontSize="24"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource TextOnBackground}"/>
+                </Grid>
+            </Frame>
+
+        </SplitView.Content>
+    </SplitView>
+</Page>

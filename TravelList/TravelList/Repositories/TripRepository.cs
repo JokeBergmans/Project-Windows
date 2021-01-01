@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TravelList.Models;
 using TravelList.Models.Domain;
 using TravelList.Services;
@@ -46,7 +43,7 @@ namespace TravelList.Repositories
         {
             bool result = await ApiService.UpdateTrip(trip);
             if (result)
-               GetTrips();
+                GetTrips();
         }
 
     }

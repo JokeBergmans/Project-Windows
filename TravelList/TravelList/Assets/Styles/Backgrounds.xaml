@@ -12,4 +12,5 @@
     <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
     <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="SkyBlue"/>
     <SolidColorBrush x:Key="ButtonBackground" Color="LightBlue"/>
+    <SolidColorBrush x:Key="TextOnBackground" Color="Black"/>
 </ResourceDictionary>

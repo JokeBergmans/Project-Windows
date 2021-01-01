@@ -1,9 +1,8 @@
-﻿using Windows.System;
+﻿using System.ComponentModel;
+using Windows.System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml;
-using TravelList.Services;
-using System.ComponentModel;
 
 namespace TravelList.Views.Login
 {
@@ -40,7 +39,8 @@ namespace TravelList.Views.Login
                 loading.Visibility = Visibility.Visible;
                 loading.IsActive = true;
                 loginBtn.Visibility = Visibility.Collapsed;
-            } else
+            }
+            else
             {
                 loading.Visibility = Visibility.Collapsed;
                 loading.IsActive = false;

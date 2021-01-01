@@ -14,7 +14,7 @@ namespace TravelList.Models
 
         public TripRequest()
         {
-            Name = "My new trip";
+            Name = "";
             Start = DateTime.Now;
             End = DateTime.Now.AddDays(7);
         }

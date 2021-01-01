@@ -1,10 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using TravelList.Models;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;

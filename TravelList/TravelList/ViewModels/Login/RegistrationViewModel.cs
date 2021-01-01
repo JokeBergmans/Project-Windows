@@ -50,7 +50,8 @@ namespace TravelList.ViewModels.Login
         #region Methods
         private async void Register()
         {
-            try { 
+            try
+            {
                 Loading = true;
                 string token = await ApiService.Register(Request);
                 if (token == "")

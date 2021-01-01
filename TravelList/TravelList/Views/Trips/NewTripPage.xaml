@@ -19,14 +19,16 @@
     
     <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-        <StackPanel Orientation="Vertical" 
-                    HorizontalAlignment="Center" 
-                    Width="auto"
-                    Background="{StaticResource ElementBackground}">
-            <TextBlock Text="Name" 
-                       TextAlignment="Center" 
-                       HorizontalAlignment="Center"/>
+        <StackPanel Padding="20" 
+                    Margin="0 20 0 0" 
+                    Height="300" 
+                    Width="auto" 
+                    Background="{StaticResource ElementBackground}" 
+                    VerticalAlignment="Top">
+            <TextBlock Text="New trip" HorizontalAlignment="Center" FontSize="24" Margin="0 0 0 20"/>
+
             <TextBox Text="{x:Bind vm.Request.Name, Mode=TwoWay}" 
+                     PlaceholderText="Name"
                      TextAlignment="Left" 
                      HorizontalAlignment="Center" 
                      Margin="4"

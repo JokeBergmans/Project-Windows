@@ -1,10 +1,4 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
@@ -48,6 +42,7 @@ namespace TravelList.ViewModels.Settings
             SolidColorBrush navigationViewTopPaneBackground = Application.Current.Resources["NavigationViewTopPaneBackground"] as SolidColorBrush;
             SolidColorBrush navigationViewExpandedPaneBackground = Application.Current.Resources["NavigationViewExpandedPaneBackground"] as SolidColorBrush;
             SolidColorBrush navigationViewDefaultPaneBackground = Application.Current.Resources["NavigationViewDefaultPaneBackground"] as SolidColorBrush;
+            SolidColorBrush textOnBackground = Application.Current.Resources["TextOnBackground"] as SolidColorBrush;
 
             if (DarkMode)
             {
@@ -60,6 +55,7 @@ namespace TravelList.ViewModels.Settings
                 navigationViewDefaultPaneBackground.Color = Color.FromArgb(0xFF, 0x4E, 0x72, 0xA0);
                 buttonBackground.Color = Colors.White;
                 buttonBackgroundPointerOver.Color = Colors.LightGray;
+                textOnBackground.Color = Colors.White;
 
             }
             else
@@ -73,6 +69,7 @@ namespace TravelList.ViewModels.Settings
                 navigationViewDefaultPaneBackground.Color = Color.FromArgb(0xFF, 0xFB, 0xC8, 0xD4);
                 buttonBackground.Color = Colors.LightBlue;
                 buttonBackgroundPointerOver.Color = Colors.SkyBlue;
+                textOnBackground.Color = Colors.Black;
             }
         }
         #endregion

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using TravelList_API.Models.Domain;
@@ -38,7 +37,7 @@ namespace TravelList_API.Data
 
                 Activity activity1 = new Activity() { Name = "Check-in", Description = "Check-in at the airport", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(10, 0, 0) };
                 Activity activity2 = new Activity() { Name = "Departure", Description = "Departure of our flight! :D", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(12, 0, 0) };
-                
+
                 _dbContext.Items.Add(item1);
                 _dbContext.Items.Add(item2);
                 _dbContext.Items.Add(item3);

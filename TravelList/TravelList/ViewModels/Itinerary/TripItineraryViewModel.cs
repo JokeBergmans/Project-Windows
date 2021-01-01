@@ -2,11 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;
@@ -47,7 +43,7 @@ namespace TravelList.ViewModels.Itinerary
         #region Methods
         public void UpdateTrip()
         {
-             _tripRepository.UpdateTrip(Trip);
+            _tripRepository.UpdateTrip(Trip);
         }
 
         public void BackToOverview()
@@ -58,7 +54,7 @@ namespace TravelList.ViewModels.Itinerary
         public void AddActivity()
         {
             NewActivity.Start = NewActivity.Start.Date + TimeSpan;
-            Trip.Activities.Add(new Activity() { Name = NewActivity.Name, Description = NewActivity.Description, Location = NewActivity.Location, Start = NewActivity.Start});
+            Trip.Activities.Add(new Activity() { Name = NewActivity.Name, Description = NewActivity.Description, Location = NewActivity.Location, Start = NewActivity.Start });
             UpdateTrip();
             NewActivity.Clear();
             SetActivityMinDate(Trip.Start);

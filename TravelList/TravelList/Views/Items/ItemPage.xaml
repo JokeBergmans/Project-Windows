@@ -16,58 +16,38 @@
     <Page.DataContext>
         <viewModel:ItemsViewModel x:Name="vm"/>
     </Page.DataContext>
-    <SplitView x:Name="sv"
-               IsPaneOpen="True"
-               DisplayMode="Inline"
-               OpenPaneLength="296">
-        <SplitView.Pane>
-            <Grid Padding="20" Background="{StaticResource GridBackground}">
+    <Frame x:Name="frame">
+        <Grid Padding="20" Background="{StaticResource GridBackground}">
+            <GridView x:Name="gv" 
+                      ItemsSource="{x:Bind vm.categories}" 
+                      ItemClick="gv_ItemClick" 
+                      HorizontalAlignment="Center"
+                      IsItemClickEnabled="True">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="1"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <StackPanel Spacing="10" 
+                                    Padding="10, 20" 
+                                    Width="200"
+                                    Background="{StaticResource ElementBackground}">
+                            <TextBlock Text="{x:Bind ToString()}" FontSize="20"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ScrollViewer Height="auto" 
-                              VerticalAlignment="Stretch" 
-                              VerticalContentAlignment="Top"
-                              Grid.Row="0">
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <Button x:Name="AddButton"
+                    Content="New"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Margin="10"
+                    Click="AddButton_Click"
+                    Background="{StaticResource ButtonBackground}"/>
+        </Grid>
+    </Frame>
 
-                    <ListView ItemsSource="{x:Bind vm.categories}"
-                              x:Name="lv" 
-                              ItemClick="lv_ItemClick"
-                              IsItemClickEnabled="True">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <StackPanel Spacing="10" Padding="10, 20" Background="{StaticResource ElementBackground}">
-                                    <TextBlock Text="{x:Bind ToString()}" FontSize="20"/>
-
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-
-                <Button x:Name="AddButton"
-                        Content="Add"
-                        Grid.Row="1"
-                        HorizontalAlignment="Right" 
-                        VerticalAlignment="Bottom"
-                        Margin="0 20 0 0" 
-                        Click="AddButton_Click"
-                        Background="{StaticResource ButtonBackground}"/>
-            </Grid>
-        </SplitView.Pane>
-        <SplitView.Content>
-            <Frame x:Name="svFrame">
-                <Grid>
-                    <TextBlock Text='Select a category from the list, or click "Add" to create a new one'
-                   FontSize="24"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-                </Grid>
-            </Frame>
-
-        </SplitView.Content>
-
-    </SplitView>
 </Page>

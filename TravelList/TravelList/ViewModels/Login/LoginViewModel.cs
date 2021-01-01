@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
 using System.ComponentModel;
 using System.Net.Http;
 using TravelList.Models;
@@ -17,13 +16,14 @@ namespace TravelList.ViewModels.Login
 
         #region Properties
         public Error Error { get; set; }
-        public bool Loading { 
-            get { return _loading; } 
-            set 
-            { 
+        public bool Loading
+        {
+            get { return _loading; }
+            set
+            {
                 _loading = value;
                 RaisePropertyChanged("Loading");
-            } 
+            }
         }
         public LoginRequest Request { get; set; }
         #endregion
@@ -68,7 +68,7 @@ namespace TravelList.ViewModels.Login
                     Loading = false;
                     _navigationService.Navigate(typeof(MainPage));
                 }
-            } 
+            }
             catch (HttpRequestException)
             {
                 Error.Message = "Unable to connect to API, please try again later";

@@ -50,12 +50,12 @@ namespace TravelList.ViewModels.Trips
         private void AddTrip()
         {
             _tripRepository.AddTrip(Request);
-            _navigationService.Navigate(typeof(MainPage));
+            _navigationService.Navigate(typeof(MainPage), "Trips");
         }
 
         public void BackToOverview()
         {
-            _navigationService.Navigate(typeof(MainPage));
+            _navigationService.Navigate(typeof(MainPage), "Trips");
         }
         #endregion
     }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using TravelList.Models;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;

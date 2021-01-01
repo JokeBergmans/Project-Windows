@@ -155,11 +155,17 @@
     <Compile Include="Views\Items\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Items\ItemPage_Wide.xaml.cs">
+      <DependentUpon>ItemPage_Wide.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Items\NewCategoryPage.xaml.cs">
       <DependentUpon>NewCategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Itinerary\ItineraryPage.xaml.cs">
       <DependentUpon>ItineraryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Itinerary\ItineraryPage_Wide.xaml.cs">
+      <DependentUpon>ItineraryPage_Wide.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Itinerary\TripItineraryPage.xaml.cs">
       <DependentUpon>TripItineraryPage.xaml</DependentUpon>
@@ -188,8 +194,14 @@
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Trips\PastTripsPage_Wide.xaml.cs">
+      <DependentUpon>PastTripsPage_Wide.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Trips\TripDetailPage.xaml.cs">
       <DependentUpon>TripDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Trips\TripsPage_Wide.xaml.cs">
+      <DependentUpon>TripsPage_Wide.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Trips\TripsPage.xaml.cs">
       <DependentUpon>TripsPage.xaml</DependentUpon>
@@ -229,11 +241,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Items\ItemPage_Wide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Items\NewCategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Itinerary\ItineraryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Itinerary\ItineraryPage_Wide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,7 +289,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Trips\PastTripsPage_Wide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Trips\TripDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Trips\TripsPage_Wide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

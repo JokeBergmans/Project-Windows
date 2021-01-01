@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Linq;
-using TravelList.Models;
 using TravelList.Models.Domain;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
@@ -19,7 +18,7 @@ namespace TravelList.Views.Trips
         {
             InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            SystemNavigationManager.GetForCurrentView().BackRequested += (object sender, BackRequestedEventArgs e) => vm.BackToOverview(); 
+            SystemNavigationManager.GetForCurrentView().BackRequested += (object sender, BackRequestedEventArgs e) => vm.BackToOverview();
 
         }
 

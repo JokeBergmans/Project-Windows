@@ -1,14 +1,13 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;
-using System.Linq;
-using System.ComponentModel;
-using System.Collections.Specialized;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using GalaSoft.MvvmLight;
 
 namespace TravelList.ViewModels.Trips
 {
