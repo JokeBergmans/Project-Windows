@@ -11,7 +11,7 @@
         <model:Activity x:Name="model"/>
         <converter:DateStringConverter x:Name="DateStringConverter"/>
         <converter:DateTimeConverter x:Name="DateTimeConverter"/>
-        <converter:TimeSpanConverter x:Name="TimeSpanConverter"/>
+        <converter:TimeSpanStringConverter x:Name="TimeSpanStringConverter"/>
     </Page.Resources>
     <Page.DataContext>
         <viewModel:TripItineraryViewModel x:Name="vm"/>
@@ -136,7 +136,7 @@
                                     <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}" 
                                                VerticalAlignment="Center"
                                                Padding="2"/>
-                                    <TextBlock Text="{x:Bind Start, Converter={StaticResource DateStringConverter}}" 
+                                    <TextBlock Text="{x:Bind Start, Converter={StaticResource TimeSpanStringConverter}}" 
                                                VerticalAlignment="Center"
                                                Padding="2"/>
                                 </StackPanel>

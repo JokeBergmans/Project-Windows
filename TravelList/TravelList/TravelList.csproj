@@ -136,7 +136,7 @@
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Utils\DateStringConverter.cs" />
     <Compile Include="Utils\DateTimeConverter.cs" />
-    <Compile Include="Utils\TimeSpanConverter.cs" />
+    <Compile Include="Utils\TimeSpanStringConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />
     <Compile Include="ViewModels\Items\NewCategoryViewModel.cs" />

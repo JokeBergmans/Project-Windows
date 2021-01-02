@@ -127,12 +127,14 @@
                                 <CheckBox.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{x:Bind Item.Name}" 
-                                               VerticalAlignment="Center"
-                                                Width="200"/>
+                                                   VerticalAlignment="Center"
+                                                   Width="200"
+                                                   Foreground="Black"/>
                                         <TextBlock Text="{x:Bind Amount}" 
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Right"
-                                               TextAlignment="Right"/>
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   TextAlignment="Right"
+                                                   Foreground="Black"/>
 
                                     </StackPanel>
                                 </CheckBox.Content>
@@ -162,10 +164,16 @@
                   ItemsSource="{x:Bind vm.Trip.Tasks}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:Task">
-                            <CheckBox Content="{x:Bind Name}"
-                                      IsChecked="{x:Bind Completed, Mode=TwoWay}" 
+                            <CheckBox IsChecked="{x:Bind Completed, Mode=TwoWay}" 
                                       VerticalAlignment="Center"
-                                      IsEnabled="False"/>
+                                      IsEnabled="False">
+                                <CheckBox.Content>
+                                    <TextBlock Text="{x:Bind Name}" 
+                                                   VerticalAlignment="Center"
+                                                   Width="200"
+                                                   Foreground="Black"/>
+                                </CheckBox.Content>
+                            </CheckBox>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
