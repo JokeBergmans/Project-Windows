@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TravelList.Views.Items;
 using TravelList.Views.Itinerary;
 using TravelList.Views.Settings;
 using TravelList.Views.Trips;
-using Windows.Graphics.Display;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -109,7 +107,7 @@ namespace TravelList
         {
             double width = ((Frame)Window.Current.Content).ActualWidth;
 
-            if (width < 1000 )
+            if (width < 1000)
                 return true;
             else
                 return false;

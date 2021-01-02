@@ -11,10 +11,6 @@ namespace TravelList_API.Data.Repositories
         #region Fields
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Trip> _trips;
-        private readonly DbSet<TripItem> _tripItems;
-        private readonly DbSet<Item> _items;
-        private readonly DbSet<Task> _tasks;
-        private readonly DbSet<Activity> _activities;
         #endregion
 
         #region Constructors
@@ -22,10 +18,6 @@ namespace TravelList_API.Data.Repositories
         {
             _context = context;
             _trips = context.Trips;
-            _tripItems = context.TripItems;
-            _tasks = context.Tasks;
-            _items = context.Items;
-            _activities = context.Activities;
         }
         #endregion
 

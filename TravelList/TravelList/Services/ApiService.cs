@@ -51,8 +51,6 @@ namespace TravelList.Services
             }
             else
                 return "";
-
-
         }
 
         public async static Task<Trip> AddTrip(TripRequest request)
@@ -101,6 +99,28 @@ namespace TravelList.Services
                 return JsonConvert.DeserializeObject<Item>(response.Content.ReadAsStringAsync().Result);
             else
                 return null;
+        }
+
+        public async static Task<Preference> GetPreference()
+        {
+            if (SessionManager.token == "")
+                return null;
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
+            HttpResponseMessage response = await _client.GetAsync(URL + "Preferences");
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<Preference>(response.Content.ReadAsStringAsync().Result);
+            else
+                return null;
+        }
+
+        public async static Task<bool> UpdatePreference(Preference preference)
+        {
+            if (SessionManager.token == "")
+                return false;
+            string requestJson = JsonConvert.SerializeObject(preference);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
+            HttpResponseMessage response = await _client.PutAsync(URL + "Preferences/" + preference.Id, new StringContent(requestJson, Encoding.UTF8, "application/json"));
+            return response.IsSuccessStatusCode;
         }
     }
 }

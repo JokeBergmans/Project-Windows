@@ -35,8 +35,8 @@ namespace TravelList_API
 
             services.AddScoped<TravelDataInitializer>();
             services.AddScoped<ITripRepository, TripRepository>();
-            services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IPreferenceRepository, PreferenceRepository>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {

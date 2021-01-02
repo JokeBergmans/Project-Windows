@@ -18,11 +18,13 @@ namespace TravelList_API.Data
 
         public async System.Threading.Tasks.Task InitializeDataAsync()
         {
-            _dbContext.Database.EnsureDeleted();
+            /*_dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
                 IdentityUser user = new IdentityUser { UserName = "jokebergmans@mail.com", Email = "jokebergmans@mail.com" };
                 await CreateUser(user, "P@ssword1111!");
+
+                Preference preference = new Preference() { Owner = user, DarkMode = false };
 
                 Trip trip1 = new Trip() { Name = "Barcelona", Start = DateTime.Now.AddDays(60), End = DateTime.Now.AddDays(70), Owner = user, Tasks = new List<Task>(), Items = new List<TripItem>(), Activities = new List<Activity>() };
                 Trip trip2 = new Trip() { Name = "Berlin", Start = DateTime.Now.AddDays(100), End = DateTime.Now.AddDays(107), Owner = user, Tasks = new List<Task>(), Items = new List<TripItem>(), Activities = new List<Activity>() };
@@ -37,6 +39,9 @@ namespace TravelList_API.Data
 
                 Activity activity1 = new Activity() { Name = "Check-in", Description = "Check-in at the airport", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(10, 0, 0) };
                 Activity activity2 = new Activity() { Name = "Departure", Description = "Departure of our flight! :D", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(12, 0, 0) };
+
+                _dbContext.Preferences.Add(preference);
+                _dbContext.SaveChanges();
 
                 _dbContext.Items.Add(item1);
                 _dbContext.Items.Add(item2);
@@ -69,7 +74,7 @@ namespace TravelList_API.Data
 
                 _dbContext.SaveChanges();
 
-            }
+            }*/
         }
 
         private async System.Threading.Tasks.Task CreateUser(IdentityUser user, string password)

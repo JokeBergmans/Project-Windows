@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TravelList_API.DTOs;
+using TravelList_API.Models;
+using TravelList_API.Models.Domain;
 
 namespace TravelList_API.Controllers
 {
@@ -20,18 +22,18 @@ namespace TravelList_API.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        //private readonly ICustomerRepository _customerRepository;
+        private readonly IPreferenceRepository _preferenceRepository;
         private readonly IConfiguration _config;
 
         public AccountController(
           SignInManager<IdentityUser> signInManager,
           UserManager<IdentityUser> userManager,
-          //ICustomerRepository customerRepository,
+          IPreferenceRepository preferenceRepository,
           IConfiguration config)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            //_customerRepository = customerRepository;
+            _preferenceRepository = preferenceRepository;
             _config = config;
         }
 
@@ -73,6 +75,8 @@ namespace TravelList_API.Controllers
             if (result.Succeeded)
             {
                 string token = GetToken(user);
+                _preferenceRepository.Add(new Preference() { Owner = user, DarkMode = false });
+                _preferenceRepository.SaveChanges();
                 return Created("", token);
             }
             return BadRequest(result.Errors.ToList().ElementAt(0));
@@ -91,7 +95,7 @@ namespace TravelList_API.Controllers
             return user == null;
         }
 
-        private String GetToken(IdentityUser user)
+        private string GetToken(IdentityUser user)
         {
             // Create the token
             var claims = new[]

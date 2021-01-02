@@ -17,7 +17,9 @@ namespace TravelList_API.Models.Domain
         {
 
         }
+        #endregion
 
+        #region Methods
         public Item(ItemAddDTO itemDTO, IdentityUser owner)
         {
             Name = itemDTO.Name;

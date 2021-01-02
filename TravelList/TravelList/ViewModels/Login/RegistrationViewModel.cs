@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System.ComponentModel;
 using System.Net.Http;
 using TravelList.Models;
+using TravelList.Repositories;
 using TravelList.Services;
 
 namespace TravelList.ViewModels.Login
@@ -11,7 +12,8 @@ namespace TravelList.ViewModels.Login
     {
         #region Fields
         private bool _loading = false;
-        private NavigationService _navigationService;
+        private PreferenceRepository _preferenceRepository;
+        private readonly NavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -63,8 +65,9 @@ namespace TravelList.ViewModels.Login
                 else
                 {
                     SessionManager.token = token;
-                    _navigationService.Navigate(typeof(MainPage));
                     Loading = false;
+                    _preferenceRepository = RepositoryService.PreferenceRepository;
+                    _navigationService.Navigate(typeof(MainPage));
                 }
             }
             catch (HttpRequestException)

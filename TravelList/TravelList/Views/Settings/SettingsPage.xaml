@@ -14,7 +14,7 @@
     <Grid Padding="20" Background="{StaticResource GridBackground}">
         <StackPanel Padding="20" Margin="0 20 0 0" Height="200" Width="auto" Background="{StaticResource ElementBackground}" VerticalAlignment="Top">
             <TextBlock Text="Settings" HorizontalAlignment="Center" FontSize="24" Margin="0 0 0 20"/>
-            <ToggleSwitch x:Name="tsDarkMode" IsOn="{x:Bind vm.DarkMode, Mode=TwoWay}" HorizontalAlignment="Center">Dark Mode</ToggleSwitch>
+            <ToggleSwitch x:Name="tsDarkMode" IsOn="{x:Bind vm.Preference.DarkMode, Mode=TwoWay}" HorizontalAlignment="Center">Dark Mode</ToggleSwitch>
         </StackPanel>
     </Grid>
 

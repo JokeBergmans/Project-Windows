@@ -1,76 +1,34 @@
 ﻿using GalaSoft.MvvmLight;
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
+using TravelList.Models.Domain;
+using TravelList.Repositories;
+using TravelList.Services;
+using TravelList.Utils;
 
 namespace TravelList.ViewModels.Settings
 {
     public class SettingsViewModel : ViewModelBase
     {
         #region Fields
-        private bool _darkMode;
+        private readonly PreferenceRepository _preferenceRepository;
         #endregion
 
         #region Properties
-        public bool DarkMode
-        {
-            get { return _darkMode; }
-            set
-            {
-                _darkMode = value;
-                // TODO: API call
-                SetColors();
-            }
-        }
+        public Preference Preference { get; set; }
         #endregion
 
         #region Constructors
         public SettingsViewModel()
         {
-            // TODO: API call
-            DarkMode = false;
+            _preferenceRepository = RepositoryService.PreferenceRepository;
+            Preference = _preferenceRepository.Preference;
+            Preference.PropertyChanged += (object sender, System.ComponentModel.PropertyChangedEventArgs e) => SetTheme();
         }
         #endregion
 
         #region Methods
-        private void SetColors()
+        private void SetTheme()
         {
-            LinearGradientBrush gridBackground = Application.Current.Resources["GridBackground"] as LinearGradientBrush;
-            GradientStopCollection stops = gridBackground.GradientStops;
-            SolidColorBrush buttonBackground = Application.Current.Resources["ButtonBackground"] as SolidColorBrush;
-            SolidColorBrush buttonBackgroundPointerOver = Application.Current.Resources["ButtonBackgroundPointerOver"] as SolidColorBrush;
-            SolidColorBrush navigationViewTopPaneBackground = Application.Current.Resources["NavigationViewTopPaneBackground"] as SolidColorBrush;
-            SolidColorBrush navigationViewExpandedPaneBackground = Application.Current.Resources["NavigationViewExpandedPaneBackground"] as SolidColorBrush;
-            SolidColorBrush navigationViewDefaultPaneBackground = Application.Current.Resources["NavigationViewDefaultPaneBackground"] as SolidColorBrush;
-            SolidColorBrush textOnBackground = Application.Current.Resources["TextOnBackground"] as SolidColorBrush;
-
-            if (DarkMode)
-            {
-                stops[0].Color = Color.FromArgb(0xFF, 0x09, 0x20, 0x3F);
-                stops[1].Color = Color.FromArgb(0xFF, 0x53, 0x78, 0x95);
-                gridBackground.Opacity = 1;
-                navigationViewTopPaneBackground.Color = Color.FromArgb(0xFF, 0x4E, 0x72, 0xA0);
-                navigationViewTopPaneBackground.Opacity = 0.8;
-                navigationViewExpandedPaneBackground.Color = Color.FromArgb(0xFF, 0x4E, 0x72, 0xA0);
-                navigationViewDefaultPaneBackground.Color = Color.FromArgb(0xFF, 0x4E, 0x72, 0xA0);
-                buttonBackground.Color = Colors.White;
-                buttonBackgroundPointerOver.Color = Colors.LightGray;
-                textOnBackground.Color = Colors.White;
-
-            }
-            else
-            {
-                stops[0].Color = Color.FromArgb(0xFF, 0xAC, 0xE0, 0xF9);
-                stops[1].Color = Color.FromArgb(0xFF, 0xFB, 0xC8, 0xD4);
-                gridBackground.Opacity = 0.6;
-                navigationViewTopPaneBackground.Color = Color.FromArgb(0xFF, 0xFB, 0xC8, 0xD4);
-                navigationViewTopPaneBackground.Opacity = 0.8;
-                navigationViewExpandedPaneBackground.Color = Color.FromArgb(0xFF, 0xFB, 0xC8, 0xD4);
-                navigationViewDefaultPaneBackground.Color = Color.FromArgb(0xFF, 0xFB, 0xC8, 0xD4);
-                buttonBackground.Color = Colors.LightBlue;
-                buttonBackgroundPointerOver.Color = Colors.SkyBlue;
-                textOnBackground.Color = Colors.Black;
-            }
+            _preferenceRepository.UpdatePreference();
         }
         #endregion
     }

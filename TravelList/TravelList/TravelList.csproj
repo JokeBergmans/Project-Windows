@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Models\Domain\Activity.cs" />
     <Compile Include="Models\Domain\Item.cs" />
+    <Compile Include="Models\Domain\Preference.cs" />
     <Compile Include="Models\Domain\Task.cs" />
     <Compile Include="Models\Domain\TripItem.cs" />
     <Compile Include="Models\Error.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Models\RegistrationRequest.cs" />
     <Compile Include="Models\TripRequest.cs" />
     <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\PreferenceRepository.cs" />
     <Compile Include="Repositories\TripRepository.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\NavigationService.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Utils\DateStringConverter.cs" />
     <Compile Include="Utils\DateTimeConverter.cs" />
+    <Compile Include="Utils\ThemeUtil.cs" />
     <Compile Include="Utils\TimeSpanStringConverter.cs" />
     <Compile Include="ViewModels\Items\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\Items\ItemsViewModel.cs" />

@@ -12,6 +12,7 @@ namespace TravelList_API.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<TripItem> TripItems { get; set; }
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<Preference> Preferences { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

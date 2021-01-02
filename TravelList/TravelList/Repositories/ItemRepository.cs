@@ -24,12 +24,13 @@ namespace TravelList.Repositories
         {
             Items.Clear();
             List<Item> items = (List<Item>)await ApiService.GetItems();
-            items.ForEach(i =>
-            {
-                Items.Add(i);
-                if (!Categories.Contains(i.Category))
-                    Categories.Add(i.Category);
-            });
+            if (items != null)
+                items.ForEach(i =>
+                {
+                    Items.Add(i);
+                    if (!Categories.Contains(i.Category))
+                        Categories.Add(i.Category);
+                });
 
         }
 
