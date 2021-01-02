@@ -17,6 +17,7 @@ namespace TravelList.ViewModels.Login
         #endregion
 
         #region Properties
+        public Error Error { get; set; }
         public bool Loading
         {
             get { return _loading; }
@@ -36,6 +37,7 @@ namespace TravelList.ViewModels.Login
         {
             Request = new RegistrationRequest();
             _navigationService = new NavigationService();
+            Error = new Error();
         }
         #endregion
 
@@ -58,7 +60,7 @@ namespace TravelList.ViewModels.Login
                 string token = await ApiService.Register(Request);
                 if (token == "")
                 {
-                    //Error.Message = "Invalid login";
+                    Error.Message = "Invalid registration";
                     System.Diagnostics.Debug.WriteLine("failed");
                     Loading = false;
                 }
@@ -72,7 +74,7 @@ namespace TravelList.ViewModels.Login
             }
             catch (HttpRequestException)
             {
-                //Error.Message = "Unable to connect to API, please try again later";
+                Error.Message = "Unable to connect to API, please try again later";
                 Loading = false;
             }
         }

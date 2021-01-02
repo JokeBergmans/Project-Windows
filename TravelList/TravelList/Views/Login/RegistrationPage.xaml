@@ -32,7 +32,7 @@
                        TextAlignment="Center"/>
 
             <TextBlock x:Name="tbErrorMessage" 
-                       Text="" 
+                       Text="{x:Bind vm.Error.Message, Mode=OneWay}" 
                        FontSize="16"
                        Margin="4" 
                        Foreground="Red" 
