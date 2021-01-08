@@ -42,8 +42,8 @@
                         <Setter Target="tasksSv.(Grid.Row)" Value="2"/>
                         <Setter Target="tasksSv.(Grid.Column)" Value="0"/>
                         <Setter Target="row1.Height" Value="230"/>
-                        <Setter Target="row2.Height" Value="2*"/>
-                        <Setter Target="row3.Height" Value="2*"/>
+                        <Setter Target="row2.Height" Value="*"/>
+                        <Setter Target="row3.Height" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
