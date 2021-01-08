@@ -63,7 +63,10 @@
                     Margin="0 10 0 0"
                     Padding="20"
                     Background="{StaticResource ElementBackground}">
-
+            <Button Content="View activities >" 
+                    Background="{StaticResource ButtonBackground}" 
+                    HorizontalAlignment="Right" 
+                    Click="Activities_Button_Click"/>
             <TextBlock Text="{x:Bind vm.Trip.Name}"
                        HorizontalAlignment="Center"
                        Width="auto"

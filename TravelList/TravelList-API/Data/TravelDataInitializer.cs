@@ -40,6 +40,10 @@ namespace TravelList_API.Data
                 Activity activity1 = new Activity() { Name = "Check-in", Description = "Check-in at the airport", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(10, 0, 0) };
                 Activity activity2 = new Activity() { Name = "Departure", Description = "Departure of our flight! :D", Location = "Zaventem", Start = DateTime.Now.AddDays(60).Date + new TimeSpan(12, 0, 0) };
 
+                Activity activity3 = new Activity() { Name = "Check-in", Description = "Check-in at the airport", Location = "Charleroi", Start = trip3.Start.Date + new TimeSpan(10, 0, 0) };
+                Activity activity4 = new Activity() { Name = "Arrival", Description = "Arrival in Moscou", Location = "Moscou", Start = trip3.Start.Date + new TimeSpan(23, 0, 0) };
+                Activity activity5 = new Activity() { Name = "Depature", Description = "Departure of our flight back home", Location = "Moscou", Start = trip3.End.Date.AddDays(-1) + new TimeSpan(13, 0, 0) };
+                
                 _dbContext.Preferences.Add(preference);
                 _dbContext.SaveChanges();
 
@@ -65,7 +69,9 @@ namespace TravelList_API.Data
                 trip3.AddTask(task2);
                 trip3.AddItem(item1, 10, false);
                 trip3.AddItem(item2, 20, false);
-
+                trip3.AddActivity(activity3);
+                trip3.AddActivity(activity4);
+                trip3.AddActivity(activity5);
 
                 _dbContext.Trips.Add(trip1);
                 _dbContext.Trips.Add(trip2);
