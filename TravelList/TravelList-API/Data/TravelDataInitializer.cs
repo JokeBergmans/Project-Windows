@@ -18,7 +18,7 @@ namespace TravelList_API.Data
 
         public async System.Threading.Tasks.Task InitializeDataAsync()
         {
-            /*_dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
                 IdentityUser user = new IdentityUser { UserName = "jokebergmans@mail.com", Email = "jokebergmans@mail.com" };
@@ -74,7 +74,7 @@ namespace TravelList_API.Data
 
                 _dbContext.SaveChanges();
 
-            }*/
+            }
         }
 
         private async System.Threading.Tasks.Task CreateUser(IdentityUser user, string password)
