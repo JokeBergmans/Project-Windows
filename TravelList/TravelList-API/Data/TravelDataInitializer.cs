@@ -18,10 +18,10 @@ namespace TravelList_API.Data
 
         public async System.Threading.Tasks.Task InitializeDataAsync()
         {
-            _dbContext.Database.EnsureDeleted();
+            //_dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
-                IdentityUser user = new IdentityUser { UserName = "jokebergmans@mail.com", Email = "jokebergmans@mail.com" };
+                /*IdentityUser user = new IdentityUser { UserName = "jokebergmans@mail.com", Email = "jokebergmans@mail.com" };
                 await CreateUser(user, "P@ssword1111!");
 
                 Preference preference = new Preference() { Owner = user, DarkMode = false };
@@ -78,7 +78,7 @@ namespace TravelList_API.Data
                 _dbContext.Trips.Add(trip3);
 
 
-                _dbContext.SaveChanges();
+                _dbContext.SaveChanges();*/
 
             }
         }
