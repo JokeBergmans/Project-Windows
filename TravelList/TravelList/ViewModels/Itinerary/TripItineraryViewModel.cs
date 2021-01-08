@@ -38,6 +38,14 @@ namespace TravelList.ViewModels.Itinerary
                 return new RelayCommand(AddActivity);
             }
         }
+
+        public RelayCommand<int> RemoveCommand
+        {
+            get
+            {
+                return new RelayCommand<int>(RemoveActivity);
+            }
+        }
         #endregion
 
         #region Methods
@@ -60,6 +68,16 @@ namespace TravelList.ViewModels.Itinerary
             SetActivityMinDate(Trip.Start);
             TimeSpan.Subtract(TimeSpan);
             OrderActivities();
+        }
+
+        public void RemoveActivity(int id)
+        {
+            Activity activity = Trip.Activities.FirstOrDefault(a => a.Id == id);
+            if (activity != null)
+            {
+                Trip.Activities.Remove(activity);
+                UpdateTrip();
+            }
         }
 
         public void OrderActivities()

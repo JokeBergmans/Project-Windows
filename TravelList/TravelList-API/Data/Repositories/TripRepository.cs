@@ -44,7 +44,27 @@ namespace TravelList_API.Data.Repositories
         public void Update(Trip trip)
         {
             _context.Entry(trip.Owner).State = EntityState.Unchanged;
+            Trip dbTrip = GetBy(trip.Id, trip.Owner.Email);
+            if (dbTrip != null)
+            {
+                dbTrip.Items.ToList().ForEach(i =>
+                {
+                    if (!trip.Items.Contains(i))
+                        _context.Entry(i).State = EntityState.Deleted;
+                });
+                dbTrip.Tasks.ToList().ForEach(t =>
+                {
+                    if (!trip.Tasks.Contains(t))
+                        _context.Entry(t).State = EntityState.Deleted;
+                });
+                dbTrip.Activities.ToList().ForEach(a =>
+                {
+                    if (!trip.Activities.Contains(a))
+                        _context.Entry(a).State = EntityState.Deleted;
+                });
+            }
             _trips.Update(trip);
+
         }
 
         public void Delete(Trip trip)

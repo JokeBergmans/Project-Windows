@@ -50,6 +50,13 @@ namespace TravelList.Repositories
             if (result)
                 GetTrips();
         }
+
+        public async void RemoveTrip(Trip trip)
+        {
+            bool result = await ApiService.RemoveTrip(trip);
+            if (result)
+                GetTrips();
+        }
         #endregion
 
     }

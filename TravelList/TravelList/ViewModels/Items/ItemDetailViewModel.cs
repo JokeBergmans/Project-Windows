@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TravelList.Models.Domain;
 using TravelList.Repositories;
 using TravelList.Services;
@@ -30,11 +31,19 @@ namespace TravelList.ViewModels.Items
         #endregion
 
         #region Commands
-        public RelayCommand AddItemCommand
+        public RelayCommand AddCommand
         {
             get
             {
                 return new RelayCommand(AddItem);
+            }
+        }
+
+        public RelayCommand<int> RemoveCommand
+        {
+            get
+            {
+                return new RelayCommand<int>(RemoveItem);
             }
         }
         #endregion
@@ -45,6 +54,15 @@ namespace TravelList.ViewModels.Items
             NewItem.Category = Category;
             _itemRepository.AddItem(new Item() { Name = NewItem.Name, Category = NewItem.Category });
             NewItem.Clear();
+        }
+
+        public void RemoveItem(int id)
+        {
+            Item[] copiedItems = new Item[items.Count];
+            items.CopyTo(copiedItems, 0);
+            Item item = copiedItems.ToList().FirstOrDefault(t => t.Id == id);
+            if (item != null)
+                _itemRepository.RemoveItem(item);
         }
 
         public void BackToOverview()

@@ -76,6 +76,15 @@ namespace TravelList.Services
             return response.IsSuccessStatusCode;
         }
 
+        public async static Task<bool> RemoveTrip(Trip trip)
+        {
+            if (SessionManager.token == "")
+                return false;
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
+            HttpResponseMessage response = await _client.DeleteAsync(URL + "Trips/" + trip.Id);
+            return response.IsSuccessStatusCode;
+        }
+
         public async static Task<IList<Item>> GetItems()
         {
             if (SessionManager.token == "")
@@ -99,6 +108,15 @@ namespace TravelList.Services
                 return JsonConvert.DeserializeObject<Item>(response.Content.ReadAsStringAsync().Result);
             else
                 return null;
+        }
+
+        public async static Task<bool> RemoveItem(Item item)
+        {
+            if (SessionManager.token == "")
+                return false;
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SessionManager.token);
+            HttpResponseMessage response = await _client.DeleteAsync(URL + "Items/" + item.Id);
+            return response.IsSuccessStatusCode;
         }
 
         public async static Task<Preference> GetPreference()

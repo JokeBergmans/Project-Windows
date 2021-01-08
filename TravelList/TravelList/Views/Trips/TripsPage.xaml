@@ -19,15 +19,6 @@
     <Frame x:Name="frame">
         <Grid Padding="20" Background="{StaticResource GridBackground}">
 
-            <Button x:Name="AddButton"
-                    Content="New"
-                    HorizontalAlignment="Right" 
-                    VerticalAlignment="Top"
-                    Grid.Row="0" 
-                    Grid.Column="0"
-                    Margin="10"
-                    Click="AddButton_Click"
-                    Background="{StaticResource ButtonBackground}"/>
             <GridView x:Name="gv" 
                   ItemsSource="{x:Bind vm.trips}" 
                   ItemClick="gv_ItemClick" 
@@ -41,8 +32,20 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="model:Trip">
                         <StackPanel Spacing="10" Padding="20" Background="{StaticResource ElementBackground}" >
-                            <TextBlock Text="{x:Bind Name}" FontSize="20"/>
-
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Bind Name}" FontSize="20" Width="200"/>
+                                <Button FontFamily="Segoe MDL2 Assets" 
+                                        Content="&#xE711;"
+                                        Tag="{x:Bind Id}"
+                                        Click="Remove_Button_Click"
+                                        Foreground="Red"
+                                        Margin="10 0 0 0"
+                                        HorizontalAlignment="Right">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0"/>
+                                    </Button.Background>
+                                </Button>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal" 
                                     Spacing="5">
                                 <TextBlock Text="&#xE823;" 
@@ -65,6 +68,16 @@
                 </GridView.ItemTemplate>
 
             </GridView>
+
+            <Button x:Name="AddButton"
+                    Content="New"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Margin="10"
+                    Click="AddButton_Click"
+                    Background="{StaticResource ButtonBackground}"/>
         </Grid>
     </Frame>
 </Page>

@@ -151,6 +151,16 @@
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Right"
                                                TextAlignment="Right"/>
+                                        <Button FontFamily="Segoe MDL2 Assets" 
+                                                Content="&#xE711;"
+                                                Tag="{x:Bind Id}"
+                                                Click="Remove_Item_Button_Click"
+                                                Foreground="Red"
+                                                Margin="10 0 0 0">
+                                            <Button.Background>
+                                                <SolidColorBrush Opacity="0"/>
+                                            </Button.Background>
+                                        </Button>
 
                                     </StackPanel>
                                 </CheckBox.Content>
@@ -188,9 +198,26 @@
                           ItemsSource="{x:Bind vm.Trip.Tasks}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:Task">
-                            <CheckBox Content="{x:Bind Name}"
-                                IsChecked="{x:Bind Completed, Mode=TwoWay}" 
-                                  VerticalAlignment="Center"/>
+                            <CheckBox IsChecked="{x:Bind Completed, Mode=TwoWay}" 
+                                      VerticalAlignment="Center">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Name}" 
+                                               VerticalAlignment="Center"
+                                                Width="200"/>
+                                        <Button FontFamily="Segoe MDL2 Assets" 
+                                                Content="&#xE711;"
+                                                Tag="{x:Bind Id}"
+                                                Click="Remove_Task_Button_Click"
+                                                Foreground="Red"
+                                                Margin="10 0 0 0">
+                                            <Button.Background>
+                                                <SolidColorBrush Opacity="0"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

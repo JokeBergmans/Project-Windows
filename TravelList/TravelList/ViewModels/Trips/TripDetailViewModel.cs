@@ -47,6 +47,14 @@ namespace TravelList.ViewModels.Trips
             }
         }
 
+        public RelayCommand<int> RemoveItemCommand
+        {
+            get
+            {
+                return new RelayCommand<int>(RemoveItem);
+            }
+        }
+
         public RelayCommand AddTaskCommand
         {
             get
@@ -55,6 +63,13 @@ namespace TravelList.ViewModels.Trips
             }
         }
 
+        public RelayCommand<int> RemoveTaskCommand
+        {
+            get
+            {
+                return new RelayCommand<int>(RemoveTask);
+            }
+        }
         #endregion
 
         #region Methods
@@ -85,11 +100,31 @@ namespace TravelList.ViewModels.Trips
             NewItem.Clear();
         }
 
+        public void RemoveItem(int id)
+        {
+            TripItem item = Trip.Items.FirstOrDefault(i => i.Id == id);
+            if (item != null)
+            {
+                Trip.Items.Remove(item);
+                UpdateTrip();
+            }
+        }
+
         public void AddTask()
         {
             Trip.Tasks.Add(new Task() { Name = NewTask.Name, Completed = false });
             UpdateTrip();
             NewTask.Clear();
+        }
+
+        public void RemoveTask(int id)
+        {
+            Task task = Trip.Tasks.FirstOrDefault(t => t.Id == id);
+            if (task != null)
+            {
+                Trip.Tasks.Remove(task);
+                UpdateTrip();
+            }
         }
 
         public void SetupObserver()

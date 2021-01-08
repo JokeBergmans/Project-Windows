@@ -22,6 +22,11 @@ namespace TravelList_API.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Trip>().HasMany(t => t.Tasks).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Trip>().HasMany(t => t.Items).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Trip>().HasMany(t => t.Activities).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<TripItem>().HasOne(ti => ti.Item).WithMany().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

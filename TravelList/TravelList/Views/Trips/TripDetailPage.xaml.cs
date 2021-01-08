@@ -2,6 +2,7 @@
 using System.Linq;
 using TravelList.Models.Domain;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -40,6 +41,18 @@ namespace TravelList.Views.Trips
                 select g;
             groupCVS.Source = result;
             lvItems.SelectedItem = null;
+        }
+
+        private void Remove_Item_Button_Click(object sender, RoutedEventArgs e)
+        {
+            object id = ((Button)sender).Tag;
+            vm.RemoveItemCommand.Execute((int)id);
+        }
+
+        private void Remove_Task_Button_Click(object sender, RoutedEventArgs e)
+        {
+            object id = ((Button)sender).Tag;
+            vm.RemoveTaskCommand.Execute((int)id);
         }
     }
 }

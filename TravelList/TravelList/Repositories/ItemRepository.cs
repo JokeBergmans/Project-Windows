@@ -40,6 +40,16 @@ namespace TravelList.Repositories
             if (item != null)
                 GetItems();
         }
+
+        public async void RemoveItem(Item item)
+        {
+            bool result = await ApiService.RemoveItem(item);
+            if (result)
+            {
+                GetItems();
+                RepositoryService.TripRepository.GetTrips();
+            }
+        }
         #endregion
 
     }

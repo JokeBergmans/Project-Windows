@@ -140,13 +140,24 @@
                                                VerticalAlignment="Center"
                                                Padding="2"/>
                                 </StackPanel>
-                                <StackPanel x:Name="spNameDesc" Orientation="Vertical" Width="500">
+                                <StackPanel x:Name="spNameDesc" Orientation="Vertical" Width="380">
                                     <TextBlock Text="{x:Bind Name}" FontSize="18"/>
                                     <TextBlock Text="{x:Bind Description}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
                                 <TextBlock Text="{x:Bind Location}" 
                                            VerticalAlignment="Center" 
-                                           HorizontalAlignment="Right"/>
+                                           HorizontalAlignment="Right"
+                                           Width="60"/>
+                                <Button FontFamily="Segoe MDL2 Assets" 
+                                                Content="&#xE711;"
+                                                Tag="{x:Bind Id}"
+                                                Click="Remove_Button_Click"
+                                                Foreground="Red"
+                                                Margin="10 0 0 0">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0"/>
+                                    </Button.Background>
+                                </Button>
                             </StackPanel>
                         </UserControl>
 

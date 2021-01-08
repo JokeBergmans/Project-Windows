@@ -1,6 +1,9 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -37,6 +40,31 @@ namespace TravelList.Views.Items
                 select i;
             cvs.Source = result;
 
+        }
+
+        private async void Remove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialogResult result = await ShowDeleteDialog();
+            if (result == ContentDialogResult.Primary)
+            {
+                object id = ((Button)sender).Tag;
+                vm.RemoveCommand.Execute((int)id);
+            }
+
+        }
+
+        private async Task<ContentDialogResult> ShowDeleteDialog()
+        {
+            ContentDialog deleteItemDialog = new ContentDialog
+            {
+                Title = "Delete item permanently?",
+                Content = "If you delete this item, you won't be able to recover it. Do you want to delete it?",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel"
+            };
+
+            ContentDialogResult result = await deleteItemDialog.ShowAsync();
+            return result;
         }
     }
 }
