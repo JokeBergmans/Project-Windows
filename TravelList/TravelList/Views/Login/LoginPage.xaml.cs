@@ -13,10 +13,6 @@ namespace TravelList.Views.Login
         {
             InitializeComponent();
             vm.PropertyChanged += (object sender, PropertyChangedEventArgs e) => SetLoading(vm.Loading);
-            // TODO: remove
-/*            vm.Request.Email = "jokebergmans@mail.com";
-            vm.Request.Password = "P@ssword1111!";
-            vm.LoginCommand.Execute(null);*/
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
