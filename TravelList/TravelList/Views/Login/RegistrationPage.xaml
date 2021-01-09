@@ -98,6 +98,16 @@
                          Width="250" 
                          Password="{x:Bind vm.Request.PasswordConfirmation, Mode=TwoWay}"/>
 
+            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed" Margin="20"/>
+            <Button x:Name="registerBtn" 
+                    Content="Register" 
+                    Background="DodgerBlue" 
+                    Foreground="White" 
+                    Command="{x:Bind vm.RegisterCommand}"
+                    Width="80" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20"/>
+
             <StackPanel Orientation="Horizontal" 
                         VerticalAlignment="Center" 
                         HorizontalAlignment="Center" 
@@ -117,16 +127,6 @@
                            Margin="5,0,0,0"/>
 
             </StackPanel>
-            <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed" Margin="20"/>
-            <Button x:Name="registerBtn" 
-                    Content="Register" 
-                    Background="DodgerBlue" 
-                    Foreground="White" 
-                    Command="{x:Bind vm.RegisterCommand}"
-                    Width="80" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,20"/>
-
         </StackPanel>
 
     </Grid>
