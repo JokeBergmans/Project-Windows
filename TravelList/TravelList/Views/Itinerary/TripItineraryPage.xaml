@@ -108,7 +108,9 @@
 
         </StackPanel>
         <ScrollViewer Grid.Row="1" Background="{StaticResource ElementBackground}">
-            <ListView ItemsSource="{x:Bind vm.Trip.Activities}" HorizontalAlignment="Center">
+            <ListView x:Name="lv" 
+                      ItemsSource="{x:Bind vm.Trip.Activities}" 
+                      HorizontalAlignment="Center">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:Activity">
                         <UserControl>

@@ -9,5 +9,12 @@ namespace TravelList.Services
         public static ItemRepository ItemRepository { get; set; } = new ItemRepository();
 
         public static PreferenceRepository PreferenceRepository { get; set; } = new PreferenceRepository();
+
+        public static void Login()
+        {
+            TripRepository = new TripRepository();
+            ItemRepository = new ItemRepository();
+            PreferenceRepository = new PreferenceRepository();
+        }
     }
 }

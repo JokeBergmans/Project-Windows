@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -58,7 +59,11 @@ namespace TravelList.Models.Domain
         {
             get
             {
-                return Start.Subtract(DateTime.Now).Days + " more days";
+                int days = Start.Subtract(DateTime.Now).Days;
+                if (days > 0)
+                    return days + " more days";
+                else
+                    return End.Subtract(DateTime.Now).Days + " days left";
             }
         }
 
@@ -69,11 +74,12 @@ namespace TravelList.Models.Domain
                 if (Activities.Count == 0)
                     return "No upcoming activities";
                 DateTime today = DateTime.Now;
-                long ticks = Activities.Select(a => a.Start.Subtract(today).Ticks).Min();
-                if (ticks < 0)
+                List<Activity> upcoming = Activities.Where(a => a.Start.Subtract(today).Ticks > 0).ToList();
+                if (upcoming.Count < 0)
                     return "No upcoming activities";
                 else
                 {
+                    long ticks = upcoming.Select(a => a.Start.Subtract(today).Ticks).Min();
                     TimeSpan span = new TimeSpan(ticks);
                     if (span.Days > 0)
                         return string.Format("Next activity in {0} days, {1} hours", span.Days, span.Hours);

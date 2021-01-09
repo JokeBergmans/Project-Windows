@@ -17,7 +17,7 @@
     <SplitView x:Name="sv"
                IsPaneOpen="True"
                DisplayMode="Inline"
-               OpenPaneLength="320">
+               OpenPaneLength="325">
         <SplitView.Pane>
             <Grid Padding="20" Background="{StaticResource GridBackground}">
 

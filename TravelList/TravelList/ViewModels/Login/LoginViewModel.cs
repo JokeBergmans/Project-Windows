@@ -69,6 +69,7 @@ namespace TravelList.ViewModels.Login
                 {
                     SessionManager.token = token;
                     Loading = false;
+                    RepositoryService.Login();
                     _preferenceRepository = RepositoryService.PreferenceRepository;
                     _navigationService.Navigate(typeof(MainPage));
                 }
