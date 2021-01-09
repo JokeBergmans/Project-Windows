@@ -10,11 +10,11 @@ namespace TravelList.Services
 
         public static PreferenceRepository PreferenceRepository { get; set; } = new PreferenceRepository();
 
-        public static void Login()
+        public static void Refresh()
         {
-            TripRepository = new TripRepository();
-            ItemRepository = new ItemRepository();
-            PreferenceRepository = new PreferenceRepository();
+            TripRepository.GetTrips();
+            ItemRepository.GetItems();
+            PreferenceRepository.GetPreference();
         }
     }
 }

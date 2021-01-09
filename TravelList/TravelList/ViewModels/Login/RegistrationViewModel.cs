@@ -61,13 +61,13 @@ namespace TravelList.ViewModels.Login
                 if (token == "")
                 {
                     Error.Message = "Invalid registration";
-                    System.Diagnostics.Debug.WriteLine("failed");
                     Loading = false;
                 }
                 else
                 {
                     SessionManager.token = token;
                     Loading = false;
+                    RepositoryService.Refresh();
                     _preferenceRepository = RepositoryService.PreferenceRepository;
                     _navigationService.Navigate(typeof(MainPage));
                 }

@@ -62,14 +62,13 @@ namespace TravelList.ViewModels.Login
                 if (token == "")
                 {
                     Error.Message = "Invalid login";
-                    System.Diagnostics.Debug.WriteLine("Error: " + Error.Message);
                     Loading = false;
                 }
                 else
                 {
                     SessionManager.token = token;
                     Loading = false;
-                    RepositoryService.Login();
+                    RepositoryService.Refresh();
                     _preferenceRepository = RepositoryService.PreferenceRepository;
                     _navigationService.Navigate(typeof(MainPage));
                 }
