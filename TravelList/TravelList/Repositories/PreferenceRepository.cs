@@ -18,7 +18,6 @@ namespace TravelList.Repositories
         #region Constructors
         public PreferenceRepository()
         {
-            GetPreference();
         }
         #endregion
 

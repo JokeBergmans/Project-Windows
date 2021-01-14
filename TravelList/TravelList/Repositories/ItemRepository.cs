@@ -15,7 +15,6 @@ namespace TravelList.Repositories
         #region Constructors
         public ItemRepository()
         {
-            GetItems();
         }
         #endregion
 
@@ -23,6 +22,7 @@ namespace TravelList.Repositories
         public async void GetItems()
         {
             Items.Clear();
+            Categories.Clear();
             List<Item> items = (List<Item>)await ApiService.GetItems();
             if (items != null)
                 items.ForEach(i =>

@@ -17,7 +17,6 @@ namespace TravelList.Repositories
         #region Constructors
         public TripRepository()
         {
-            GetTrips();
         }
         #endregion
 

@@ -57,7 +57,8 @@
             
             <PasswordBox Margin="4" 
                          Width="250" 
-                         Password="{x:Bind vm.Request.Password, Mode=TwoWay}" KeyDown="OnKeyDownHandler"/>
+                         Password="{x:Bind vm.Request.Password, Mode=TwoWay}" 
+                         KeyDown="OnKeyDownHandler"/>
             <ProgressRing x:Name="loading" IsActive="False" Visibility="Collapsed" Margin="20"/>
 
             <Button x:Name="loginBtn"
